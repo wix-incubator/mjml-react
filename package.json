@@ -10,13 +10,11 @@
   "files": [
     "dist"
   ],
-  "private": true,
   "publishConfig": {
-    "registry": "http://npm.dev.wixpress.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "start": "yoshi start",
-    "precommit": "yoshi lint",
     "pretest": "yoshi build",
     "test": "yoshi test",
     "posttest": "yoshi lint",
@@ -24,19 +22,23 @@
   },
   "devDependencies": {
     "chai": "~4.1.0",
-    "husky": "~0.14.0",
     "yoshi": "^2.1.2",
-    "babel-plugin-transform-runtime": "~6.23.0"
+    "babel-plugin-transform-runtime": "~6.23.0",
+    "mjml": "^4.0.5",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "peerDependencies": {
+    "mjml": "^4.0.5",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
   },
   "yoshi": {
     "hmr": "auto"
   },
   "module": "dist/es/src/index.js",
   "dependencies": {
-    "babel-runtime": "~6.25.0",
-    "mjml": "^4.0.5",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "babel-runtime": "~6.25.0"
   },
   "babel": {
     "plugins": [
