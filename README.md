@@ -52,3 +52,8 @@ const {html, errors} = render((
   </tags.Mjml>
 ), {validationLevel: 'soft'});
 ```
+
+And as the result you will get a nice looking email HTML (works in mobile too!)
+
+![preview](https://user-images.githubusercontent.com/10008149/41058394-59b8ce9e-69d2-11e8-9eb9-c294f35bae9f.png)
+
