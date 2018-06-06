@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {string} from 'prop-types';
 
+import {handleMjmlProps} from './utils';
+
 export class MjmlPreview extends Component {
 
   static propTypes = {
@@ -8,7 +10,8 @@ export class MjmlPreview extends Component {
   }
 
   render() {
-    return React.createElement('mj-preview', {}, this.props.children);
+    const {children, ...rest} = this.props;
+    return React.createElement('mj-preview', handleMjmlProps(rest), children);
   }
 
 }

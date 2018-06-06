@@ -65,4 +65,25 @@ describe('mjml tags', () => {
       .to.equal('<mj-body width="100px" background-color="blue" css-class="body">Hello World!</mj-body>');
   });
 
+  it('should render <MjmlSection/> with content', () => {
+    expect(renderToMjml(
+      <tags.MjmlSection
+        fullWidth
+        paddingTop={10}
+        cssClass="first-section"
+        />
+    ))
+      .to.equal('<mj-section full-width="full-width" padding-top="10px" css-class="first-section"></mj-section>');
+  });
+
+  it('should render <MjmlColumn/> with content', () => {
+    expect(renderToMjml(
+      <tags.MjmlColumn
+        borderRadius={10}
+        width={20}
+        />
+    ))
+      .to.equal('<mj-column border-radius="10px" width="20px"></mj-column>');
+  });
+
 });

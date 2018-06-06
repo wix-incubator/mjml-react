@@ -1,20 +1,11 @@
 import React, {Component} from 'react';
-import {number} from 'prop-types';
+
+import {handleMjmlProps} from './utils';
 
 export class MjmlBreakpoint extends Component {
 
-  static propTypes = {
-    width: number.isRequired
-  }
-
-  static defaultProps = {
-    width: 320
-  }
-
   render() {
-    return React.createElement('mj-breakpoint', {
-      'width': `${this.props.width}px`
-    }, null);
+    return React.createElement('mj-breakpoint', handleMjmlProps(this.props), null);
   }
 
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {node} from 'prop-types';
 
+import {handleMjmlProps} from './utils';
+
 export class MjmlRaw extends Component {
 
   static propTypes = {
@@ -8,7 +10,8 @@ export class MjmlRaw extends Component {
   }
 
   render() {
-    return React.createElement('mj-raw', {}, this.props.children);
+    const {children, ...rest} = this.props;
+    return React.createElement('mj-raw', handleMjmlProps(rest), children);
   }
 
 }

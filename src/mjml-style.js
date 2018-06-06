@@ -1,21 +1,17 @@
 import React, {Component} from 'react';
-import {string, bool} from 'prop-types';
+import {string} from 'prop-types';
+
+import {handleMjmlProps} from './utils';
 
 export class MjmlStyle extends Component {
 
   static propTypes = {
-    children: string.isRequired,
-    inline: bool.isRequired
-  }
-
-  static defaultProps = {
-    inline: false
+    children: string.isRequired
   }
 
   render() {
-    return React.createElement('mj-style', {
-      'inline': this.props.inline ? 'inline' : undefined
-    }, this.props.children);
+    const {children, ...rest} = this.props;
+    return React.createElement('mj-style', handleMjmlProps(rest), children);
   }
 
 }

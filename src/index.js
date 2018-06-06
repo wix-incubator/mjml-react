@@ -12,6 +12,8 @@ export {MjmlPreview} from './mjml-preview';
 export {MjmlStyle} from './mjml-style';
 export {MjmlTitle} from './mjml-title';
 export {MjmlRaw} from './mjml-raw';
+export {MjmlSection} from './mjml-section';
+export {MjmlColumn} from './mjml-column';
 
 function render(email, options = {}) {
   const defaults = {
