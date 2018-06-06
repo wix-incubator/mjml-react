@@ -108,4 +108,9 @@ describe('mjml tags', () => {
       .to.equal('<mj-divider border-width="2px" border-color="red"></mj-divider>');
   });
 
+  it('should render <MjmlImage/>', () => {
+    expect(renderToMjml(<tags.MjmlImage src="https://www.wix.com/logo.png"/>))
+      .to.equal('<mj-image src="https://www.wix.com/logo.png"></mj-image>');
+  });
+
 });
