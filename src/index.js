@@ -18,6 +18,7 @@ export {MjmlButton} from './mjml-button';
 export {MjmlDivider} from './mjml-divider';
 export {MjmlImage} from './mjml-image';
 export {MjmlSpacer} from './mjml-spacer';
+export {MjmlText} from './mjml-text';
 
 function render(email, options = {}) {
   const defaults = {

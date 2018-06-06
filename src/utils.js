@@ -12,7 +12,7 @@ const handlers = {
   'padding-bottom': numberToPx,
   'padding-left': numberToPx,
   'font-size': numberToPx,
-  'font-weight': numberToPx
+  'letter-spacing': numberToPx
 };
 
 export function handleMjmlProps(props) {

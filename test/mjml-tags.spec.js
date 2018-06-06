@@ -118,4 +118,13 @@ describe('mjml tags', () => {
       .to.equal('<mj-spacer height="10px"></mj-spacer>');
   });
 
+  it('should render <MjmlText/>', () => {
+    expect(renderToMjml(
+      <tags.MjmlText fontWeight={20} letterSpacing={2}>
+        <span>Hello World!</span>
+      </tags.MjmlText>
+    ))
+      .to.equal('<mj-text font-weight="20" letter-spacing="2px"><span>Hello World!</span></mj-text>');
+  });
+
 });
