@@ -2,13 +2,16 @@ const handlers = {
   'inline': boolToString,
   'full-width': boolToString,
   'width': numberToPx,
+  'height': numberToPx,
   'border-radius': numberToPx,
   'background-size': numberToPx,
   'padding': numberToPx,
   'padding-top': numberToPx,
   'padding-right': numberToPx,
   'padding-bottom': numberToPx,
-  'padding-left': numberToPx
+  'padding-left': numberToPx,
+  'font-size': numberToPx,
+  'font-weight': numberToPx
 };
 
 export function handleMjmlProps(props) {

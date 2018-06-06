@@ -71,9 +71,11 @@ describe('mjml tags', () => {
         fullWidth
         paddingTop={10}
         cssClass="first-section"
-        />
+        >
+        Content
+      </tags.MjmlSection>
     ))
-      .to.equal('<mj-section full-width="full-width" padding-top="10px" css-class="first-section"></mj-section>');
+      .to.equal('<mj-section full-width="full-width" padding-top="10px" css-class="first-section">Content</mj-section>');
   });
 
   it('should render <MjmlColumn/> with content', () => {
@@ -81,9 +83,24 @@ describe('mjml tags', () => {
       <tags.MjmlColumn
         borderRadius={10}
         width={20}
-        />
+        >
+        Content
+      </tags.MjmlColumn>
     ))
-      .to.equal('<mj-column border-radius="10px" width="20px"></mj-column>');
+      .to.equal('<mj-column border-radius="10px" width="20px">Content</mj-column>');
+  });
+
+  it('should render <MjmlButton/> with content', () => {
+    expect(renderToMjml(
+      <tags.MjmlButton
+        height={20}
+        fontSize={22}
+        lineHeight={22 * 1.5}
+        >
+        Click Me
+      </tags.MjmlButton>
+    ))
+      .to.equal('<mj-button height="20px" font-size="22px" line-height="33">Click Me</mj-button>');
   });
 
 });
