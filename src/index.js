@@ -19,6 +19,7 @@ export {MjmlDivider} from './mjml-divider';
 export {MjmlImage} from './mjml-image';
 export {MjmlSpacer} from './mjml-spacer';
 export {MjmlText} from './mjml-text';
+export {MjmlWrapper} from './mjml-wrapper';
 
 function render(email, options = {}) {
   const defaults = {

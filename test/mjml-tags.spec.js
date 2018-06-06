@@ -127,4 +127,13 @@ describe('mjml tags', () => {
       .to.equal('<mj-text font-weight="20" letter-spacing="2px"><span>Hello World!</span></mj-text>');
   });
 
+  it('should render <MjmlWrapper/>', () => {
+    expect(renderToMjml(
+      <tags.MjmlWrapper padding={20} fullWidth>
+        <span>Hello World!</span>
+      </tags.MjmlWrapper>
+    ))
+      .to.equal('<mj-wrapper padding="20px" full-width="full-width"><span>Hello World!</span></mj-wrapper>');
+  });
+
 });
