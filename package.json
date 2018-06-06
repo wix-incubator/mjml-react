@@ -49,7 +49,18 @@
   "eslintConfig": {
     "extends": "wix/react",
     "rules": {
-      "quote-props": 0
+      "quote-props": 0,
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1,
+          "ignoredNodes": [
+            "JSXElement",
+            "JSXElement *"
+          ]
+        }
+      ]
     }
   }
 }

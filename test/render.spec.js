@@ -10,7 +10,7 @@ import {
   MjmlRaw
 } from '../src';
 
-describe('render', () => {
+describe('render()', () => {
 
   it('should render the HTML', () => {
     const email = (
@@ -19,7 +19,9 @@ describe('render', () => {
           <MjmlTitle>Title</MjmlTitle>
         </MjmlHead>
         <MjmlBody>
-          <MjmlRaw><p>Paragraph</p></MjmlRaw>
+          <MjmlRaw>
+            <p>Paragraph</p>
+          </MjmlRaw>
         </MjmlBody>
       </Mjml>
     );
@@ -32,7 +34,7 @@ describe('render', () => {
 
   it('should throw an error if invalid markup is given', () => {
     const email = <div>Ooops!</div>;
-    expect(() => render(email, {validationLevel: 'strict'}))
+    expect(() => render(email))
       .to.throw('Element div doesn\'t exist or is not registered');
   });
 
@@ -40,6 +42,8 @@ describe('render', () => {
     const email = <div>Ooops!</div>;
     const {errors} = render(email, {validationLevel: 'soft'});
     expect(errors.length).to.equal(1);
+    expect(errors[0].message)
+      .to.contain('Element div doesn\'t exist or is not registered');
   });
 
 });

@@ -9,10 +9,10 @@ export class MjmlFont extends Component {
   }
 
   render() {
-    const {href, name} = this.props;
-    return React.createElement('mj-head', {
-      href,
-      name
+    const {name, href} = this.props;
+    return React.createElement('mj-font', {
+      name,
+      href
     }, null);
   }
 

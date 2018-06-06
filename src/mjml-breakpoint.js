@@ -7,8 +7,12 @@ export class MjmlBreakpoint extends Component {
     width: number.isRequired
   }
 
+  static defaultProps = {
+    width: 320
+  }
+
   render() {
-    return React.createElement('mj-head', {
+    return React.createElement('mj-breakpoint', {
       'width': `${this.props.width}px`
     }, null);
   }

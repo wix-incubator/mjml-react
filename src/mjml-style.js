@@ -14,7 +14,7 @@ export class MjmlStyle extends Component {
 
   render() {
     return React.createElement('mj-style', {
-      'inline': this.props.inline ? 'inline' : ''
+      'inline': this.props.inline ? 'inline' : undefined
     }, this.props.children);
   }
 
