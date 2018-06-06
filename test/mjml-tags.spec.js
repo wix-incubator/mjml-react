@@ -113,4 +113,9 @@ describe('mjml tags', () => {
       .to.equal('<mj-image src="https://www.wix.com/logo.png"></mj-image>');
   });
 
+  it('should render <MjmlSpacer/>', () => {
+    expect(renderToMjml(<tags.MjmlSpacer height={10}/>))
+      .to.equal('<mj-spacer height="10px"></mj-spacer>');
+  });
+
 });
