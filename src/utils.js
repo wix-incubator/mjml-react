@@ -4,6 +4,7 @@ const handlers = {
   'width': numberToPx,
   'height': numberToPx,
   'border-radius': numberToPx,
+  'border-width': numberToPx,
   'background-size': numberToPx,
   'padding': numberToPx,
   'padding-top': numberToPx,

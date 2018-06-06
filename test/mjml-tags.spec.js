@@ -103,4 +103,9 @@ describe('mjml tags', () => {
       .to.equal('<mj-button height="20px" font-size="22px" line-height="33">Click Me</mj-button>');
   });
 
+  it('should render <MjmlDivider/>', () => {
+    expect(renderToMjml(<tags.MjmlDivider borderWidth={2} borderColor="red"/>))
+      .to.equal('<mj-divider border-width="2px" border-color="red"></mj-divider>');
+  });
+
 });

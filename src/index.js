@@ -15,6 +15,7 @@ export {MjmlRaw} from './mjml-raw';
 export {MjmlSection} from './mjml-section';
 export {MjmlColumn} from './mjml-column';
 export {MjmlButton} from './mjml-button';
+export {MjmlDivider} from './mjml-divider';
 
 function render(email, options = {}) {
   const defaults = {
