@@ -1,4 +1,4 @@
-# React wrappers for MJML
+# Compose emails with React and [MJML](https://mjml.io/)
 
 There is an awesome library [mjml](https://mjml.io/) with github repo here [https://github.com/mjmlio/mjml](https://github.com/mjmlio/mjml).
 
@@ -13,7 +13,7 @@ Install the required dependencies first:
 npm install react react-dom mjml mjml-react
 ```
 
-And afterwars write a code like a pro:
+And afterwards write a code like a pro:
 
 ```js
 import {
@@ -49,7 +49,7 @@ const {html, errors} = render((
         </MjmlColumn>
       </MjmlSection>
     </MjmlBody>
-  </tags.Mjml>
+  </Mjml>
 ), {validationLevel: 'soft'});
 ```
 
