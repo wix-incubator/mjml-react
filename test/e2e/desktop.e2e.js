@@ -76,7 +76,7 @@ describe('mjml-react: desktop email version', () => {
   eyes.it('should have no render errors', async () => {
     expect(renderErrors).to.be.empty;
 
-    eyes.checkImage(await page.screenshot(), 'desktop');
+    await eyes.checkImage(await page.screenshot(), 'desktop');
   });
 
 });
