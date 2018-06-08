@@ -16,7 +16,7 @@ import {
   MjmlImage
 } from '../../src';
 
-describe('mjml-react: desktop mail version', () => {
+describe('mjml-react: desktop email version', () => {
 
   let browser;
   let page;
