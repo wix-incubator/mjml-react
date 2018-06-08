@@ -70,7 +70,7 @@ describe('mjml-react: desktop email version', () => {
 
     renderErrors = errors;
 
-    await page.setContent(html);
+    await page.setContent(html, {waitUntil: 'networkidle0'});
   });
 
   eyes.it('should have no render errors', async () => {
