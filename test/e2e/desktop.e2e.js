@@ -16,7 +16,7 @@ import {
   MjmlImage
 } from '../../src';
 
-describe('Marketing Integration', () => {
+describe('mjml-react: desktop mail version', () => {
 
   let browser;
   let page;
