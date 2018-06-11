@@ -25,9 +25,9 @@ describe('mjml-react', () => {
     await browser.close();
   });
 
-  const renderInBrowser = async (width = 1280, height = 900) => {
+  const renderInBrowser = async viewPortOptions => {
     page = await browser.newPage();
-    await page.setViewport({width, height});
+    await page.setViewport(viewPortOptions);
 
     const {html, errors} = renderEmail();
 
@@ -38,7 +38,10 @@ describe('mjml-react', () => {
 
   describe('desktop', () => {
     beforeEach(async () => {
-      await renderInBrowser();
+      await renderInBrowser({
+        height: 2500,
+        width: 1280
+      });
     });
 
     eyes.it('should have no render errors', async () => {
@@ -50,7 +53,11 @@ describe('mjml-react', () => {
 
   describe('mobile', () => {
     beforeEach(async () => {
-      await renderInBrowser(600);
+      await renderInBrowser({
+        isMobile: true,
+        height: 2500,
+        width: 600
+      });
     });
 
     eyes.it('should have no render errors', async () => {
