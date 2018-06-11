@@ -67,8 +67,7 @@ const renderEmail = () => render((
             line-height="18px"
             padding="0"
             >
-            Can&#39;t see this Message?
-            <a
+            Can&#39;t see this Message? <a
               href="https://www.wix.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -396,8 +395,7 @@ const renderEmail = () => render((
               font-size="12px"
               >
               Created with Wix.com.
-              <strong>Love It?</strong>
-              <a
+              <strong>Love It?</strong> <a
                 href="https://www.wix.com"
                 style={{
                   color: '#fff',
@@ -426,8 +424,7 @@ const renderEmail = () => render((
             line-height="18px"
             padding="0"
             >
-            You&#39;ve received this email because you are a subscriber of
-            <a
+            You&#39;ve received this email because you are a subscriber of <a
               href="https://www.wix.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -448,8 +445,7 @@ const renderEmail = () => render((
             line-height="18px"
             padding="0px"
             >
-            If you feel you received it by mistake or wish to unsubscribe
-            <a
+            If you feel you received it by mistake or wish to unsubscribe <a
               href="https://www.wix.com/"
               rel="noopener noreferrer"
               target="_blank"
