@@ -1,4 +1,4 @@
-# Compose emails with React and [MJML](https://mjml.io/)
+# react-mjml &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wix-incubator/mjml-react/blob/master/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/wix-incubator/mjml-react/pulls)
 
 There is an awesome library [mjml](https://mjml.io/) with github repo here [https://github.com/mjmlio/mjml](https://github.com/mjmlio/mjml).
 
