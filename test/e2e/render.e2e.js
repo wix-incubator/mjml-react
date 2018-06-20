@@ -35,14 +35,14 @@ describe('mjml-react', () => {
   describe('desktop', () => {
     eyes.it('should have no render errors', async () => {
       await renderInBrowser({width: 1280, height: 600});
-      await eyes.checkImage(await page.screenshot({fullScreen: true}), 'desktop');
+      await eyes.checkImage(await page.screenshot({fullPage: true}), 'desktop');
     });
   });
 
   describe('mobile', () => {
     eyes.it('should have no render errors', async () => {
       await renderInBrowser({width: 480, height: 600, isMobile: true});
-      await eyes.checkImage(await page.screenshot({fullScreen: true}), 'mobile');
+      await eyes.checkImage(await page.screenshot({fullPage: true}), 'mobile');
     });
   });
 
