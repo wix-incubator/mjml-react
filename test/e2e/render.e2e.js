@@ -8,7 +8,6 @@ describe('mjml-react', () => {
 
   let browser;
   let page;
-  let renderErrors;
 
   before(async () => {
     browser = await puppeteer.launch({
@@ -21,49 +20,29 @@ describe('mjml-react', () => {
     });
   });
 
-  after(async () => {
-    await browser.close();
-  });
+  after(() => browser.close());
 
   const renderInBrowser = async viewPortOptions => {
     page = await browser.newPage();
     await page.setViewport(viewPortOptions);
 
     const {html, errors} = renderEmail();
-
-    renderErrors = errors;
+    expect(errors).to.be.empty;
 
     await page.goto(`data:text/html,${html}`, {waitUntil: 'networkidle0'});
   };
 
   describe('desktop', () => {
-    beforeEach(async () => {
-      await renderInBrowser({
-        height: 2500,
-        width: 1280
-      });
-    });
-
     eyes.it('should have no render errors', async () => {
-      expect(renderErrors).to.be.empty;
-
-      await eyes.checkImage(await page.screenshot(), 'desktop');
+      await renderInBrowser({width: 1280, height: 600});
+      await eyes.checkImage(await page.screenshot({fullScreen: true}), 'desktop');
     });
   });
 
   describe('mobile', () => {
-    beforeEach(async () => {
-      await renderInBrowser({
-        isMobile: true,
-        height: 2500,
-        width: 600
-      });
-    });
-
     eyes.it('should have no render errors', async () => {
-      expect(renderErrors).to.be.empty;
-
-      await eyes.checkImage(await page.screenshot(), 'mobile');
+      await renderInBrowser({width: 480, height: 600, isMobile: true});
+      await eyes.checkImage(await page.screenshot({fullScreen: true}), 'mobile');
     });
   });
 
