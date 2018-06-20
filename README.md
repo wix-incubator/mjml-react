@@ -43,7 +43,13 @@ const {html, errors} = render((
       </MjmlSection>
       <MjmlSection>
         <MjmlColumn>
-          <MjmlButton padding="20px" backgroundColor="#346DB7" href="https://www.wix.com/">I like it!</MjmlButton>
+          <MjmlButton
+            padding="20px"
+            backgroundColor="#346DB7"
+            href="https://www.wix.com/"
+            >
+            I like it!
+          </MjmlButton>
         </MjmlColumn>
       </MjmlSection>
     </MjmlBody>
