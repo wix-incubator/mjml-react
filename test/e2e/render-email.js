@@ -49,23 +49,23 @@ const renderEmail = () => render((
       </MjmlStyle>
     </MjmlHead>
     <MjmlBody
-      background-color="#fff"
-      width="700px"
+      backgroundColor="#fff"
+      width={700}
       >
 
       <MjmlSection
-        background-color="#ffffff"
-        full-width="full-width"
-        padding="15px"
+        backgroundColor="#ffffff"
+        fullWidth
+        padding={15}
         >
         <MjmlColumn>
           <MjmlText
             align="center"
             color="#9a9c9f"
-            font-family="Helvetica,Ubuntu,Arial,sans-serif"
-            font-size="10px"
-            line-height="18px"
-            padding="0"
+            fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+            fontSize={10}
+            lineHeight={18}
+            padding={0}
             >
             Can&#39;t see this Message? <a
               href="https://www.wix.com/"
@@ -84,41 +84,41 @@ const renderEmail = () => render((
       </MjmlSection>
 
       <MjmlWrapper
-        background-color="#222C2C"
-        background-repeat="no-repeat"
-        background-url="https://static.wixstatic.com/media/f84110_61c47c7d1fe3468cb8a4fdf46f141c6b~mv2.png"
-        full-width="full-width"
-        padding="15px"
+        backgroundColor="#222C2C"
+        backgroundRepeat="no-repeat"
+        backgroundUrl="https://static.wixstatic.com/media/f84110_61c47c7d1fe3468cb8a4fdf46f141c6b~mv2.png"
+        fullWidth
+        padding={15}
         >
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlImage
-              height="64px"
-              padding="0"
+              height={64}
+              padding={0}
               src="https://static.wixstatic.com/media/a306cb_c61667d7fdba400a8d8371f65e95b704.png"
-              width="64px"
+              width={64}
               />
           </MjmlColumn>
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlText
               align="center"
               color="#838264"
-              css-class="font-size-40-in-mobile"
-              font-family="Montserrat,Ubuntu,Helvetica,Arial,sans-serif"
-              font-size="70px"
-              font-weight="700"
-              letter-spacing="5px"
-              line-height="1.3"
-              padding="0"
+              cssClass="font-size-40-in-mobile"
+              fontFamily="Montserrat,Ubuntu,Helvetica,Arial,sans-serif"
+              fontSize={70}
+              fontWeight={700}
+              letterSpacing={5}
+              lineHeight={70 * 1.3}
+              padding={0}
               >
               SPECIAL OFFER
             </MjmlText>
@@ -126,17 +126,17 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlText
               align="center"
               color="#4a4a4a"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="20px"
-              line-height="1.5"
-              padding="0"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={20}
+              lineHeight={20 * 1.5}
+              padding={0}
               >
               GET YOUR FIRST SESSION FREE
             </MjmlText>
@@ -144,20 +144,20 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlButton
-              background-color="#fff"
+              backgroundColor="#fff"
               border="solid 1px #4a4a4a"
               color="#4a4a4a"
-              css-class="button"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="16px"
+              cssClass="button"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize="16px"
               href="https://www.wix.com/"
-              inner-padding="10px 30px"
-              padding="0"
+              innerPadding="10px 30px"
+              padding={0}
               >
               Sign Up
             </MjmlButton>
@@ -165,29 +165,29 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 0px 0px 0px"
           >
           <MjmlColumn>
             <MjmlImage
-              padding="0"
+              padding={0}
               src="https://static.wixstatic.com/media/a306cb_3208991023294d7c8412aada717f100f~mv2.png/v1/fit/w_700,h_2000,al_c,q_85/image.jpg"
               />
           </MjmlColumn>
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlText
               align="center"
               color="#4a4a4a"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="20px"
-              line-height="1.5"
-              padding="0"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={20}
+              lineHeight={20 * 1.5}
+              padding={0}
               >
               Every Email has a main message. Tell your audience what you want them to know, how to take action and where to reach you.
             </MjmlText>
@@ -195,20 +195,20 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlButton
-              background-color="#fff"
+              backgroundColor="#fff"
               border="solid 1px #4a4a4a"
               color="#4a4a4a"
-              css-class="button"
-              font-family="Roboto,Ubuntu,Helvetica,Arial,sans-serif"
-              font-size="16px"
+              cssClass="button"
+              fontFamily="Roboto,Ubuntu,Helvetica,Arial,sans-serif"
+              fontSize="16px"
               href="https://www.wix.com/"
-              inner-padding="10px 30px"
-              padding="0"
+              innerPadding="10px 30px"
+              padding={0}
               >
               Read More
             </MjmlButton>
@@ -216,17 +216,17 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlText
               align="center"
               color="#838264"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="30px"
-              font-weight="bold"
-              line-height="1.5"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={30}
+              fontWeight={700}
+              lineHeight={30 * 1.5}
               >
               NEVER STOP TRAINING
             </MjmlText>
@@ -234,29 +234,29 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn width="50%">
             <MjmlText
               align="center"
               color="#4a4a4a"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="16px"
-              line-height="1.5"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={16}
+              lineHeight={16 * 1.5}
               >
               Engage your audience. Use lively images and catchy text to grab people’s attention and get them clicking.
             </MjmlText>
-            <MjmlSpacer height="20px"/>
+            <MjmlSpacer height={20}/>
             <MjmlButton
-              background-color="#fff"
+              backgroundColor="#fff"
               border="solid 1px #4a4a4a"
               color="#4a4a4a"
-              css-class="button"
-              font-family="Roboto,Ubuntu,Helvetica,Arial,sans-serif"
-              font-size="16px"
-              inner-padding="10px 30px"
-              padding="0"
+              cssClass="button"
+              fontFamily="Roboto,Ubuntu,Helvetica,Arial,sans-serif"
+              fontSize={16}
+              innerPadding="10px 30px"
+              padding={0}
               >
               Book Now
             </MjmlButton>
@@ -269,7 +269,7 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn width="50%">
@@ -281,24 +281,24 @@ const renderEmail = () => render((
             <MjmlText
               align="center"
               color="#4a4a4a"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="16px"
-              line-height="1.5"
-              padding="0"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={16}
+              lineHeight={16 * 1.5}
+              padding={0}
               >
               This is a great place to tell your story. Describe what you have to offer and encourage your readers to check it out.
             </MjmlText>
-            <MjmlSpacer height="20px"/>
+            <MjmlSpacer height={20}/>
             <MjmlButton
-              background-color="#fff"
+              backgroundColor="#fff"
               border="solid 1px #4a4a4a"
               color="#4a4a4a"
-              css-class="button"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="16px"
+              cssClass="button"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={16}
               href="https://www.wix.com/"
-              inner-padding="10px 30px"
-              padding="0"
+              innerPadding="10px 30px"
+              padding={0}
               >
               Book Now
             </MjmlButton>
@@ -306,29 +306,29 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn>
             <MjmlDivider
-              border-width="1px"
-              border-color="#C9C9C9"
-              padding="0"
+              borderWidth={1}
+              borderColor="#C9C9C9"
+              padding={0}
               />
           </MjmlColumn>
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="40px 40px 0px 40px"
           >
           <MjmlColumn width="33.33%">
             <MjmlText
               align="center"
               color="#838264"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="12px"
-              line-height="1.5"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={12}
+              lineHeight={12 * 1.5}
               >
               Vilnius, Lithuania<br/>
               Phone
@@ -338,9 +338,9 @@ const renderEmail = () => render((
             <MjmlText
               align="center"
               color="#838264"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="12px"
-              line-height="1.5"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={12}
+              lineHeight={12 * 1.5}
               >
               <div>Share Via:</div>
               <img
@@ -373,9 +373,9 @@ const renderEmail = () => render((
             <MjmlText
               align="center"
               color="#838264"
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
-              font-size="12px"
-              line-height="1.5"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
+              fontSize={12}
+              lineHeight={12 * 1.5}
               >
               Check out my website <img src="https://static.wixstatic.com/media/f84110_25cd91bb4305479395dc2dedce29b7ce~mv2.png/v1/fit/w_750,h_750/f84110_25cd91bb4305479395dc2dedce29b7ce~mv2.png" width="22px" height="22px" style={{verticalAlign: 'middle'}}/>
             </MjmlText>
@@ -383,16 +383,16 @@ const renderEmail = () => render((
         </MjmlSection>
 
         <MjmlSection
-          background-color="#fff"
+          backgroundColor="#fff"
           padding="0 40px 40px 40px"
           >
-          <MjmlColumn background-color="#393939">
+          <MjmlColumn backgroundColor="#393939">
             <MjmlText
-              font-family="Helvetica,Ubuntu,Arial,sans-serif"
+              fontFamily="Helvetica,Ubuntu,Arial,sans-serif"
               color="#fff"
               align="center"
-              line-height="1.5"
-              font-size="12px"
+              lineHeight={12 * 1.5}
+              fontSize={12}
               >
               Created with Wix.com.
               <strong>Love It?</strong> <a
@@ -411,18 +411,18 @@ const renderEmail = () => render((
       </MjmlWrapper>
 
       <MjmlSection
-        background-color="#ffffff"
-        full-width="full-width"
-        padding="15px"
+        backgroundColor="#ffffff"
+        fullWidth
+        padding={15}
         >
         <MjmlColumn>
           <MjmlText
             align="center"
             color="#9a9c9f"
-            font-family="Ubuntu,Helvetica,Arial,sans-serif"
-            font-size="10px"
-            line-height="18px"
-            padding="0"
+            fontFamily="Ubuntu,Helvetica,Arial,sans-serif"
+            fontSize={10}
+            lineHeight={18}
+            padding={0}
             >
             You&#39;ve received this email because you are a subscriber of <a
               href="https://www.wix.com/"
@@ -440,10 +440,10 @@ const renderEmail = () => render((
           <MjmlText
             align="center"
             color="#9a9c9f"
-            font-family="Ubuntu,Helvetica,Arial,sans-serif"
-            font-size="10px"
-            line-height="18px"
-            padding="0px"
+            fontFamily="Ubuntu,Helvetica,Arial,sans-serif"
+            fontSize={10}
+            lineHeight={18}
+            padding={0}
             >
             If you feel you received it by mistake or wish to unsubscribe <a
               href="https://www.wix.com/"

@@ -40,7 +40,7 @@ describe('render()', () => {
 
   it('should not throw an error if soft validation level is passed', () => {
     const email = <div>Ooops!</div>;
-    const {errors} = render(email, {validationLevel: 'soft'});
+    const {errors} = render(email, {validationLevel: 'soft', minify: false});
     expect(errors.length).to.equal(1);
     expect(errors[0].message)
       .to.contain('Element div doesn\'t exist or is not registered');

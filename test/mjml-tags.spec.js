@@ -100,7 +100,7 @@ describe('mjml tags', () => {
         Click Me
       </tags.MjmlButton>
     ))
-      .to.equal('<mj-button height="20px" font-size="22px" line-height="33">Click Me</mj-button>');
+      .to.equal('<mj-button height="20px" font-size="22px" line-height="33px">Click Me</mj-button>');
   });
 
   it('should render <MjmlDivider/>', () => {

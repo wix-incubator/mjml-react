@@ -27,7 +27,7 @@ describe('mjml-react', () => {
     await page.setViewport(viewPortOptions);
 
     const {html, errors} = renderEmail();
-    expect(errors).to.be.empty;
+    expect(errors).to.deep.equal([]);
 
     await page.goto(`data:text/html,${html}`, {waitUntil: 'networkidle0'});
   };
