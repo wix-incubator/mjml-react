@@ -4,25 +4,25 @@ import mjml2html from 'mjml';
 export {render, renderToMjml};
 
 export {Mjml} from './mjml';
-export {MjmlHead} from './mjml-head';
+export {MjmlAll} from './mjml-all';
+export {MjmlAttributes} from './mjml-attributes';
 export {MjmlBody} from './mjml-body';
 export {MjmlBreakpoint} from './mjml-breakpoint';
+export {MjmlButton} from './mjml-button';
+export {MjmlClass} from './mjml-class';
+export {MjmlColumn} from './mjml-column';
+export {MjmlDivider} from './mjml-divider';
 export {MjmlFont} from './mjml-font';
+export {MjmlHead} from './mjml-head';
+export {MjmlImage} from './mjml-image';
 export {MjmlPreview} from './mjml-preview';
-export {MjmlStyle} from './mjml-style';
-export {MjmlTitle} from './mjml-title';
 export {MjmlRaw} from './mjml-raw';
 export {MjmlSection} from './mjml-section';
-export {MjmlColumn} from './mjml-column';
-export {MjmlButton} from './mjml-button';
-export {MjmlDivider} from './mjml-divider';
-export {MjmlImage} from './mjml-image';
 export {MjmlSpacer} from './mjml-spacer';
+export {MjmlStyle} from './mjml-style';
 export {MjmlText} from './mjml-text';
+export {MjmlTitle} from './mjml-title';
 export {MjmlWrapper} from './mjml-wrapper';
-export {MjmlAttributes} from './mjml-attributes';
-export {MjmlClass} from './mjml-class';
-export {MjmlAll} from './mjml-all';
 
 function render(email, options = {}) {
   const defaults = {
