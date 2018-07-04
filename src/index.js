@@ -20,6 +20,9 @@ export {MjmlImage} from './mjml-image';
 export {MjmlSpacer} from './mjml-spacer';
 export {MjmlText} from './mjml-text';
 export {MjmlWrapper} from './mjml-wrapper';
+export {MjmlAttributes} from './mjml-attributes';
+export {MjmlClass} from './mjml-class';
+export {MjmlAll} from './mjml-all';
 
 function render(email, options = {}) {
   const defaults = {

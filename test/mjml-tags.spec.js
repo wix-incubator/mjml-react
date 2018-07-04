@@ -136,4 +136,16 @@ describe('mjml tags', () => {
       .to.equal('<mj-wrapper padding="20px" full-width="full-width"><span>Hello World!</span></mj-wrapper>');
   });
 
+  it('should render <MjmlAttributes/>', () => {
+    expect(renderToMjml(
+      <tags.MjmlAttributes>
+        <tags.MjmlText padding={0}/>
+        <tags.MjmlClass name="white" color="white"/>
+        <tags.MjmlAll padding={0}/>
+      </tags.MjmlAttributes>
+    ))
+      .to.equal('<mj-attributes><mj-text padding="0px"></mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>');
+  });
+
+
 });
