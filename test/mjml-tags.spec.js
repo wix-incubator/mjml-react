@@ -20,6 +20,7 @@ describe('mjml tags', () => {
   it('should render <MjmlStyle/> with content', () => {
     expect(renderToMjml(<tags.MjmlStyle>{'.button{}'}</tags.MjmlStyle>)).to.equal('<mj-style>.button{}</mj-style>');
     expect(renderToMjml(<tags.MjmlStyle inline>{'.button{}'}</tags.MjmlStyle>)).to.equal('<mj-style inline="inline">.button{}</mj-style>');
+    expect(renderToMjml(<tags.MjmlStyle>{'body > div {}'}</tags.MjmlStyle>)).to.equal('<mj-style>body > div {}</mj-style>');
   });
 
   it('should render <MjmlRaw/> with content', () => {
