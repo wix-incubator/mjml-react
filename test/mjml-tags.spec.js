@@ -104,6 +104,15 @@ describe('mjml tags', () => {
       .to.equal('<mj-button height="20px" font-size="22px" line-height="33px">Click Me</mj-button>');
   });
 
+  it('should allow passing array as content of <MjmlButton>', () => {
+    expect(renderToMjml(
+      <tags.MjmlButton>
+        {'First Line'}
+        {'Second Line'}
+      </tags.MjmlButton>
+    )).to.equal('<mj-button>First LineSecond Line</mj-button>');
+  });
+
   it('should render <MjmlDivider/>', () => {
     expect(renderToMjml(<tags.MjmlDivider borderWidth={2} borderColor="red"/>))
       .to.equal('<mj-divider border-width="2px" border-color="red"></mj-divider>');
@@ -140,12 +149,12 @@ describe('mjml tags', () => {
   it('should render <MjmlAttributes/>', () => {
     expect(renderToMjml(
       <tags.MjmlAttributes>
-        <tags.MjmlText padding={0}/>
+        <tags.MjmlText padding={0}>Line Of Text</tags.MjmlText>
         <tags.MjmlClass name="white" color="white"/>
         <tags.MjmlAll padding={0}/>
       </tags.MjmlAttributes>
     ))
-      .to.equal('<mj-attributes><mj-text padding="0px"></mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>');
+      .to.equal('<mj-attributes><mj-text padding="0px">Line Of Text</mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>');
   });
 
 
