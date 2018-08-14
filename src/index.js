@@ -14,6 +14,7 @@ export {MjmlColumn} from './mjml-column';
 export {MjmlDivider} from './mjml-divider';
 export {MjmlFont} from './mjml-font';
 export {MjmlHead} from './mjml-head';
+export {MjmlHero} from './mjml-hero';
 export {MjmlImage} from './mjml-image';
 export {MjmlPreview} from './mjml-preview';
 export {MjmlRaw} from './mjml-raw';

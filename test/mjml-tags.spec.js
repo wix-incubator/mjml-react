@@ -157,5 +157,12 @@ describe('mjml tags', () => {
       .to.equal('<mj-attributes><mj-text padding="0px">Line Of Text</mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>');
   });
 
-
+  it('should render <MjmlHero/>', () => {
+    expect(renderToMjml(
+      <tags.MjmlHero backgroundUrl="https://www.wix.com/logo.png">
+        <tags.MjmlImage src="https://www.wix.com/logo.png"/>
+      </tags.MjmlHero>
+    ))
+      .to.equal('<mj-hero background-url="https://www.wix.com/logo.png"><mj-image src="https://www.wix.com/logo.png"></mj-image></mj-hero>');
+  });
 });
