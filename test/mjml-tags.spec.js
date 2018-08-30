@@ -2,6 +2,7 @@ import React from 'react';
 import {expect} from 'chai';
 
 import * as tags from '../src';
+import {MjmlComment} from '../src/extensions';
 
 const renderToMjml = tags.renderToMjml;
 
@@ -165,4 +166,11 @@ describe('mjml tags', () => {
     ))
       .to.equal('<mj-hero background-url="https://www.wix.com/logo.png"><mj-image src="https://www.wix.com/logo.png"></mj-image></mj-hero>');
   });
+
+  it('should render <MjmlComment/>', () => {
+    expect(renderToMjml(
+      <MjmlComment>Hello World!</MjmlComment>
+    )).to.equal('<mj-raw><!--Hello World!--></mj-raw>');
+  });
+
 });
