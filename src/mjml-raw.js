@@ -1,17 +1,36 @@
 import React, {Component} from 'react';
-import {node} from 'prop-types';
+import {
+  node,
+  oneOfType,
+  string,
+} from 'prop-types';
 
 import {handleMjmlProps} from './utils';
+
+const getInnerHtmlRenderer = type =>
+  (props, innerHtml) =>
+    React.createElement(type, {
+      ...props,
+      dangerouslySetInnerHTML: {__html: innerHtml}
+    });
+
+const getChildrenRenderer = type =>
+  (props, children) =>
+    React.createElement(type, props, children);
 
 export class MjmlRaw extends Component {
 
   static propTypes = {
-    children: node.isRequired
+    children: oneOfType([node, string]).isRequired
   }
 
   render() {
     const {children, ...rest} = this.props;
-    return React.createElement('mj-raw', handleMjmlProps(rest), children);
+
+    const rendererFactory = (typeof children === 'string') ?
+      getInnerHtmlRenderer : getChildrenRenderer;
+
+    return rendererFactory('mj-raw')(handleMjmlProps(rest), children);
   }
 
 }

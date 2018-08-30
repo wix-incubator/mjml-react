@@ -29,6 +29,11 @@ describe('mjml tags', () => {
       .to.equal('<mj-raw><h1>Hello World!</h1></mj-raw>');
   });
 
+  it('should allow to add html comments using <MjmlRaw/>', () => {
+    expect(renderToMjml(<tags.MjmlRaw>{'<!--[some text]-->'}</tags.MjmlRaw>))
+      .to.equal('<mj-raw><!--[some text]--></mj-raw>');
+  });
+
   it('should render <MjmlPreview/> with content', () => {
     expect(renderToMjml(<tags.MjmlPreview>Hello World!</tags.MjmlPreview>))
       .to.equal('<mj-preview>Hello World!</mj-preview>');
