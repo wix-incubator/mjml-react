@@ -80,3 +80,17 @@ import {
 <MjmlConditionalComment condition="if IE">MSO conditionals</MjmlConditionalComment>
 // <!--[if IE]>MSO conditionals<![endif]-->
 ```
+
+## Utils
+
+We do have also some utils for post processing the output HTML.
+Because not all mail clients do support named HTML entities, like `&apos;`.
+So we need to replace them to hex.
+
+```js
+import {namedEntityToHexCode} from 'mjml-react/utils';
+
+const html = '<div>&apos;</div>';
+namedEntityToHexCode(html);
+// <div>&#39;</div>
+```
