@@ -88,9 +88,15 @@ Because not all mail clients do support named HTML entities, like `&apos;`.
 So we need to replace them to hex.
 
 ```js
-import {namedEntityToHexCode} from 'mjml-react/utils';
+import {
+  namedEntityToHexCode,
+  fixConditionalComment
+} from 'mjml-react/utils';
 
 const html = '<div>&apos;</div>';
 namedEntityToHexCode(html);
 // <div>&#39;</div>
+
+fixConditionalComment('<!--[if mso]><div>Hello World</div><![endif]-->', 'Hello', 'if IE');
+// <!--[if IE]><div>Hello World</div><![endif]-->
 ```

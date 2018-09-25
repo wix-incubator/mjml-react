@@ -1,6 +1,9 @@
 import {expect} from 'chai';
 
-import {namedEntityToHexCode} from '../src/utils/index';
+import {
+  namedEntityToHexCode,
+  fixConditionalComment
+} from '../src/utils/index';
 
 describe('utils', () => {
 
@@ -20,6 +23,15 @@ describe('utils', () => {
     it('should replace known entity to hex code', () => {
       expect(namedEntityToHexCode('&amp;')).to.equal('&#38;');
       expect(namedEntityToHexCode('&apos;')).to.equal('&#39;');
+    });
+  });
+
+  describe('fixConditionalComment', () => {
+    it('should not replace if there is no MSO conditionals', () => {
+      expect(fixConditionalComment('<!--no changes-->', 'what ever', 'if IE')).to.equal('<!--no changes-->');
+    });
+    it('should replace condition matching the content', () => {
+      expect(fixConditionalComment('<!--[if mso]>...<![endif]-->', '...', 'if IE')).to.equal('<!--[if IE]>...<![endif]-->');
     });
   });
 
