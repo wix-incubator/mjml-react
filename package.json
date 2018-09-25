@@ -8,6 +8,7 @@
   },
   "main": "dist/src/index.js",
   "files": [
+    "extensions.js",
     "dist"
   ],
   "publishConfig": {
