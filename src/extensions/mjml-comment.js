@@ -11,12 +11,15 @@ export class MjmlComment extends Component {
 
   render() {
     const {children, ...rest} = this.props;
-    return React.createElement('mj-raw', {
-      ...handleMjmlProps(rest),
-      dangerouslySetInnerHTML: {
-        __html: `<!--${children}-->`
-      }
-    });
+    if (children && children.trim().length) {
+      return React.createElement('mj-raw', {
+        ...handleMjmlProps(rest),
+        dangerouslySetInnerHTML: {
+          __html: `<!--${children}-->`
+        }
+      });
+    }
+    return null;
   }
 
 }

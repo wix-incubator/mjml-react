@@ -63,3 +63,20 @@ And as the result you will get a nice looking email HTML (works in mobile too!)
 
 ![preview](https://user-images.githubusercontent.com/10008149/41058394-59b8ce9e-69d2-11e8-9eb9-c294f35bae9f.png)
 
+## Extensions
+
+```js
+import {
+  MjmlComment,
+  MjmlConditionalComment
+} from 'mjml-react/extensions';
+
+<MjmlComment>Built with ... at ...</MjmlComment>
+// <!--Built with ... at ...-->
+
+<MjmlConditionalComment>MSO conditionals</MjmlConditionalComment>
+// <!--[if gte mso 9]>MSO conditionals<![endif]-->
+
+<MjmlConditionalComment condition="if IE">MSO conditionals</MjmlConditionalComment>
+// <!--[if IE]>MSO conditionals<![endif]-->
+```
