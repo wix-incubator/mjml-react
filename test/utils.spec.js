@@ -2,7 +2,9 @@ import {expect} from 'chai';
 
 import {
   namedEntityToHexCode,
-  fixConditionalComment
+  fixConditionalComment,
+  useHttps,
+  toMobileFontSize
 } from '../src/utils/index';
 
 describe('utils', () => {
@@ -32,6 +34,42 @@ describe('utils', () => {
     });
     it('should replace condition matching the content', () => {
       expect(fixConditionalComment('<!--[if mso]>...<![endif]-->', '...', 'if IE')).to.equal('<!--[if IE]>...<![endif]-->');
+    });
+  });
+
+  describe('useHttps', () => {
+    it('should not alter falsy url', () => {
+      expect(useHttps('')).to.equal('');
+    });
+    it('should not alter valid url', () => {
+      expect(useHttps('https://www.wix.com')).to.equal('https://www.wix.com');
+    });
+    it('should replace http://', () => {
+      expect(useHttps('http://www.wix.com')).to.equal('https://www.wix.com');
+    });
+    it('should replace //', () => {
+      expect(useHttps('//www.wix.com')).to.equal('https://www.wix.com');
+    });
+    it('should add missing schema', () => {
+      expect(useHttps('www.wix.com')).to.equal('https://www.wix.com');
+    });
+  });
+
+  describe('toMobileFontSize', () => {
+    it('minimum should be 12', () => {
+      [...Array(12).keys()].forEach(value => {
+        expect(toMobileFontSize(value)).to.equal(12);
+        expect(toMobileFontSize(`${value}px`)).to.equal(12);
+      });
+    });
+    it('not modified from 12 to 26', () => {
+      [...Array(14).keys()].forEach(value => {
+        expect(toMobileFontSize(value + 12)).to.equal(value + 12);
+        expect(toMobileFontSize(`${value + 12}px`)).to.equal(value + 12);
+      });
+    });
+    it('max should be 50', () => {
+      expect(toMobileFontSize(200)).to.equal(50);
     });
   });
 
