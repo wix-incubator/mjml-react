@@ -5,7 +5,8 @@ import {renderToMjml} from '../src';
 
 import {
   MjmlComment,
-  MjmlConditionalComment
+  MjmlConditionalComment,
+  MjmlYahooStyle
 } from '../src/extensions';
 
 describe('extensions', () => {
@@ -38,6 +39,13 @@ describe('extensions', () => {
       expect(renderToMjml(<MjmlConditionalComment/>)).to.equal('');
       expect(renderToMjml(<MjmlConditionalComment>{''}</MjmlConditionalComment>)).to.equal('');
       expect(renderToMjml(<MjmlConditionalComment>{' '}</MjmlConditionalComment>)).to.equal('');
+    });
+  });
+
+  describe('yahoo style', () => {
+    it('should render', () => {
+      const markup = renderToMjml(<MjmlYahooStyle>{`a { color: blue; }`}</MjmlYahooStyle>);
+      expect(markup).to.equal('<mj-raw><style>@media screen yahoo {a { color: blue; }}</style></mj-raw>');
     });
   });
 
