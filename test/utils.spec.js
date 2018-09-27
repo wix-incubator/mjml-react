@@ -50,8 +50,8 @@ describe('utils', () => {
     it('should replace //', () => {
       expect(useHttps('//www.wix.com')).to.equal('https://www.wix.com');
     });
-    it('should add missing schema', () => {
-      expect(useHttps('www.wix.com')).to.equal('https://www.wix.com');
+    it('should not add missing schema', () => {
+      expect(useHttps('www.wix.com')).to.equal('www.wix.com');
     });
   });
 
