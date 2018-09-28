@@ -4,7 +4,8 @@ import {
   namedEntityToHexCode,
   fixConditionalComment,
   useHttps,
-  toMobileFontSize
+  toMobileFontSize,
+  getTextAlign
 } from '../src/utils/index';
 
 describe('utils', () => {
@@ -70,6 +71,23 @@ describe('utils', () => {
     });
     it('max should be 50', () => {
       expect(toMobileFontSize(200)).to.equal(50);
+    });
+  });
+
+  describe('getTextAlign', () => {
+    it('should return default alignment', () => {
+      expect(getTextAlign()).to.equal('center');
+      expect(getTextAlign(null, 'left')).to.equal('left');
+    });
+    it('should return default alignment if value is unrecognized', () => {
+      expect(getTextAlign('blah')).to.equal('center');
+    });
+    it('should return a valid text align', () => {
+      expect(getTextAlign('left')).to.equal('left');
+      expect(getTextAlign('right')).to.equal('right');
+      expect(getTextAlign('center')).to.equal('center');
+      expect(getTextAlign('inherit')).to.equal('inherit');
+      expect(getTextAlign('justify')).to.equal('justify');
     });
   });
 
