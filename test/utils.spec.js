@@ -5,7 +5,8 @@ import {
   fixConditionalComment,
   useHttps,
   toMobileFontSize,
-  getTextAlign
+  getTextAlign,
+  addQueryParams
 } from '../src/utils/index';
 
 describe('utils', () => {
@@ -88,6 +89,18 @@ describe('utils', () => {
       expect(getTextAlign('center')).to.equal('center');
       expect(getTextAlign('inherit')).to.equal('inherit');
       expect(getTextAlign('justify')).to.equal('justify');
+    });
+  });
+
+  describe('addQueryParams', () => {
+    it('should add a single query param', () => {
+      expect(addQueryParams('url', {one: 'two'})).to.equal('url?one=two');
+    });
+    it('should add multiple query params', () => {
+      expect(addQueryParams('url', {one: 'two', three: 'four'})).to.equal('url?one=two&three=four');
+    });
+    it('should escape param value', () => {
+      expect(addQueryParams('url', {one: '?two'})).to.equal('url?one=%3Ftwo');
     });
   });
 
