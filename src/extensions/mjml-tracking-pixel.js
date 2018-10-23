@@ -13,16 +13,10 @@ export class MjmlTrackingPixel extends Component {
     const trackingPixelStyle = {
       height: '1px!important',
       width: '1px!important',
-      borderWidth: '0!important',
-      marginTop: '0!important',
-      marginBottom: '0!important',
-      marginRight: '0!important',
-      marginLeft: '0!important',
-      paddingTop: '0!important',
-      paddingBottom: '0!important',
-      paddingRight: '0!important',
-      paddingLeft: '0!important'
+      border: '0!important',
+      margin: '0!important',
+      padding: '0!important'
     };
-    return <MjmlRaw><img src={src} style={trackingPixelStyle} width={1} height={1}/></MjmlRaw>;
+    return <MjmlRaw><img src={src} style={trackingPixelStyle} width={1} height={1} border={0}/></MjmlRaw>;
   }
 }
