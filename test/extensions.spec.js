@@ -6,7 +6,8 @@ import {renderToMjml} from '../src';
 import {
   MjmlComment,
   MjmlConditionalComment,
-  MjmlYahooStyle
+  MjmlYahooStyle,
+  MjmlTrackingPixel
 } from '../src/extensions';
 
 describe('extensions', () => {
@@ -46,6 +47,13 @@ describe('extensions', () => {
     it('should render', () => {
       const markup = renderToMjml(<MjmlYahooStyle>{`a { color: blue; }`}</MjmlYahooStyle>);
       expect(markup).to.equal('<mj-raw><style>@media screen yahoo {a { color: blue; }}</style></mj-raw>');
+    });
+  });
+
+  describe('tracking pixel', () => {
+    it('should render 1x1 with provided src', () => {
+      const markup = renderToMjml(<MjmlTrackingPixel src={'tracking-pixel'}/>);
+      expect(markup).to.include('<mj-raw><img src="tracking-pixel" style="height:1px!important;width:1px!important;border-width:0!important;margin-top:0!important;margin-bottom:0!important;margin-right:0!important;margin-left:0!important;padding-top:0!important;padding-bottom:0!important;padding-right:0!important;padding-left:0!important" width="1" height="1"/></mj-raw>');
     });
   });
 
