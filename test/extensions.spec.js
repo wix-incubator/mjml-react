@@ -53,7 +53,7 @@ describe('extensions', () => {
   describe('tracking pixel', () => {
     it('should render 1x1 raw image with provided src', () => {
       const markup = renderToMjml(<MjmlTrackingPixel src={'tracking-pixel'}/>);
-      expect(markup).to.equal('<mj-raw><img src="tracking-pixel" style="height:1px!important;width:1px!important;border:0!important;margin:0!important;padding:0!important" width="1" height="1" border="0"/></mj-raw>');
+      expect(markup).to.equal('<mj-raw><img src="tracking-pixel" style="display:table;height:1px!important;width:1px!important;border:0!important;margin:0!important;padding:0!important" width="1" height="1" border="0"/></mj-raw>');
     });
   });
 
