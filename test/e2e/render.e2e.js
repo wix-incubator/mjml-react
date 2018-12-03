@@ -29,7 +29,7 @@ describe('mjml-react', () => {
     const {html, errors} = renderEmail();
     expect(errors).to.deep.equal([]);
 
-    await page.goto(`data:text/html,${html}`, {waitUntil: 'networkidle0'});
+    await page.goto(htmlToDataUri(html), {waitUntil: 'networkidle0'});
   };
 
   describe('desktop', () => {
@@ -47,3 +47,7 @@ describe('mjml-react', () => {
   });
 
 });
+
+function htmlToDataUri(html) {
+  return `data:text/html,${html.replace(/#/g, '%23')}`;
+}
