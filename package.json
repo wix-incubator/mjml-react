@@ -1,7 +1,7 @@
 {
   "name": "mjml-react",
   "version": "1.0.0",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": {
     "name": "Mantas Miliukas",
     "email": "mantasm@wix.com"
