@@ -6,6 +6,8 @@
     "name": "Mantas Miliukas",
     "email": "mantasm@wix.com"
   },
+  "homepage": "https://github.com/wix-incubator/mjml-react",
+  "bugs": "https://github.com/wix-incubator/mjml-react/issues",
   "main": "dist/src/index.js",
   "files": [
     "extensions.js",
