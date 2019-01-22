@@ -13,9 +13,33 @@ describe('mjml tags', () => {
       .to.equal('<mjml>Content</mjml>');
   });
 
-  it('should render <MjmlTitle/> with content', () => {
-    expect(renderToMjml(<tags.MjmlTitle>Content</tags.MjmlTitle>))
-      .to.equal('<mj-title>Content</mj-title>');
+  describe('<MjmlTitle/>', () => {
+    it('should render string', () => {
+      expect(renderToMjml(<tags.MjmlTitle>Content</tags.MjmlTitle>))
+        .to.equal('<mj-title>Content</mj-title>');
+    });
+
+    it('should render an expression', () => {
+      const variable = 'Nice';
+      expect(renderToMjml(<tags.MjmlTitle>{variable} Content</tags.MjmlTitle>))
+        .to.equal('<mj-title>Nice Content</mj-title>');
+    });
+
+    it('should render functional component', () => {
+      const HelloWorld = () => 'Hello World!';
+      expect(renderToMjml(<tags.MjmlTitle><HelloWorld/></tags.MjmlTitle>))
+        .to.equal('<mj-title>Hello World!</mj-title>');
+    });
+
+    it('should render component', () => {
+      class HelloWorld extends React.Component {
+        render() {
+          return 'Hello World!';
+        }
+      }
+      expect(renderToMjml(<tags.MjmlTitle><HelloWorld /></tags.MjmlTitle>))
+        .to.equal('<mj-title>Hello World!</mj-title>');
+    });
   });
 
   it('should render <MjmlStyle/> with content', () => {
