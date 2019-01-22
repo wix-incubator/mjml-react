@@ -37,7 +37,7 @@ describe('mjml tags', () => {
           return 'Hello World!';
         }
       }
-      expect(renderToMjml(<tags.MjmlTitle><HelloWorld /></tags.MjmlTitle>))
+      expect(renderToMjml(<tags.MjmlTitle><HelloWorld/></tags.MjmlTitle>))
         .to.equal('<mj-title>Hello World!</mj-title>');
     });
   });
