@@ -100,3 +100,12 @@ namedEntityToHexCode(html);
 fixConditionalComment('<!--[if mso]><div>Hello World</div><![endif]-->', 'Hello', 'if IE');
 // <!--[if IE]><div>Hello World</div><![endif]-->
 ```
+
+## Limitations
+
+Currently `mjml` and `mjml-react` libraries are meant to be run inside a node.
+
+## Example project
+
+You can find an example project here
+[https://github.com/wix-incubator/mjml-react-example](https://github.com/wix-incubator/mjml-react-example)
