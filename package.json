@@ -20,7 +20,7 @@
   "scripts": {
     "start": "yoshi start",
     "pretest": "yoshi build",
-    "test": "WITH_EYES_TIMEOUT=60000 yoshi test",
+    "test": "WITH_EYES_TIMEOUT=120000 yoshi test",
     "posttest": "yoshi lint",
     "release": "yoshi release"
   },
