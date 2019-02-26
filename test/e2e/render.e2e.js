@@ -21,6 +21,7 @@ describe('mjml-react', () => {
   });
 
   after(() => browser.close());
+  afterEach(() => eyes.abortIfNotClosed());
 
   const renderInBrowser = async viewPortOptions => {
     page = await browser.newPage();
