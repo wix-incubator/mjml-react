@@ -13,7 +13,9 @@ const handlers = {
   'padding-left': numberToPx,
   'font-size': numberToPx,
   'letter-spacing': numberToPx,
-  'line-height': numberToPx
+  'line-height': numberToPx,
+  'icon-padding': numberToPx,
+  'text-padding': numberToPx
 };
 
 export function handleMjmlProps(props) {
