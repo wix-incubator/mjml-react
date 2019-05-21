@@ -1,20 +1,18 @@
-import {expect} from 'chai';
-import puppeteer from 'puppeteer';
-import {eyes} from 'with-eyes';
+process.env.WITH_EYES_TIMEOUT = 120000;
 
-import renderEmail from './render-email';
+const {expect} = require('chai');
+const puppeteer = require('puppeteer');
+const {eyes} = require('with-eyes');
+
+const renderEmail = require('./render-email').default;
 
 describe('mjml-react', () => {
-
   let browser;
   let page;
 
   before(async () => {
     browser = await puppeteer.launch({
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox'
-      ],
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
       devtools: false,
       headless: false
     });
@@ -46,7 +44,6 @@ describe('mjml-react', () => {
       await eyes.checkImage(await page.screenshot({fullPage: true}), 'mobile');
     });
   });
-
 });
 
 function htmlToDataUri(html) {
