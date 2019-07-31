@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-plugin-transform-runtime": "~6.23.0",
     "chai": "~4.1.0",
-    "mjml": "4.4.0",
+    "mjml": "^4.1.2",
     "puppeteer": "^1.4.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
