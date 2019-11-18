@@ -63,6 +63,21 @@ And as the result you will get a nice looking email HTML (works in mobile too!)
 
 ![preview](https://user-images.githubusercontent.com/10008149/41058394-59b8ce9e-69d2-11e8-9eb9-c294f35bae9f.png)
 
+## Options
+
+mjml-react sets the following MJML options when rendering to HTML:
+
+```js
+{
+  keepComments: false,
+  beautify: false,
+  minify: true,
+  validationLevel: 'strict'
+}
+```
+
+If you want to override these, you can pass an object to `render` as a second argument. See the [MJML docs](https://mjml.io/documentation/#inside-node-js) for the full list of options you can set.
+
 ## Extensions
 
 ```js
