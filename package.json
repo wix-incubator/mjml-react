@@ -31,7 +31,7 @@
     "puppeteer": "^1.4.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "with-eyes": "^1.1.3",
+    "with-eyes": "^2.0.3",
     "yoshi": "^2.1.2"
   },
   "peerDependencies": {
