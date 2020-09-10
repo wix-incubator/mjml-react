@@ -1,6 +1,5 @@
 export function addQueryParams(url, params) {
-  const query = Object
-    .keys(params)
+  const query = Object.keys(params)
     .reduce((acc, curr) => {
       return acc.concat(`${curr}=${encodeURIComponent(params[curr])}`);
     }, [])
