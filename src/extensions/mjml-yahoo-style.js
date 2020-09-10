@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
-import {string} from 'prop-types';
+import React, { Component } from 'react';
+import { string } from 'prop-types';
 
-import {MjmlRaw} from '../mjml-raw';
+import { MjmlRaw } from '../mjml-raw';
 
 export class MjmlYahooStyle extends Component {
-
   static propTypes = {
-    children: string.isRequired
-  }
+    children: string.isRequired,
+  };
 
   render() {
-    const {children, ...rest} = this.props;
+    const { children, ...rest } = this.props;
     if (children && children.trim().length) {
       return (
         <MjmlRaw {...rest}>
@@ -20,5 +19,4 @@ export class MjmlYahooStyle extends Component {
     }
     return null;
   }
-
 }

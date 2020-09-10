@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+import { expect } from 'chai';
 
 import {
   namedEntityToHexCode,
@@ -6,11 +6,10 @@ import {
   useHttps,
   toMobileFontSize,
   getTextAlign,
-  addQueryParams
+  addQueryParams,
 } from '../src/utils/index';
 
 describe('utils', () => {
-
   describe('namedEntityToHexCode', () => {
     it('should not replace incomplete entity', () => {
       expect(namedEntityToHexCode('&amp')).to.equal('&amp');
@@ -32,10 +31,14 @@ describe('utils', () => {
 
   describe('fixConditionalComment', () => {
     it('should not replace if there is no MSO conditionals', () => {
-      expect(fixConditionalComment('<!--no changes-->', 'what ever', 'if IE')).to.equal('<!--no changes-->');
+      expect(
+        fixConditionalComment('<!--no changes-->', 'what ever', 'if IE'),
+      ).to.equal('<!--no changes-->');
     });
     it('should replace condition matching the content', () => {
-      expect(fixConditionalComment('<!--[if mso]>...<![endif]-->', '...', 'if IE')).to.equal('<!--[if IE]>...<![endif]-->');
+      expect(
+        fixConditionalComment('<!--[if mso]>...<![endif]-->', '...', 'if IE'),
+      ).to.equal('<!--[if IE]>...<![endif]-->');
     });
   });
 
@@ -59,13 +62,13 @@ describe('utils', () => {
 
   describe('toMobileFontSize', () => {
     it('minimum should be 12', () => {
-      [...Array(12).keys()].forEach(value => {
+      [...Array(12).keys()].forEach((value) => {
         expect(toMobileFontSize(value)).to.equal(12);
         expect(toMobileFontSize(`${value}px`)).to.equal(12);
       });
     });
     it('not modified from 12 to 26', () => {
-      [...Array(14).keys()].forEach(value => {
+      Array.from(Array(14).keys()).forEach((value) => {
         expect(toMobileFontSize(value + 12)).to.equal(value + 12);
         expect(toMobileFontSize(`${value + 12}px`)).to.equal(value + 12);
       });
@@ -94,14 +97,15 @@ describe('utils', () => {
 
   describe('addQueryParams', () => {
     it('should add a single query param', () => {
-      expect(addQueryParams('url', {one: 'two'})).to.equal('url?one=two');
+      expect(addQueryParams('url', { one: 'two' })).to.equal('url?one=two');
     });
     it('should add multiple query params', () => {
-      expect(addQueryParams('url', {one: 'two', three: 'four'})).to.equal('url?one=two&three=four');
+      expect(addQueryParams('url', { one: 'two', three: 'four' })).to.equal(
+        'url?one=two&three=four',
+      );
     });
     it('should escape param value', () => {
-      expect(addQueryParams('url', {one: '?two'})).to.equal('url?one=%3Ftwo');
+      expect(addQueryParams('url', { one: '?two' })).to.equal('url?one=%3Ftwo');
     });
   });
-
 });
