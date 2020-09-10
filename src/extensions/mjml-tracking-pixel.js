@@ -20,6 +20,7 @@ export class MjmlTrackingPixel extends Component {
     };
     return (
       <MjmlRaw>
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <img
           src={src}
           style={trackingPixelStyle}

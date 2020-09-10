@@ -300,6 +300,7 @@ const renderEmail = () =>
                 lineHeight={12 * 1.5}
               >
                 <div>Share Via:</div>
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <img
                   height="22px"
                   hspace="2"
@@ -308,6 +309,7 @@ const renderEmail = () =>
                   vspace="10"
                   width="22px"
                 />
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <img
                   height="22px"
                   hspace="2"
@@ -316,6 +318,7 @@ const renderEmail = () =>
                   vspace="10"
                   width="22px"
                 />
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <img
                   height="22px"
                   hspace="2"
@@ -335,6 +338,7 @@ const renderEmail = () =>
                 lineHeight={12 * 1.5}
               >
                 Check out my website{' '}
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <img
                   src="https://static.wixstatic.com/media/f84110_25cd91bb4305479395dc2dedce29b7ce~mv2.png/v1/fit/w_750,h_750/f84110_25cd91bb4305479395dc2dedce29b7ce~mv2.png"
                   width="22px"
