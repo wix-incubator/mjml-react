@@ -8,6 +8,7 @@ import {
   MjmlConditionalComment,
   MjmlYahooStyle,
   MjmlTrackingPixel,
+  MjmlHtml,
 } from '../src/extensions';
 
 describe('extensions', () => {
@@ -81,6 +82,19 @@ describe('extensions', () => {
       expect(markup).to.equal(
         '<mj-raw><img src="tracking-pixel" style="display:table;height:1px!important;width:1px!important;border:0!important;margin:0!important;padding:0!important" width="1" height="1" border="0"/></mj-raw>',
       );
+    });
+  });
+
+  describe('html', () => {
+    it('should allow rendering given HTML using mj-raw tag by default', () => {
+      const markup = renderToMjml(<MjmlHtml html="<div>hello World</div>" />);
+      expect(markup).to.equal('<mj-raw><div>hello World</div></mj-raw>');
+    });
+    it('should allow rendering given HTML using specified tag', () => {
+      const markup = renderToMjml(
+        <MjmlHtml tag="span" html="<div>hello World</div>" />,
+      );
+      expect(markup).to.equal('<span><div>hello World</div></span>');
     });
   });
 });

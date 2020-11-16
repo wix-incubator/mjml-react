@@ -82,6 +82,7 @@ If you want to override these, you can pass an object to `render` as a second ar
 
 ```js
 import {
+  MjmlHtml,
   MjmlComment,
   MjmlConditionalComment
 } from 'mjml-react/extensions';
@@ -94,6 +95,9 @@ import {
 
 <MjmlConditionalComment condition="if IE">MSO conditionals</MjmlConditionalComment>
 // <!--[if IE]>MSO conditionals<![endif]-->
+
+<MjmlHtml tag="div" html="<span>Hello World!</span>" />
+// <div><span>Hello World!</span></div>
 ```
 
 ## Utils
