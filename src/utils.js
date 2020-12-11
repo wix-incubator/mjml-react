@@ -1,3 +1,5 @@
+const Color = require('color');
+
 const handlers = {
   inline: boolToString,
   'full-width': boolToString,
@@ -16,6 +18,11 @@ const handlers = {
   'line-height': numberToPx,
   'icon-padding': numberToPx,
   'text-padding': numberToPx,
+  color: handleColor,
+  'border-color': handleColor,
+  'background-color': handleColor,
+  'container-background-color': handleColor,
+  'inner-background-color': handleColor,
 };
 
 export function handleMjmlProps(props) {
@@ -49,4 +56,20 @@ function numberToPx(name, value) {
     return `${value}px`;
   }
   return value;
+}
+
+function handleColor(name, value) {
+  return isValidColor(value) ? value : "";
+}
+
+export function isValidColor(value) {
+  if(!value) {
+    return false;
+  }
+  try {
+    Color(value);
+  } catch (e) {
+    return false;
+  }
+  return true;
 }

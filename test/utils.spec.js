@@ -9,6 +9,8 @@ import {
   addQueryParams,
 } from '../src/utils/index';
 
+import { isValidColor } from '../src/utils';
+
 describe('utils', () => {
   describe('namedEntityToHexCode', () => {
     it('should not replace incomplete entity', () => {
@@ -106,6 +108,39 @@ describe('utils', () => {
     });
     it('should escape param value', () => {
       expect(addQueryParams('url', { one: '?two' })).to.equal('url?one=%3Ftwo');
+    });
+  });
+
+  describe('isValidColor', () => {
+    it('should return true if #ffffff is passed', () => {
+      expect(isValidColor('#ffffff')).to.equal(true);
+    });
+    it('should return false if #fafafaf is passed', () => {
+      expect(isValidColor('#fafafaf')).to.equal(false);
+    });
+    it('should return false if #g6labc is passed', () => {
+      expect(isValidColor('#g6labc')).to.equal(false);
+    });
+    it('should return true if #fab is passed', () => {
+      expect(isValidColor('#fab')).to.equal(true);
+    });
+    it('should return true if white is passed', () => {
+      expect(isValidColor('white')).to.equal(true);
+    });
+    it('should return true if transparent is passed', () => {
+      expect(isValidColor('transparent')).to.equal(true);
+    });
+    it('should return true if rgb(255,0,0) is passed', () => {
+      expect(isValidColor('rgb(255,0,0)')).to.equal(true);
+    });
+    it('should return false if rgb(255,2) is passed', () => {
+      expect(isValidColor('rgb(255,2)')).to.equal(false);
+    });
+    it('should return true if rgba(255,0,0,0.1) is passed', () => {
+      expect(isValidColor('rgb(255,0,0,0.1)')).to.equal(true);
+    });
+    it('should return false if rgba(255,0) is passed', () => {
+      expect(isValidColor('rgba(255,0)')).to.equal(false);
     });
   });
 });
