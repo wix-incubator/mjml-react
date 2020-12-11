@@ -241,4 +241,44 @@ describe('mjml tags', () => {
       '<mj-raw><!--Hello World!--></mj-raw>',
     );
   });
+
+  describe('validate color value', () => {
+    it('should render with passed values', () => {
+      expect(
+        renderToMjml(
+          <tags.MjmlColumn
+            innerBackgroundColor="#ffffffee"
+            backgroundColor="red"
+          >
+            <tags.MjmlDivider
+              borderColor="#fdfdfd"
+              containerBackgroundColor="rgb(255,0,0)"
+            />
+            <tags.MjmlText color="rgba(255,0,0,0.1)">Content</tags.MjmlText>
+          </tags.MjmlColumn>,
+        ),
+      ).to.equal(
+        '<mj-column inner-background-color="rgba(255, 255, 255, 0.9333333333333333)" background-color="red"><mj-divider border-color="#fdfdfd" container-background-color="rgb(255,0,0)"></mj-divider><mj-text color="rgba(255,0,0,0.1)">Content</mj-text></mj-column>',
+      );
+    });
+
+    it('should render empty color attribute with passed values', () => {
+      expect(
+        renderToMjml(
+          <tags.MjmlColumn
+            innerBackgroundColor="#fafafaf"
+            backgroundColor="brown sugar"
+          >
+            <tags.MjmlDivider
+              borderColor="#g6labc"
+              containerBackgroundColor="rgb(255,2)"
+            />
+            <tags.MjmlText color="rgba(255,0)">Content</tags.MjmlText>
+          </tags.MjmlColumn>,
+        ),
+      ).to.equal(
+        '<mj-column inner-background-color="" background-color=""><mj-divider border-color="" container-background-color=""></mj-divider><mj-text color="">Content</mj-text></mj-column>',
+      );
+    });
+  });
 });
