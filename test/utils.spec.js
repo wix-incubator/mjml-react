@@ -9,6 +9,8 @@ import {
   addQueryParams,
 } from '../src/utils/index';
 
+import { colorToHex } from '../src/utils';
+
 describe('utils', () => {
   describe('namedEntityToHexCode', () => {
     it('should not replace incomplete entity', () => {
@@ -106,6 +108,24 @@ describe('utils', () => {
     });
     it('should escape param value', () => {
       expect(addQueryParams('url', { one: '?two' })).to.equal('url?one=%3Ftwo');
+    });
+  });
+
+  describe('colorToHex', () => {
+    it('should return #ffffff if #ffffff is passed', () => {
+      expect(colorToHex('color', '#ffffff').toLowerCase()).to.equal('#ffffff');
+    });
+    it('should return empty string if #fafafaf is passed', () => {
+      expect(colorToHex('color', '#fafafaf').toLowerCase()).to.equal('');
+    });
+    it('should return empty string if #g6labc is passed', () => {
+      expect(colorToHex('color', '#g6labc').toLowerCase()).to.equal('');
+    });
+    it('should return #ffaabb if #fab is passed', () => {
+      expect(colorToHex('color', '#fab').toLowerCase()).to.equal('#ffaabb');
+    });
+    it('should return #ffffff if white is passed', () => {
+      expect(colorToHex('color', 'white').toLowerCase()).to.equal('#ffffff');
     });
   });
 });
