@@ -115,7 +115,7 @@ describe('mjml tags', () => {
         </tags.MjmlBody>,
       ),
     ).to.equal(
-      '<mj-body width="100px" background-color="#0000FF" css-class="body">Hello World!</mj-body>',
+      '<mj-body width="100px" background-color="blue" css-class="body">Hello World!</mj-body>',
     );
   });
 
@@ -170,7 +170,7 @@ describe('mjml tags', () => {
     expect(
       renderToMjml(<tags.MjmlDivider borderWidth={2} borderColor="red" />),
     ).to.equal(
-      '<mj-divider border-width="2px" border-color="#FF0000"></mj-divider>',
+      '<mj-divider border-width="2px" border-color="red"></mj-divider>',
     );
   });
 
@@ -220,7 +220,7 @@ describe('mjml tags', () => {
         </tags.MjmlAttributes>,
       ),
     ).to.equal(
-      '<mj-attributes><mj-text padding="0px">Line Of Text</mj-text><mj-class name="white" color="#FFFFFF"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>',
+      '<mj-attributes><mj-text padding="0px">Line Of Text</mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>',
     );
   });
 
