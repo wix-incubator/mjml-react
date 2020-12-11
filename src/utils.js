@@ -59,17 +59,19 @@ function numberToPx(name, value) {
 }
 
 function handleColor(name, value) {
-  return isValidColor(value) ? value : "";
+  const color = parseColor(value);
+  if (color) {
+    if (value[0] === '#' && value.length === 9) {
+      return color.rgb().toString();
+    }
+    return value;
+  }
+  return '';
 }
 
-export function isValidColor(value) {
-  if(!value) {
-    return false;
-  }
+function parseColor(value) {
   try {
-    Color(value);
-  } catch (e) {
-    return false;
-  }
-  return true;
+    return new Color(value);
+  } catch (e) {}
+  return null;
 }
