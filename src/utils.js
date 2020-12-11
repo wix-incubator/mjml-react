@@ -1,3 +1,5 @@
+const Color = require('color');
+
 const handlers = {
   inline: boolToString,
   'full-width': boolToString,
@@ -16,6 +18,11 @@ const handlers = {
   'line-height': numberToPx,
   'icon-padding': numberToPx,
   'text-padding': numberToPx,
+  color: colorToHex,
+  'border-color': colorToHex,
+  'background-color': colorToHex,
+  'container-background-color': colorToHex,
+  'inner-background-color': colorToHex,
 };
 
 export function handleMjmlProps(props) {
@@ -49,4 +56,17 @@ function numberToPx(name, value) {
     return `${value}px`;
   }
   return value;
+}
+
+export function colorToHex(name, value) {
+  if (!value) {
+    return '';
+  }
+  let c;
+  try {
+    c = Color(value);
+  } catch (e) {
+    return '';
+  }
+  return c.hex();
 }
