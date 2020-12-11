@@ -18,11 +18,11 @@ const handlers = {
   'line-height': numberToPx,
   'icon-padding': numberToPx,
   'text-padding': numberToPx,
-  color: colorToHex,
-  'border-color': colorToHex,
-  'background-color': colorToHex,
-  'container-background-color': colorToHex,
-  'inner-background-color': colorToHex,
+  color: handleColor,
+  'border-color': handleColor,
+  'background-color': handleColor,
+  'container-background-color': handleColor,
+  'inner-background-color': handleColor,
 };
 
 export function handleMjmlProps(props) {
@@ -58,15 +58,18 @@ function numberToPx(name, value) {
   return value;
 }
 
-export function colorToHex(name, value) {
-  if (!value) {
-    return '';
+function handleColor(name, value) {
+  return isValidColor(value) ? value : "";
+}
+
+export function isValidColor(value) {
+  if(!value) {
+    return false;
   }
-  let c;
   try {
-    c = Color(value);
+    Color(value);
   } catch (e) {
-    return '';
+    return false;
   }
-  return c.hex();
+  return true;
 }
