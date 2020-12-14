@@ -63,7 +63,7 @@ function handleColor(name, value) {
   if (color) {
     if (value[0] === '#' && value.length === 9) {
       const alpha = color.alpha().toFixed(2);
-      return new Color(color.rgb().alpha(alpha)).toString();
+      return color.rgb().alpha(alpha).toString();
     }
     return value;
   }
