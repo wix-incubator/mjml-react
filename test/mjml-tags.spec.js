@@ -258,7 +258,7 @@ describe('mjml tags', () => {
           </tags.MjmlColumn>,
         ),
       ).to.equal(
-        '<mj-column inner-background-color="rgba(255, 255, 255, 0.9333333333333333)" background-color="red"><mj-divider border-color="#fdfdfd" container-background-color="rgb(255,0,0)"></mj-divider><mj-text color="rgba(255,0,0,0.1)">Content</mj-text></mj-column>',
+        '<mj-column inner-background-color="rgba(255, 255, 255, 0.93)" background-color="red"><mj-divider border-color="#fdfdfd" container-background-color="rgb(255,0,0)"></mj-divider><mj-text color="rgba(255,0,0,0.1)">Content</mj-text></mj-column>',
       );
     });
 
