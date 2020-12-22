@@ -29,15 +29,15 @@
     "chai": "~4.1.0",
     "mjml": "^4.6.3",
     "puppeteer": "^1.4.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "with-eyes": "^3.0.1",
-    "yoshi": "^4.186.0"
+    "yoshi": "^4.86.0"
   },
   "peerDependencies": {
     "mjml": "^4.1.2",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react": "^16.4.0 || ^17.0.0",
+    "react-dom": "^16.4.0 || ^17.0.0"
   },
   "yoshi": {
     "hmr": "auto"
