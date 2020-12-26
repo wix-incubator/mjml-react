@@ -76,7 +76,7 @@ mjml-react sets the following MJML options when rendering to HTML:
 }
 ```
 
-If you want to override these, you can pass an object to `render` as a second argument. See the [MJML docs](https://mjml.io/documentation/#inside-node-js) for the full list of options you can set.
+If you want to override these, you can pass an object to `render` as a second argument. See the [MJML docs](https://documentation.mjml.io/#inside-node-js) for the full list of options you can set.
 
 ## Extensions
 
