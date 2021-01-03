@@ -25,14 +25,26 @@ describe('render()', () => {
   });
 
   it('should throw an error if invalid markup is given', () => {
-    const email = <div>Ooops!</div>;
+    const email = (
+      <Mjml>
+        <MjmlBody>
+          <div>Ooops!</div>
+        </MjmlBody>
+      </Mjml>
+    );
     expect(() => render(email)).to.throw(
       "Element div doesn't exist or is not registered",
     );
   });
 
   it('should not throw an error if soft validation level is passed', () => {
-    const email = <div>Ooops!</div>;
+    const email = (
+      <Mjml>
+        <MjmlBody>
+          <div>Ooops!</div>
+        </MjmlBody>
+      </Mjml>
+    );
     const { errors } = render(email, {
       validationLevel: 'soft',
       minify: false,
