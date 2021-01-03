@@ -15,14 +15,14 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "versionBumpStrategy": "patch"
   },
   "scripts": {
     "start": "yoshi start",
     "pretest": "yoshi build",
     "test": "yoshi test --mocha",
-    "posttest": "yoshi lint",
-    "release": "yoshi release"
+    "posttest": "yoshi lint"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "~6.23.0",
