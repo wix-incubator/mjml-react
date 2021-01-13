@@ -62,13 +62,13 @@ describe('utils', () => {
 
   describe('toMobileFontSize', () => {
     it('minimum should be 12', () => {
-      [...Array(12).keys()].forEach((value) => {
+      [...Array(12).keys()].forEach(value => {
         expect(toMobileFontSize(value)).to.equal(12);
         expect(toMobileFontSize(`${value}px`)).to.equal(12);
       });
     });
     it('not modified from 12 to 26', () => {
-      Array.from(Array(14).keys()).forEach((value) => {
+      Array.from(Array(14).keys()).forEach(value => {
         expect(toMobileFontSize(value + 12)).to.equal(value + 12);
         expect(toMobileFontSize(`${value + 12}px`)).to.equal(value + 12);
       });

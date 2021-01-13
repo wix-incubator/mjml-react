@@ -3,7 +3,7 @@ import { node } from 'prop-types';
 
 import { handleMjmlProps } from './utils';
 
-export class MjmlAttributes extends Component {
+export class MjmlHtmlAttribute extends Component {
   static propTypes = {
     children: node.isRequired,
   };
@@ -11,7 +11,7 @@ export class MjmlAttributes extends Component {
   render() {
     const { children, ...rest } = this.props;
     return React.createElement(
-      'mj-attributes',
+      'mj-html-attribute',
       handleMjmlProps(rest),
       children,
     );

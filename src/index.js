@@ -9,7 +9,6 @@ export { MjmlAccordionElement } from './mjml-accordion-element';
 export { MjmlAccordionText } from './mjml-accordion-text';
 export { MjmlAccordionTitle } from './mjml-accordion-title';
 export { MjmlAll } from './mjml-all';
-export { MjmlAttributes } from './mjml-attributes';
 export { MjmlBody } from './mjml-body';
 export { MjmlBreakpoint } from './mjml-breakpoint';
 export { MjmlButton } from './mjml-button';
@@ -36,6 +35,9 @@ export { MjmlTable } from './mjml-table';
 export { MjmlText } from './mjml-text';
 export { MjmlTitle } from './mjml-title';
 export { MjmlWrapper } from './mjml-wrapper';
+export { MjmlHtmlAttributes } from './mjml-html-attributes';
+export { MjmlHtmlAttribute } from './mjml-html-attribute';
+export { MjmlSelector } from './mjml-selector';
 
 function render(email, options = {}) {
   const defaults = {
