@@ -6,27 +6,12 @@ const matchHtmlRegExp = /["'&<>]/;
 
 const reconciler = ReactReconciler({
   supportsMutation: true,
-  // eslint-disable-next-line no-unused-vars
-  finalizeInitialChildren(element, type, props) {},
-  // eslint-disable-next-line no-unused-vars
-  getChildHostContext(parentContext, fiberType, rootInstance) {},
-  // eslint-disable-next-line no-unused-vars
-  getRootHostContext(rootInstance) {},
-  // eslint-disable-next-line no-unused-vars
-  shouldSetTextContent(type, props) {},
   createTextInstance(
-    text,
-    // eslint-disable-next-line no-unused-vars
-    rootContainerInstance,
-    // eslint-disable-next-line no-unused-vars
-    hostContext,
-    // eslint-disable-next-line no-unused-vars
-    internalInstanceHandle,
+    text /* rootContainerInstance, hostContext, internalInstanceHandle,*/,
   ) {
     return text;
   },
-  // eslint-disable-next-line no-unused-vars
-  createInstance(type, props, rootContainerInstance, hostContext) {
+  createInstance(type, props /* rootContainerInstance, hostContext */) {
     const { children, dangerouslySetInnerHTML, ...rest } = props;
     const res = {
       tagName: type,
@@ -49,12 +34,9 @@ const reconciler = ReactReconciler({
     }
     return res;
   },
-  clearContainer() {},
   appendChildToContainer(container, child) {
     container.resultObj = child;
   },
-  // eslint-disable-next-line no-unused-vars
-  appendChild(parent, child) {},
   appendInitialChild(parent, child) {
     if (child.isReact) {
       if (parent.isReact) {
@@ -81,10 +63,14 @@ const reconciler = ReactReconciler({
       parent.children.push(child);
     }
   },
-  // eslint-disable-next-line no-unused-vars
-  prepareForCommit(...args) {},
-  // eslint-disable-next-line no-unused-vars
-  resetAfterCommit(...args) {},
+  prepareForCommit: noop,
+  resetAfterCommit: noop,
+  clearContainer: noop,
+  appendChild: noop,
+  finalizeInitialChildren: noop,
+  getChildHostContext: noop,
+  getRootHostContext: noop,
+  shouldSetTextContent: noop,
 });
 
 export function renderToJSON(whatToRender) {
@@ -160,3 +146,5 @@ function escapeTextForBrowser(text) {
   }
   return escapeHtml(text.trim());
 }
+
+function noop() {}
