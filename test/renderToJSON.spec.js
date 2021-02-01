@@ -1,42 +1,84 @@
 import React from 'react';
 import { expect } from 'chai';
 
-import * as tags from '../src';
-
-const renderToJSON = tags.renderToJSON;
+import {
+  renderToJSON,
+  Mjml,
+  MjmlBody,
+  MjmlSection,
+  MjmlColumn,
+  MjmlImage,
+  MjmlText,
+  MjmlDivider,
+  MjmlRaw,
+} from '../src';
 
 describe('render to JSON', () => {
-  it('should render simple <Mjml/> tag with content', () => {
-    expect(renderToJSON(<tags.Mjml>Content</tags.Mjml>)).to.eql({
+  it('should render empty tag', () => {
+    expect(renderToJSON(<Mjml />)).to.eql({
       tagName: 'mjml',
       attributes: {},
-      content: 'Content',
+    });
+  });
+
+  it('should render tag with a string content', () => {
+    expect(renderToJSON(<Mjml>content</Mjml>)).to.eql({
+      tagName: 'mjml',
+      attributes: {},
+      content: 'content',
+    });
+  });
+
+  it('should escape string content of a tag', () => {
+    const result = renderToJSON(<Mjml>{'<b />'}</Mjml>);
+    expect(result).to.eql({
+      tagName: 'mjml',
+      content: '&lt;b /&gt;',
+      attributes: {},
+    });
+  });
+
+  it('should render nested raw content as a string', () => {
+    const result = renderToJSON(
+      <Mjml>
+        <MjmlRaw>
+          <div>content</div>
+        </MjmlRaw>
+      </Mjml>,
+    );
+    expect(result).to.eql({
+      tagName: 'mjml',
+      children: [
+        {
+          tagName: 'mj-raw',
+          content: '<div>content</div>',
+          attributes: {},
+        },
+      ],
+      attributes: {},
     });
   });
 
   it('should render <Mjml/> example with children', () => {
     expect(
       renderToJSON(
-        <tags.Mjml>
-          <tags.MjmlBody>
-            <tags.MjmlSection>
-              <tags.MjmlColumn>
-                <tags.MjmlImage
-                  width="100px"
-                  src="/assets/img/logo-small.png"
-                />
-                <tags.MjmlDivider borderColor="#F45E43" />
-                <tags.MjmlText
+        <Mjml>
+          <MjmlBody>
+            <MjmlSection>
+              <MjmlColumn>
+                <MjmlImage width="100px" src="/assets/img/logo-small.png" />
+                <MjmlDivider borderColor="#F45E43" />
+                <MjmlText
                   fontSize="20px"
                   color="#F45E43"
                   fontFamily="helvetica"
                 >
                   Hello World
-                </tags.MjmlText>
-              </tags.MjmlColumn>
-            </tags.MjmlSection>
-          </tags.MjmlBody>
-        </tags.Mjml>,
+                </MjmlText>
+              </MjmlColumn>
+            </MjmlSection>
+          </MjmlBody>
+        </Mjml>,
       ),
     ).to.eql({
       attributes: {},

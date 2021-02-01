@@ -132,9 +132,7 @@ const reconciler = ReactReconciler({
         if (!parent.content) {
           parent.content = '';
         }
-        parent.content += escapeTextForBrowser(
-          ReactDOMServer.renderToStaticMarkup(reactElement),
-        );
+        parent.content += ReactDOMServer.renderToStaticMarkup(reactElement);
       }
     } else if (typeof child === 'string') {
       if (!child) return;
