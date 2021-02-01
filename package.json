@@ -28,6 +28,7 @@
     "babel-plugin-transform-runtime": "~6.23.0",
     "chai": "~4.1.0",
     "mjml": "^4.6.3",
+    "mjml2json": "^1.0.1",
     "puppeteer": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

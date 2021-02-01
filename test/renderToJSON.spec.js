@@ -1,9 +1,11 @@
 import React from 'react';
 import { expect } from 'chai';
+import mjml2json from 'mjml2json';
 
 import {
   renderToJSON,
   Mjml,
+  MjmlStyle,
   MjmlBody,
   MjmlSection,
   MjmlColumn,
@@ -11,33 +13,51 @@ import {
   MjmlText,
   MjmlDivider,
   MjmlRaw,
+  renderToMjml,
+  MjmlHead,
 } from '../src';
 
+const useCases = [
+  <Mjml />,
+
+  <Mjml>content</Mjml>,
+
+  <Mjml>
+    <MjmlRaw>content</MjmlRaw>
+  </Mjml>,
+
+  <Mjml>
+    <MjmlRaw>
+      <div>content</div>
+    </MjmlRaw>
+  </Mjml>,
+
+  <Mjml>{'<b />'}</Mjml>,
+
+  <Mjml>
+    <MjmlHead>
+      <MjmlStyle>{'.class {color: red;}'}</MjmlStyle>
+    </MjmlHead>
+  </Mjml>,
+
+  <Mjml>
+    <MjmlBody>
+      <MjmlRaw>
+        <div>{'<b/>'}</div>
+        <p>hello &apos; &amp; world </p>
+      </MjmlRaw>
+    </MjmlBody>
+  </Mjml>,
+];
+
+useCases.forEach((tree, i) => {
+  it(`should render usecase ${i}`, () => {
+    const mjml = renderToMjml(tree);
+    expect(mjml2json(mjml)).to.eql(renderToJSON(tree));
+  });
+});
+
 describe('render to JSON', () => {
-  it('should render empty tag', () => {
-    expect(renderToJSON(<Mjml />)).to.eql({
-      tagName: 'mjml',
-      attributes: {},
-    });
-  });
-
-  it('should render tag with a string content', () => {
-    expect(renderToJSON(<Mjml>content</Mjml>)).to.eql({
-      tagName: 'mjml',
-      attributes: {},
-      content: 'content',
-    });
-  });
-
-  it('should escape string content of a tag', () => {
-    const result = renderToJSON(<Mjml>{'<b />'}</Mjml>);
-    expect(result).to.eql({
-      tagName: 'mjml',
-      content: '&lt;b /&gt;',
-      attributes: {},
-    });
-  });
-
   it('should render nested raw content as a string', () => {
     const result = renderToJSON(
       <Mjml>
