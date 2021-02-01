@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactReconciler from 'react-reconciler';
-import * as _ from 'lodash';
 import ReactDOMServer from 'react-dom/server';
 
-const toReactElement = (e) => {
-  if (e.children.length === 0) {
-    return React.createElement(e.type, e.props);
+const toReactElement = (element) => {
+  if (element.children.length === 0) {
+    return React.createElement(element.type, element.props);
   }
   return React.createElement(
-    e.type,
-    e.props,
-    e.children.map((c) => (typeof c === 'string' ? c : toReactElement(c))),
+    element.type,
+    element.props,
+    element.children.map((child) =>
+      typeof child === 'string' ? child : toReactElement(child),
+    ),
   );
 };
 
@@ -94,12 +95,13 @@ const reconciler = ReactReconciler({
   },
   // eslint-disable-next-line no-unused-vars
   createInstance(type, props, rootContainerInstance, hostContext) {
+    const { children, dangerouslySetInnerHTML, ...rest } = props;
     const res = {
       tagName: type,
-      attributes: _.omit(props, ['children', 'dangerouslySetInnerHTML']),
+      attributes: rest,
     };
-    Object.keys(res.attributes).forEach((k) => {
-      if (res.attributes[k] === undefined) delete res.attributes[k];
+    Object.keys(res.attributes).forEach((key) => {
+      if (res.attributes[key] === undefined) delete res.attributes[key];
     });
     if (!type.startsWith('mj')) {
       return {
