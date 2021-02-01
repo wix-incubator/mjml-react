@@ -13,11 +13,16 @@ import {
   MjmlText,
   MjmlDivider,
   MjmlRaw,
-  renderToMjml,
   MjmlHead,
+  renderToMjml,
 } from '../src';
 
-import { MjmlComment } from '../extensions';
+import {
+  MjmlComment,
+  MjmlConditionalComment,
+  MjmlTrackingPixel,
+  MjmlYahooStyle,
+} from '../extensions';
 
 const useCases = [
   <Mjml />,
@@ -70,6 +75,20 @@ const useCases = [
   </Mjml>,
 
   <MjmlComment>content</MjmlComment>,
+
+  <MjmlConditionalComment>content</MjmlConditionalComment>,
+
+  <MjmlComment>{'<div />'}</MjmlComment>,
+
+  <MjmlTrackingPixel src="https://somedomain.com/somepic.png" />,
+
+  <MjmlYahooStyle>content</MjmlYahooStyle>,
+
+  <MjmlImage alt="content" />,
+
+  <MjmlImage alt="<div>content</div>" />,
+
+  <MjmlImage alt="<div>&amp;content</div>" />,
 ];
 
 useCases.forEach((tree, i) => {
