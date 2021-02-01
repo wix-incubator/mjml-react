@@ -3,8 +3,6 @@ import ReactReconciler from 'react-reconciler';
 import * as _ from 'lodash';
 import ReactDOMServer from 'react-dom/server';
 
-export { ReactDOMMini };
-
 const toReactElement = (e) => {
   if (e.children.length === 0) {
     return React.createElement(e.type, e.props);
@@ -12,7 +10,7 @@ const toReactElement = (e) => {
   return React.createElement(
     e.type,
     e.props,
-    e.children.map((c) => (typeof c === 'string' ? c : toReactElement(c)))
+    e.children.map((c) => (typeof c === 'string' ? c : toReactElement(c))),
   );
 };
 
@@ -73,20 +71,28 @@ function escapeTextForBrowser(text) {
   return escapeHtml(text.trim());
 }
 
-let reconciler = ReactReconciler({
+const reconciler = ReactReconciler({
   supportsMutation: true,
+  // eslint-disable-next-line no-unused-vars
   finalizeInitialChildren(element, type, props) {},
+  // eslint-disable-next-line no-unused-vars
   getChildHostContext(parentContext, fiberType, rootInstance) {},
+  // eslint-disable-next-line no-unused-vars
   getRootHostContext(rootInstance) {},
+  // eslint-disable-next-line no-unused-vars
   shouldSetTextContent(type, props) {},
   createTextInstance(
     text,
+    // eslint-disable-next-line no-unused-vars
     rootContainerInstance,
+    // eslint-disable-next-line no-unused-vars
     hostContext,
-    internalInstanceHandle
+    // eslint-disable-next-line no-unused-vars
+    internalInstanceHandle,
   ) {
     return text;
   },
+  // eslint-disable-next-line no-unused-vars
   createInstance(type, props, rootContainerInstance, hostContext) {
     const res = {
       tagName: type,
@@ -113,6 +119,7 @@ let reconciler = ReactReconciler({
   appendChildToContainer(container, child) {
     container.resultObj = child;
   },
+  // eslint-disable-next-line no-unused-vars
   appendChild(parent, child) {},
   appendInitialChild(parent, child) {
     if (child.isReact) {
@@ -124,7 +131,7 @@ let reconciler = ReactReconciler({
           parent.content = '';
         }
         parent.content += escapeTextForBrowser(
-          ReactDOMServer.renderToStaticMarkup(reactElement)
+          ReactDOMServer.renderToStaticMarkup(reactElement),
         );
       }
     } else if (typeof child === 'string') {
@@ -142,14 +149,18 @@ let reconciler = ReactReconciler({
       parent.children.push(child);
     }
   },
+  // eslint-disable-next-line no-unused-vars
   prepareForCommit(...args) {},
+  // eslint-disable-next-line no-unused-vars
   resetAfterCommit(...args) {},
 });
 
-let ReactDOMMini = {
+const ReactDOMMini = {
   render(whatToRender) {
-    let container = reconciler.createContainer({}, false, false);
+    const container = reconciler.createContainer({}, false, false);
     reconciler.updateContainer(whatToRender, container, null, null);
     return container.containerInfo.resultObj;
   },
 };
+
+export { ReactDOMMini };
