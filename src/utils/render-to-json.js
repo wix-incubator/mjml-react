@@ -155,12 +155,8 @@ const reconciler = ReactReconciler({
   resetAfterCommit(...args) {},
 });
 
-const ReactDOMMini = {
-  render(whatToRender) {
-    const container = reconciler.createContainer({}, false, false);
-    reconciler.updateContainer(whatToRender, container, null, null);
-    return container.containerInfo.resultObj;
-  },
-};
-
-export { ReactDOMMini };
+export function renderToJSON(whatToRender) {
+  const container = reconciler.createContainer({}, false, false);
+  reconciler.updateContainer(whatToRender, container, null, null);
+  return container.containerInfo.resultObj;
+}
