@@ -97,3 +97,38 @@ useCases.forEach((tree, i) => {
     expect(mjml2json(mjml)).to.eql(renderToJSON(tree));
   });
 });
+
+// it('measure times', () => {
+//   const n = 10000;
+//   const durationMjml = time(
+//     times(n, () => {
+//       useCases.forEach((_) => {
+//         renderToMjml(_);
+//       });
+//     }),
+//   );
+
+//   const durationJson = time(
+//     times(n, () => {
+//       useCases.forEach((_) => {
+//         renderToJSON(_);
+//       });
+//     }),
+//   );
+
+//   console.log({ n, durationMjml, durationJson });
+// });
+
+// function time(fn) {
+//   const start = Date.now();
+//   fn();
+//   return Date.now() - start;
+// }
+
+// function times(n, fn) {
+//   return () => {
+//     for (let i = 0; i < n; i++) {
+//       fn();
+//     }
+//   };
+// }
