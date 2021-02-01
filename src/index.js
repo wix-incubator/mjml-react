@@ -1,7 +1,9 @@
 import ReactDOMServer from 'react-dom/server';
 import mjml2html from 'mjml';
 
-export { render, renderToMjml };
+import { ReactDOMMini } from './utils/ReactDOMMini';
+
+export { render, renderToMjml, renderToJSON };
 
 export { Mjml } from './mjml';
 export { MjmlAccordion } from './mjml-accordion';
@@ -49,4 +51,8 @@ function render(email, options = {}) {
 
 function renderToMjml(email) {
   return ReactDOMServer.renderToStaticMarkup(email);
+}
+
+function renderToJSON(email) {
+  return ReactDOMMini.render(email);
 }
