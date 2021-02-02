@@ -1,7 +1,9 @@
 import ReactDOMServer from 'react-dom/server';
 import mjml2html from 'mjml';
 
-export { render, renderToMjml };
+import { renderToJSON } from './utils/render-to-json';
+
+export { render, renderToMjml, renderToJSON };
 
 export { Mjml } from './mjml';
 export { MjmlAccordion } from './mjml-accordion';
