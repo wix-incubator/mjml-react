@@ -14,6 +14,7 @@ import {
   MjmlDivider,
   MjmlRaw,
   MjmlHead,
+  MjmlButton,
   renderToMjml,
 } from '../src';
 
@@ -89,6 +90,14 @@ const useCases = [
   <MjmlImage alt="<div>content</div>" />,
 
   <MjmlImage alt="<div>&amp;content</div>" />,
+
+  <MjmlButton>
+    <div dangerouslySetInnerHTML={{ __html: '<div>Hello World!</div>' }}></div>
+  </MjmlButton>,
+
+  <MjmlComment>{'<b /> & $ " '}</MjmlComment>,
+
+  <MjmlText>10$ & Free Delivery</MjmlText>,
 ];
 
 useCases.forEach((tree, i) => {

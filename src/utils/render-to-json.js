@@ -2,7 +2,7 @@ import React from 'react';
 import ReactReconciler from 'react-reconciler';
 import ReactDOMServer from 'react-dom/server';
 
-const matchHtmlRegExp = /["'&<>]/;
+const matchHtmlRegExp = /["'&<>$]/;
 
 const reconciler = ReactReconciler({
   supportsMutation: true,
@@ -36,7 +36,9 @@ const reconciler = ReactReconciler({
     }
 
     if (props.dangerouslySetInnerHTML && props.dangerouslySetInnerHTML.__html) {
-      res.content = props.dangerouslySetInnerHTML.__html;
+      // using replace to prevent issue with $ sign in MJML
+      // https://github.com/mjmlio/mjml2json#L145
+      res.content = props.dangerouslySetInnerHTML.__html.replace('$', '&#36;');
     }
     return res;
   },
