@@ -18,7 +18,13 @@ const reconciler = ReactReconciler({
       attributes: rest,
     };
     Object.keys(res.attributes).forEach((key) => {
-      if (res.attributes[key] === undefined) delete res.attributes[key];
+      const attrKey = res.attributes[key];
+      if (attrKey === undefined) {
+        delete res.attributes[key];
+      }
+      if (typeof attrKey === 'string') {
+        res.attributes[key] = escapeTextForBrowser(attrKey);
+      }
     });
     if (!type.startsWith('mj')) {
       return {
@@ -30,7 +36,7 @@ const reconciler = ReactReconciler({
     }
 
     if (props.dangerouslySetInnerHTML && props.dangerouslySetInnerHTML.__html) {
-      res.content = escapeTextForBrowser(props.dangerouslySetInnerHTML.__html);
+      res.content = props.dangerouslySetInnerHTML.__html;
     }
     return res;
   },
