@@ -43,6 +43,7 @@ const reconciler = ReactReconciler({
     return res;
   },
   appendChildToContainer(container, child) {
+    trimContent(child);
     container.resultObj = child;
   },
   appendInitialChild(parent, child) {
@@ -152,7 +153,15 @@ function escapeTextForBrowser(text) {
   if (typeof text === 'boolean' || typeof text === 'number') {
     return '' + text;
   }
-  return escapeHtml(text.trim());
+  return escapeHtml(text);
 }
 
 function noop() {}
+
+function trimContent(child) {
+  if (child.content) {
+    child.content = child.content.trim();
+  } else if (child.children) {
+    child.children.forEach(trimContent);
+  }
+}

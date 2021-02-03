@@ -98,6 +98,15 @@ const useCases = [
   <MjmlComment>{'<b /> & $ " '}</MjmlComment>,
 
   <MjmlText>10$ & Free Delivery</MjmlText>,
+
+  <MjmlButton
+    spacesFromBothEnds="  both  "
+    spaceFromLeft="  left"
+    spaceFromRight="right  "
+    spaceInBetween="  in  between  "
+  >
+    {'  '}Hello World ! <span> Hello World ! </span>{' '}
+  </MjmlButton>,
 ];
 
 useCases.forEach((tree, i) => {
