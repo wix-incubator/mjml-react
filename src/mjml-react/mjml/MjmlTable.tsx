@@ -10,8 +10,8 @@ import { convertPropsToMjmlAttributes } from "../utils";
 interface IProps {
   align?: string;
   border?: React.CSSProperties["border"];
-  cellpadding?: number;
-  cellspacing?: number;
+  cellpadding?: string;
+  cellspacing?: string;
   containerBackgroundColor?: string;
   color?: React.CSSProperties["color"];
   fontFamily?: string;

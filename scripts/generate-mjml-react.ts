@@ -65,6 +65,10 @@ const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
   "backgroundSize",
 ]);
 
+const HAS_CSS_CLASS = new Set(
+  MJML_ELEMENTS_TO_CONVERT.filter((element) => !["mjml", "mj-style", "mj-class"].includes(element))
+);
+
 function getPropTypeFromMjmlAttributeType(attribute: string, mjmlAttributeType: string) {
   if (attribute === "fullWidth") {
     return "boolean";
@@ -106,7 +110,12 @@ function buildTypesForComponent(mjmlElementName: string): string {
     typesFromMjmlAttributes["inline"] = "boolean";
   } else if (mjmlElementName === "mj-class") {
     typesFromMjmlAttributes["name"] = "string";
-  } else {
+  } else if (mjmlElementName === "mj-table") {
+    typesFromMjmlAttributes["cellspacing"] = "string";
+    typesFromMjmlAttributes["cellpadding"] = "string";
+  }
+
+  if (HAS_CSS_CLASS.has(mjmlElementName)) {
     typesFromMjmlAttributes["className"] = "string";
     typesFromMjmlAttributes["cssClass"] = "string";
   }
