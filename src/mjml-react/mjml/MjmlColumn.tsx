@@ -35,5 +35,9 @@ interface IProps {
 }
 
 export const MjmlColumn: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-column", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-column",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

@@ -35,5 +35,9 @@ interface IProps {
 }
 
 export const MjmlWrapper: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-wrapper", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-wrapper",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

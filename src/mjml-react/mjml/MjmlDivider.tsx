@@ -18,10 +18,15 @@ interface IProps {
   paddingRight?: string | number;
   paddingTop?: string | number;
   width?: string | number;
+  align?: string;
   className?: string;
   cssClass?: string;
 }
 
 export const MjmlDivider: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-divider", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-divider",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

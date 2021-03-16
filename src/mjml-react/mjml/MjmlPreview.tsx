@@ -13,5 +13,9 @@ interface IProps {
 }
 
 export const MjmlPreview: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-preview", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-preview",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

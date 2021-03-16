@@ -32,5 +32,9 @@ interface IProps {
 }
 
 export const MjmlText: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-text", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-text",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

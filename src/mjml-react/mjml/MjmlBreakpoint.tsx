@@ -13,5 +13,9 @@ interface IProps {
 }
 
 export const MjmlBreakpoint: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-breakpoint", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-breakpoint",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

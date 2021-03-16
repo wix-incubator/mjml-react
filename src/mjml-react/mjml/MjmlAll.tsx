@@ -14,5 +14,9 @@ interface IProps {
 }
 
 export const MjmlAll: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-all", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-all",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

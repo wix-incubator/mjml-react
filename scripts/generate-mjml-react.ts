@@ -8,15 +8,8 @@ import * as del from "del";
 import * as fs from "fs";
 import { camelCase, upperFirst } from "lodash";
 import * as path from "path";
-import prettier from "prettier";
 
 import { MJML_REACT_DIR } from "../config/paths";
-
-function prettifyTs(s: string) {
-  // It seems that the CLI and node options for prettier differ slightly.
-  // I didn't immediately find an answer and it's pretty low impact so added the option here.
-  return prettier.format(s, { parser: "typescript", printWidth: 100 });
-}
 
 const GENERATED_HEADER_TSX = `
 /*
@@ -66,17 +59,25 @@ const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
 ]);
 
 const HAS_CSS_CLASS = new Set(
-  MJML_ELEMENTS_TO_CONVERT.filter((element) => !["mjml", "mj-style", "mj-class"].includes(element))
+  MJML_ELEMENTS_TO_CONVERT.filter(
+    (element) => !["mjml", "mj-style", "mj-class"].includes(element)
+  )
 );
 
-function getPropTypeFromMjmlAttributeType(attribute: string, mjmlAttributeType: string) {
+function getPropTypeFromMjmlAttributeType(
+  attribute: string,
+  mjmlAttributeType: string
+) {
   if (attribute === "fullWidth") {
     return "boolean";
   }
   if (ATTRIBUTES_TO_USE_CSSProperties_WITH.has(attribute)) {
     return `React.CSSProperties["${attribute}"]`;
   }
-  if (mjmlAttributeType.startsWith("unit") && mjmlAttributeType.includes("px")) {
+  if (
+    mjmlAttributeType.startsWith("unit") &&
+    mjmlAttributeType.includes("px")
+  ) {
     return "string | number";
   }
   if (mjmlAttributeType === "boolean") {
@@ -92,13 +93,19 @@ function buildTypesForComponent(mjmlElementName: string): string {
   const typesFromMjmlAttributes: Record<string, string> = {};
   try {
     const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
-    const mjmlElementAttributeTypes = require(mjmlPackageName).allowedAttributes as Record<string, string>;
+    const mjmlElementAttributeTypes = require(mjmlPackageName)
+      .allowedAttributes as Record<string, string>;
     if (mjmlElementAttributeTypes) {
-      Object.entries(mjmlElementAttributeTypes).forEach(([mjmlAttribute, mjmlAttributeType]) => {
-        // TODO we should be getting the type from React.CSS
-        const attribute = camelCase(mjmlAttribute);
-        typesFromMjmlAttributes[attribute] = getPropTypeFromMjmlAttributeType(attribute, mjmlAttributeType);
-      });
+      Object.entries(mjmlElementAttributeTypes).forEach(
+        ([mjmlAttribute, mjmlAttributeType]) => {
+          // TODO we should be getting the type from React.CSS
+          const attribute = camelCase(mjmlAttribute);
+          typesFromMjmlAttributes[attribute] = getPropTypeFromMjmlAttributeType(
+            attribute,
+            mjmlAttributeType
+          );
+        }
+      );
     }
   } catch (_) {
     /* not all elements have packages */
@@ -120,7 +127,9 @@ function buildTypesForComponent(mjmlElementName: string): string {
     typesFromMjmlAttributes["cssClass"] = "string";
   }
 
-  const typeStrings = Object.entries(typesFromMjmlAttributes).map(([attributes, type]) => `${attributes}?: ${type}`);
+  const typeStrings = Object.entries(typesFromMjmlAttributes).map(
+    ([attributes, type]) => `${attributes}?: ${type}`
+  );
 
   // allow any property
   if (["mj-class", "mj-all"].includes(mjmlElementName)) {
@@ -175,13 +184,16 @@ for (const mjmlElementName of MJML_ELEMENTS_TO_CONVERT) {
   const types = buildTypesForComponent(mjmlElementName);
   const fileContents = buildFileContents({ mjmlElementName, reactName, types });
 
-  fs.writeFileSync(path.join(GENERATED_MJML_FILES, `${reactName}.tsx`), prettifyTs(fileContents));
+  fs.writeFileSync(
+    path.join(GENERATED_MJML_FILES, `${reactName}.tsx`),
+    fileContents
+  );
 }
 
 // create index export file for mjml-react components
 fs.writeFileSync(
   path.join(MJML_REACT_DIR, `index.tsx`),
-  prettifyTs(`
+  `
 ${GENERATED_HEADER_TSX}
 /* eslint-disable @faire/no-re-exports */
 
@@ -190,7 +202,7 @@ ${MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
   const reactName = upperFirst(camelCase(mjmlPackageName));
   return `export { ${reactName} } from './mjml/${reactName}';`;
 }).join("\n")}
-`)
+`
 );
 
 // generate gitattributes file
@@ -208,3 +220,5 @@ fs.writeFileSync(
 ${gitAttributes}
 `
 );
+
+require("child_process").execSync(`yarn prettier --write ${MJML_REACT_DIR}`);

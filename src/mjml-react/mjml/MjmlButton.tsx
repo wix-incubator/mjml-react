@@ -25,6 +25,7 @@ interface IProps {
   height?: string | number;
   href?: string;
   name?: string;
+  title?: string;
   innerPadding?: string | number;
   letterSpacing?: string | number;
   lineHeight?: string | number;
@@ -45,5 +46,9 @@ interface IProps {
 }
 
 export const MjmlButton: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-button", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-button",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

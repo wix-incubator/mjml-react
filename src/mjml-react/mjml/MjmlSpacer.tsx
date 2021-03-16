@@ -25,5 +25,9 @@ interface IProps {
 }
 
 export const MjmlSpacer: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-spacer", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-spacer",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

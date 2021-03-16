@@ -2,13 +2,21 @@ import classNames from "classnames";
 import { kebabCase } from "lodash";
 import React from "react";
 
-export function mjmlReactComponentFactory<P>(mjmlElementName: string): React.FC<P> {
+export function mjmlReactComponentFactory<P>(
+  mjmlElementName: string
+): React.FC<P> {
   return ({ children, ...props }) => {
-    return React.createElement(mjmlElementName, convertPropsToMjmlAttributes(props), children);
+    return React.createElement(
+      mjmlElementName,
+      convertPropsToMjmlAttributes(props),
+      children
+    );
   };
 }
 
-export function convertPropsToMjmlAttributes<P>(props: { [K in keyof P]: unknown }) {
+export function convertPropsToMjmlAttributes<P>(
+  props: { [K in keyof P]: unknown }
+) {
   const mjmlProps = Object.entries(props).reduce((mjmlProps, [prop, value]) => {
     const mjmlProp = kebabCase(prop);
     const mjmlValue = convertPropValueToMjml(mjmlProp, value);
@@ -49,7 +57,10 @@ const numberToPixel = [
   "text-padding",
 ];
 
-function convertPropValueToMjml(name: string, value: unknown): string | undefined {
+function convertPropValueToMjml(
+  name: string,
+  value: unknown
+): string | undefined {
   // This assumes that all numbers will be pixels which might not always be the case
   if (typeof value === "number" && numberToPixel.includes(name)) {
     return `${value}px`;
@@ -60,4 +71,5 @@ function convertPropValueToMjml(name: string, value: unknown): string | undefine
   if (typeof value === "string") {
     return value;
   }
+  return;
 }

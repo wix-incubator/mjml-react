@@ -31,5 +31,9 @@ interface IProps {
 }
 
 export const MjmlTable: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-table", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-table",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };

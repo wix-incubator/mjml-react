@@ -15,5 +15,9 @@ interface IProps {
 }
 
 export const MjmlBody: React.FC<IProps> = ({ children, ...props }) => {
-  return React.createElement("mj-body", convertPropsToMjmlAttributes(props), children);
+  return React.createElement(
+    "mj-body",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 };
