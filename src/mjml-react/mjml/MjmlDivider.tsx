@@ -18,7 +18,6 @@ interface IProps {
   paddingRight?: string | number;
   paddingTop?: string | number;
   width?: string | number;
-  align?: string;
   className?: string;
   cssClass?: string;
 }

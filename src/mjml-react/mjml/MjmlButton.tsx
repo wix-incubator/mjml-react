@@ -25,7 +25,6 @@ interface IProps {
   height?: string | number;
   href?: string;
   name?: string;
-  title?: string;
   innerPadding?: string | number;
   letterSpacing?: string | number;
   lineHeight?: string | number;
