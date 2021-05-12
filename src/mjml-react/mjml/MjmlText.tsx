@@ -29,6 +29,7 @@ interface IProps {
   verticalAlign?: React.CSSProperties["verticalAlign"];
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlText: React.FC<IProps> = ({ children, ...props }) => {

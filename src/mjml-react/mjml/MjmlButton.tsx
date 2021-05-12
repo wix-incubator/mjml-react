@@ -42,6 +42,7 @@ interface IProps {
   width?: string | number;
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlButton: React.FC<IProps> = ({ children, ...props }) => {

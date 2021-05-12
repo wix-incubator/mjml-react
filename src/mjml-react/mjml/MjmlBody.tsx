@@ -12,6 +12,7 @@ interface IProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlBody: React.FC<IProps> = ({ children, ...props }) => {

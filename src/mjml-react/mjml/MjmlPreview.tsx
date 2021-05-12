@@ -10,6 +10,7 @@ import { convertPropsToMjmlAttributes } from "../utils";
 interface IProps {
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlPreview: React.FC<IProps> = ({ children, ...props }) => {

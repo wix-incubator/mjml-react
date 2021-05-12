@@ -32,6 +32,7 @@ interface IProps {
   textPadding?: string | number;
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlWrapper: React.FC<IProps> = ({ children, ...props }) => {

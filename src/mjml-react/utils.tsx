@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { kebabCase } from "lodash";
 import React from "react";
 
@@ -24,7 +23,11 @@ export function convertPropsToMjmlAttributes<P>(
     if (mjmlValue === undefined || prop === "className") {
       return mjmlProps;
     }
-    mjmlProps[mjmlProp] = mjmlValue;
+    if (prop === "mjmlClass") {
+      mjmlProps["mj-class"] = mjmlValue;
+    } else {
+      mjmlProps[mjmlProp] = mjmlValue;
+    }
     return mjmlProps;
   }, {} as Record<string, string>);
 
@@ -32,7 +35,7 @@ export function convertPropsToMjmlAttributes<P>(
   // mjml uses a different name (css-class) for the same thing.
   const className = (props as any).className;
   if (typeof className === "string") {
-    mjmlProps["css-class"] = classNames(mjmlProps["css-class"], className);
+    mjmlProps["css-class"] = joinClassNames(mjmlProps["css-class"], className);
   }
 
   return mjmlProps;
@@ -72,4 +75,8 @@ function convertPropValueToMjml(
     return value;
   }
   return;
+}
+
+function joinClassNames(...classNames: string[]) {
+  return classNames.join(" ").trim();
 }

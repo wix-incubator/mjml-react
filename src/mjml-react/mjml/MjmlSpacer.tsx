@@ -22,6 +22,7 @@ interface IProps {
   height?: string | number;
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlSpacer: React.FC<IProps> = ({ children, ...props }) => {

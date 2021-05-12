@@ -14,6 +14,7 @@ interface IProps {
   width?: string | number;
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlGroup: React.FC<IProps> = ({ children, ...props }) => {

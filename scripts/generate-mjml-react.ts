@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node
+
 /**
  * Generate the mjml components
  *
@@ -125,6 +127,7 @@ function buildTypesForComponent(mjmlElementName: string): string {
   if (HAS_CSS_CLASS.has(mjmlElementName)) {
     typesFromMjmlAttributes["className"] = "string";
     typesFromMjmlAttributes["cssClass"] = "string";
+    typesFromMjmlAttributes["mjmlClass"] = "string";
   }
 
   const typeStrings = Object.entries(typesFromMjmlAttributes).map(

@@ -38,6 +38,7 @@ interface IProps {
   usemap?: string;
   className?: string;
   cssClass?: string;
+  mjmlClass?: string;
 }
 
 export const MjmlImage: React.FC<IProps> = ({ children, ...props }) => {
