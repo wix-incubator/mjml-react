@@ -32,7 +32,6 @@
     "puppeteer": "^1.4.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "with-eyes": "^3.0.1",
     "@wix/yoshi": "^4.186.0"
   },
   "peerDependencies": {
