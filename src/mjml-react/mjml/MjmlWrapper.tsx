@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   backgroundUrl?: string;
   backgroundRepeat?: React.CSSProperties["backgroundRepeat"];
@@ -35,7 +35,10 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlWrapper: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlWrapper: React.FC<IMjmlTextProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-wrapper",
     convertPropsToMjmlAttributes(props),

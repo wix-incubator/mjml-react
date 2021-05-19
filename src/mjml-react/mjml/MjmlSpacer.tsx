@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   border?: React.CSSProperties["border"];
   borderBottom?: string;
   borderLeft?: string;
@@ -25,7 +25,10 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlSpacer: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlSpacer: React.FC<IMjmlTextProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-spacer",
     convertPropsToMjmlAttributes(props),

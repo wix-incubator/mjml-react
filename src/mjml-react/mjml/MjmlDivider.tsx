@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   borderColor?: React.CSSProperties["borderColor"];
   borderStyle?: React.CSSProperties["borderStyle"];
   borderWidth?: string | number;
@@ -23,7 +23,10 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlDivider: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlDivider: React.FC<IMjmlTextProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-divider",
     convertPropsToMjmlAttributes(props),

@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   direction?: string;
   verticalAlign?: React.CSSProperties["verticalAlign"];
@@ -17,7 +17,7 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlGroup: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlGroup: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement(
     "mj-group",
     convertPropsToMjmlAttributes(props),

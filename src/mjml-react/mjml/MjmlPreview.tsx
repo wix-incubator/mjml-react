@@ -7,13 +7,16 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
 }
 
-export const MjmlPreview: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlPreview: React.FC<IMjmlTextProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-preview",
     convertPropsToMjmlAttributes(props),

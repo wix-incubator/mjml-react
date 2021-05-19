@@ -7,11 +7,11 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   owa?: string;
 }
 
-export const Mjml: React.FC<IProps> = ({ children, ...props }) => {
+export const Mjml: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement(
     "mjml",
     convertPropsToMjmlAttributes(props),

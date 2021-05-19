@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   border?: React.CSSProperties["border"];
   borderBottom?: string;
@@ -35,7 +35,10 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlColumn: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlColumn: React.FC<IMjmlTextProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-column",
     convertPropsToMjmlAttributes(props),

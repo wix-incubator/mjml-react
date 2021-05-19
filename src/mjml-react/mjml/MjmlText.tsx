@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   align?: string;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   color?: React.CSSProperties["color"];
@@ -15,7 +15,7 @@ interface IProps {
   fontFamily?: string;
   fontSize?: string | number;
   fontStyle?: string;
-  fontWeight?: string;
+  fontWeight?: React.CSSProperties["fontWeight"];
   height?: string | number;
   letterSpacing?: string | number;
   lineHeight?: string | number;
@@ -24,15 +24,15 @@ interface IProps {
   paddingRight?: string | number;
   paddingTop?: string | number;
   padding?: string | number;
-  textDecoration?: string;
-  textTransform?: string;
+  textDecoration?: React.CSSProperties["textDecoration"];
+  textTransform?: React.CSSProperties["textTransform"];
   verticalAlign?: React.CSSProperties["verticalAlign"];
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
 }
 
-export const MjmlText: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlText: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement(
     "mj-text",
     convertPropsToMjmlAttributes(props),

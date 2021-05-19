@@ -48,6 +48,9 @@ const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
   "color",
   "textAlign",
   "verticalAlign",
+  "fontWeight",
+  "textDecoration",
+  "textTransform",
 
   "border",
   "borderRadius",
@@ -164,11 +167,12 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+
+export interface IMjmlTextProps {
   ${types}
 }
 
-export const ${reactName}: React.FC<IProps> = ({ children, ...props }) => {
+export const ${reactName}: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement("${mjmlElementName}", ${passPropsToReactCreate});
 };
 `;
@@ -205,6 +209,8 @@ ${MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
   const reactName = upperFirst(camelCase(mjmlPackageName));
   return `export { ${reactName} } from './mjml/${reactName}';`;
 }).join("\n")}
+
+export { IMjmlTextProps } from "./mjml/MjmlText";
 `
 );
 

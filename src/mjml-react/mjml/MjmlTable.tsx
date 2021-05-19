@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   align?: string;
   border?: React.CSSProperties["border"];
   cellpadding?: string;
@@ -16,7 +16,7 @@ interface IProps {
   color?: React.CSSProperties["color"];
   fontFamily?: string;
   fontSize?: string | number;
-  fontWeight?: string;
+  fontWeight?: React.CSSProperties["fontWeight"];
   lineHeight?: string | number;
   paddingBottom?: string | number;
   paddingLeft?: string | number;
@@ -31,7 +31,7 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlTable: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlTable: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement(
     "mj-table",
     convertPropsToMjmlAttributes(props),

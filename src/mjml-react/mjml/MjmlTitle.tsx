@@ -7,13 +7,13 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
 }
 
-export const MjmlTitle: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlTitle: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement(
     "mj-title",
     convertPropsToMjmlAttributes(props),

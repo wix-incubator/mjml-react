@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   align?: string;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   borderBottom?: string;
@@ -21,7 +21,7 @@ interface IProps {
   fontFamily?: string;
   fontSize?: string | number;
   fontStyle?: string;
-  fontWeight?: string;
+  fontWeight?: React.CSSProperties["fontWeight"];
   height?: string | number;
   href?: string;
   name?: string;
@@ -35,8 +35,8 @@ interface IProps {
   padding?: string | number;
   rel?: string;
   target?: string;
-  textDecoration?: string;
-  textTransform?: string;
+  textDecoration?: React.CSSProperties["textDecoration"];
+  textTransform?: React.CSSProperties["textTransform"];
   verticalAlign?: React.CSSProperties["verticalAlign"];
   textAlign?: React.CSSProperties["textAlign"];
   width?: string | number;
@@ -45,7 +45,10 @@ interface IProps {
   mjmlClass?: string;
 }
 
-export const MjmlButton: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlButton: React.FC<IMjmlTextProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-button",
     convertPropsToMjmlAttributes(props),

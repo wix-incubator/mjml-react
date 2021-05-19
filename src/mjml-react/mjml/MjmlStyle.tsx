@@ -7,11 +7,11 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-interface IProps {
+export interface IMjmlTextProps {
   inline?: boolean;
 }
 
-export const MjmlStyle: React.FC<IProps> = ({ children, ...props }) => {
+export const MjmlStyle: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
   return React.createElement("mj-style", {
     ...convertPropsToMjmlAttributes(props),
     dangerouslySetInnerHTML: { __html: children },
