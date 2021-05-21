@@ -7,13 +7,13 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlPreviewProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
 }
 
-export const MjmlPreview: React.FC<IMjmlTextProps> = ({
+export const MjmlPreview: React.FC<IMjmlPreviewProps> = ({
   children,
   ...props
 }) => {

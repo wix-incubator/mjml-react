@@ -103,7 +103,6 @@ function buildTypesForComponent(mjmlElementName: string): string {
     if (mjmlElementAttributeTypes) {
       Object.entries(mjmlElementAttributeTypes).forEach(
         ([mjmlAttribute, mjmlAttributeType]) => {
-          // TODO we should be getting the type from React.CSS
           const attribute = camelCase(mjmlAttribute);
           typesFromMjmlAttributes[attribute] = getPropTypeFromMjmlAttributeType(
             attribute,
@@ -168,11 +167,11 @@ import React from "react";
 import { convertPropsToMjmlAttributes } from "../utils";
 
 
-export interface IMjmlTextProps {
+export interface I${reactName}Props {
   ${types}
 }
 
-export const ${reactName}: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
+export const ${reactName}: React.FC<I${reactName}Props> = ({ children, ...props }) => {
   return React.createElement("${mjmlElementName}", ${passPropsToReactCreate});
 };
 `;
@@ -207,10 +206,8 @@ ${GENERATED_HEADER_TSX}
 ${MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
   const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
   const reactName = upperFirst(camelCase(mjmlPackageName));
-  return `export { ${reactName} } from './mjml/${reactName}';`;
+  return `export { ${reactName}, I${reactName}Props } from './mjml/${reactName}';`;
 }).join("\n")}
-
-export { IMjmlTextProps } from "./mjml/MjmlText";
 `
 );
 

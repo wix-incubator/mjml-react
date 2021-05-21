@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlButtonProps {
   align?: string;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   borderBottom?: string;
@@ -45,7 +45,7 @@ export interface IMjmlTextProps {
   mjmlClass?: string;
 }
 
-export const MjmlButton: React.FC<IMjmlTextProps> = ({
+export const MjmlButton: React.FC<IMjmlButtonProps> = ({
   children,
   ...props
 }) => {

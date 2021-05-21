@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlImageProps {
   alt?: string;
   href?: string;
   name?: string;
@@ -41,7 +41,10 @@ export interface IMjmlTextProps {
   mjmlClass?: string;
 }
 
-export const MjmlImage: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
+export const MjmlImage: React.FC<IMjmlImageProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-image",
     convertPropsToMjmlAttributes(props),

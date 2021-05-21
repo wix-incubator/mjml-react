@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlBodyProps {
   width?: string | number;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   className?: string;
@@ -15,7 +15,7 @@ export interface IMjmlTextProps {
   mjmlClass?: string;
 }
 
-export const MjmlBody: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
+export const MjmlBody: React.FC<IMjmlBodyProps> = ({ children, ...props }) => {
   return React.createElement(
     "mj-body",
     convertPropsToMjmlAttributes(props),

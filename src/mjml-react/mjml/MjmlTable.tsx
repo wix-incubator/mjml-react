@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlTableProps {
   align?: string;
   border?: React.CSSProperties["border"];
   cellpadding?: string;
@@ -31,7 +31,10 @@ export interface IMjmlTextProps {
   mjmlClass?: string;
 }
 
-export const MjmlTable: React.FC<IMjmlTextProps> = ({ children, ...props }) => {
+export const MjmlTable: React.FC<IMjmlTableProps> = ({
+  children,
+  ...props
+}) => {
   return React.createElement(
     "mj-table",
     convertPropsToMjmlAttributes(props),

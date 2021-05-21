@@ -7,13 +7,13 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlBreakpointProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
 }
 
-export const MjmlBreakpoint: React.FC<IMjmlTextProps> = ({
+export const MjmlBreakpoint: React.FC<IMjmlBreakpointProps> = ({
   children,
   ...props
 }) => {

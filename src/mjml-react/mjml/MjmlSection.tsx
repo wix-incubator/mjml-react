@@ -7,7 +7,7 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-export interface IMjmlTextProps {
+export interface IMjmlSectionProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   backgroundUrl?: string;
   backgroundRepeat?: React.CSSProperties["backgroundRepeat"];
@@ -35,7 +35,7 @@ export interface IMjmlTextProps {
   mjmlClass?: string;
 }
 
-export const MjmlSection: React.FC<IMjmlTextProps> = ({
+export const MjmlSection: React.FC<IMjmlSectionProps> = ({
   children,
   ...props
 }) => {
