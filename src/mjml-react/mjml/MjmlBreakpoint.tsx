@@ -8,18 +8,12 @@ import React from "react";
 import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlBreakpointProps {
-  className?: string;
-  cssClass?: string;
-  mjmlClass?: string;
+  width?: string;
 }
 
-export const MjmlBreakpoint: React.FC<IMjmlBreakpointProps> = ({
-  children,
-  ...props
-}) => {
+export function MjmlBreakpoint(props: IMjmlBreakpointProps): JSX.Element {
   return React.createElement(
     "mj-breakpoint",
-    convertPropsToMjmlAttributes(props),
-    children
+    convertPropsToMjmlAttributes(props)
   );
-};
+}

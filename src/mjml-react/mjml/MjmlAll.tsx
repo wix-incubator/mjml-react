@@ -14,10 +14,6 @@ export interface IMjmlAllProps {
   [prop: string]: string | undefined;
 }
 
-export const MjmlAll: React.FC<IMjmlAllProps> = ({ children, ...props }) => {
-  return React.createElement(
-    "mj-all",
-    convertPropsToMjmlAttributes(props),
-    children
-  );
-};
+export function MjmlAll(props: IMjmlAllProps): JSX.Element {
+  return React.createElement("mj-all", convertPropsToMjmlAttributes(props));
+}

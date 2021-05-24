@@ -11,12 +11,13 @@ export interface IMjmlRawProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlRaw: React.FC<IMjmlRawProps> = ({ children, ...props }) => {
+export function MjmlRaw({ children, ...props }: IMjmlRawProps): JSX.Element {
   return React.createElement(
     "mj-raw",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

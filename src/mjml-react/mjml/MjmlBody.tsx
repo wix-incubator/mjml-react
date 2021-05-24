@@ -13,12 +13,13 @@ export interface IMjmlBodyProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlBody: React.FC<IMjmlBodyProps> = ({ children, ...props }) => {
+export function MjmlBody({ children, ...props }: IMjmlBodyProps): JSX.Element {
   return React.createElement(
     "mj-body",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

@@ -25,13 +25,6 @@ export interface IMjmlSpacerProps {
   mjmlClass?: string;
 }
 
-export const MjmlSpacer: React.FC<IMjmlSpacerProps> = ({
-  children,
-  ...props
-}) => {
-  return React.createElement(
-    "mj-spacer",
-    convertPropsToMjmlAttributes(props),
-    children
-  );
-};
+export function MjmlSpacer(props: IMjmlSpacerProps): JSX.Element {
+  return React.createElement("mj-spacer", convertPropsToMjmlAttributes(props));
+}

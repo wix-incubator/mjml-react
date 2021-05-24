@@ -41,13 +41,6 @@ export interface IMjmlImageProps {
   mjmlClass?: string;
 }
 
-export const MjmlImage: React.FC<IMjmlImageProps> = ({
-  children,
-  ...props
-}) => {
-  return React.createElement(
-    "mj-image",
-    convertPropsToMjmlAttributes(props),
-    children
-  );
-};
+export function MjmlImage(props: IMjmlImageProps): JSX.Element {
+  return React.createElement("mj-image", convertPropsToMjmlAttributes(props));
+}

@@ -33,15 +33,16 @@ export interface IMjmlWrapperProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlWrapper: React.FC<IMjmlWrapperProps> = ({
+export function MjmlWrapper({
   children,
   ...props
-}) => {
+}: IMjmlWrapperProps): JSX.Element {
   return React.createElement(
     "mj-wrapper",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

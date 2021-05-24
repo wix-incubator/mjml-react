@@ -33,15 +33,16 @@ export interface IMjmlSectionProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlSection: React.FC<IMjmlSectionProps> = ({
+export function MjmlSection({
   children,
   ...props
-}) => {
+}: IMjmlSectionProps): JSX.Element {
   return React.createElement(
     "mj-section",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

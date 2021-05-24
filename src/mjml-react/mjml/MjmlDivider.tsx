@@ -23,13 +23,6 @@ export interface IMjmlDividerProps {
   mjmlClass?: string;
 }
 
-export const MjmlDivider: React.FC<IMjmlDividerProps> = ({
-  children,
-  ...props
-}) => {
-  return React.createElement(
-    "mj-divider",
-    convertPropsToMjmlAttributes(props),
-    children
-  );
-};
+export function MjmlDivider(props: IMjmlDividerProps): JSX.Element {
+  return React.createElement("mj-divider", convertPropsToMjmlAttributes(props));
+}

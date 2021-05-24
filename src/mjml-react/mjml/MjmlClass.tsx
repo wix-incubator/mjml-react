@@ -12,13 +12,6 @@ export interface IMjmlClassProps {
   [prop: string]: string | undefined;
 }
 
-export const MjmlClass: React.FC<IMjmlClassProps> = ({
-  children,
-  ...props
-}) => {
-  return React.createElement(
-    "mj-class",
-    convertPropsToMjmlAttributes(props),
-    children
-  );
-};
+export function MjmlClass(props: IMjmlClassProps): JSX.Element {
+  return React.createElement("mj-class", convertPropsToMjmlAttributes(props));
+}

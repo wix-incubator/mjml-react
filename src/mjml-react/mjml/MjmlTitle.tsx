@@ -11,15 +11,16 @@ export interface IMjmlTitleProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlTitle: React.FC<IMjmlTitleProps> = ({
+export function MjmlTitle({
   children,
   ...props
-}) => {
+}: IMjmlTitleProps): JSX.Element {
   return React.createElement(
     "mj-title",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

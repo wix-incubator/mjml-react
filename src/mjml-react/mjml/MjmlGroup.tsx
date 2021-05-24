@@ -15,15 +15,16 @@ export interface IMjmlGroupProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlGroup: React.FC<IMjmlGroupProps> = ({
+export function MjmlGroup({
   children,
   ...props
-}) => {
+}: IMjmlGroupProps): JSX.Element {
   return React.createElement(
     "mj-group",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

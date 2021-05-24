@@ -23,6 +23,7 @@ const GENERATED_HEADER_TSX = `
 const MJML_ELEMENTS_TO_CONVERT = [
   "mjml",
   "mj-all",
+  "mj-include",
   "mj-attributes",
   "mj-body",
   "mj-breakpoint",
@@ -65,7 +66,25 @@ const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
 
 const HAS_CSS_CLASS = new Set(
   MJML_ELEMENTS_TO_CONVERT.filter(
-    (element) => !["mjml", "mj-style", "mj-class"].includes(element)
+    (element) =>
+      !["mjml", "mj-style", "mj-class", "mj-breakpoint", "mj-include"].includes(
+        element
+      )
+  )
+);
+
+const HAS_CHILDREN = new Set(
+  MJML_ELEMENTS_TO_CONVERT.filter(
+    (element) =>
+      ![
+        "mj-all",
+        "mj-include",
+        "mj-breakpoint",
+        "mj-class",
+        "mj-divider",
+        "mj-image",
+        "mj-spacer",
+      ].includes(element)
   )
 );
 
@@ -124,12 +143,19 @@ function buildTypesForComponent(mjmlElementName: string): string {
   } else if (mjmlElementName === "mj-table") {
     typesFromMjmlAttributes["cellspacing"] = "string";
     typesFromMjmlAttributes["cellpadding"] = "string";
+  } else if (mjmlElementName === "mj-include") {
+    typesFromMjmlAttributes["path"] = "string";
+  } else if (mjmlElementName === "mj-breakpoint") {
+    typesFromMjmlAttributes["width"] = "string";
   }
 
   if (HAS_CSS_CLASS.has(mjmlElementName)) {
     typesFromMjmlAttributes["className"] = "string";
     typesFromMjmlAttributes["cssClass"] = "string";
     typesFromMjmlAttributes["mjmlClass"] = "string";
+  }
+  if (HAS_CHILDREN.has(mjmlElementName)) {
+    typesFromMjmlAttributes["children"] = "React.ReactNode";
   }
 
   const typeStrings = Object.entries(typesFromMjmlAttributes).map(
@@ -153,12 +179,9 @@ function buildFileContents({
   types: string;
   reactName: string;
 }) {
-  const shouldDangerouslySetHtml = mjmlElementName === "mj-style";
-
-  const passPropsToReactCreate = shouldDangerouslySetHtml
-    ? `{ ...convertPropsToMjmlAttributes(props), dangerouslySetInnerHTML: { __html: children } }`
-    : `convertPropsToMjmlAttributes(props), children`;
-
+  const { props, createElementProps } = buildReactCreateElementProps(
+    mjmlElementName
+  );
   return `
 ${GENERATED_HEADER_TSX}
 
@@ -166,15 +189,39 @@ import React from "react";
 
 import { convertPropsToMjmlAttributes } from "../utils";
 
-
 export interface I${reactName}Props {
   ${types}
 }
 
-export const ${reactName}: React.FC<I${reactName}Props> = ({ children, ...props }) => {
-  return React.createElement("${mjmlElementName}", ${passPropsToReactCreate});
+export function ${reactName}(${props}: I${reactName}Props): JSX.Element {
+  return React.createElement("${mjmlElementName}", ${createElementProps});
 };
 `;
+}
+
+function buildReactCreateElementProps(
+  mjmlElementName: string
+): { props: string; createElementProps: string } {
+  const withChildren = "{children, ...props}";
+  const withoutChildren = "props";
+
+  if (mjmlElementName === "mj-style") {
+    return {
+      props: withChildren,
+      createElementProps:
+        "{ ...convertPropsToMjmlAttributes(props), dangerouslySetInnerHTML: { __html: children } }",
+    };
+  }
+  if (HAS_CHILDREN.has(mjmlElementName)) {
+    return {
+      props: withChildren,
+      createElementProps: "convertPropsToMjmlAttributes(props), children",
+    };
+  }
+  return {
+    props: withoutChildren,
+    createElementProps: "convertPropsToMjmlAttributes(props)",
+  };
 }
 
 // reset directory

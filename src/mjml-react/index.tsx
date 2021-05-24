@@ -7,6 +7,7 @@
 
 export { Mjml, IMjmlProps } from "./mjml/Mjml";
 export { MjmlAll, IMjmlAllProps } from "./mjml/MjmlAll";
+export { MjmlInclude, IMjmlIncludeProps } from "./mjml/MjmlInclude";
 export { MjmlAttributes, IMjmlAttributesProps } from "./mjml/MjmlAttributes";
 export { MjmlBody, IMjmlBodyProps } from "./mjml/MjmlBody";
 export { MjmlBreakpoint, IMjmlBreakpointProps } from "./mjml/MjmlBreakpoint";

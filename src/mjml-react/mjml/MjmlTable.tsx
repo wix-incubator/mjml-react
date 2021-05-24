@@ -29,15 +29,16 @@ export interface IMjmlTableProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlTable: React.FC<IMjmlTableProps> = ({
+export function MjmlTable({
   children,
   ...props
-}) => {
+}: IMjmlTableProps): JSX.Element {
   return React.createElement(
     "mj-table",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

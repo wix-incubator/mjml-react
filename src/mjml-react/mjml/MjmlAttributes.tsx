@@ -11,15 +11,16 @@ export interface IMjmlAttributesProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlAttributes: React.FC<IMjmlAttributesProps> = ({
+export function MjmlAttributes({
   children,
   ...props
-}) => {
+}: IMjmlAttributesProps): JSX.Element {
   return React.createElement(
     "mj-attributes",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

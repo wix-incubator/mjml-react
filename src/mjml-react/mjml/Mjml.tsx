@@ -9,12 +9,13 @@ import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlProps {
   owa?: string;
+  children?: React.ReactNode;
 }
 
-export const Mjml: React.FC<IMjmlProps> = ({ children, ...props }) => {
+export function Mjml({ children, ...props }: IMjmlProps): JSX.Element {
   return React.createElement(
     "mjml",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

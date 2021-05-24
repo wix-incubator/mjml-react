@@ -43,15 +43,16 @@ export interface IMjmlButtonProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlButton: React.FC<IMjmlButtonProps> = ({
+export function MjmlButton({
   children,
   ...props
-}) => {
+}: IMjmlButtonProps): JSX.Element {
   return React.createElement(
     "mj-button",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}

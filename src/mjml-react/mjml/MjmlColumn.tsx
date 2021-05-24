@@ -33,15 +33,16 @@ export interface IMjmlColumnProps {
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
+  children?: React.ReactNode;
 }
 
-export const MjmlColumn: React.FC<IMjmlColumnProps> = ({
+export function MjmlColumn({
   children,
   ...props
-}) => {
+}: IMjmlColumnProps): JSX.Element {
   return React.createElement(
     "mj-column",
     convertPropsToMjmlAttributes(props),
     children
   );
-};
+}
