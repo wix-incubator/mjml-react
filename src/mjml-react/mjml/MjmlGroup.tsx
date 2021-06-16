@@ -9,7 +9,7 @@ import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlGroupProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
-  direction?: string;
+  direction?: "ltr" | "rtl";
   verticalAlign?: React.CSSProperties["verticalAlign"];
   width?: string | number;
   className?: string;

@@ -8,7 +8,7 @@ import React from "react";
 import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlButtonProps {
-  align?: string;
+  align?: "left" | "center" | "right";
   backgroundColor?: React.CSSProperties["backgroundColor"];
   borderBottom?: string;
   borderLeft?: string;

@@ -8,7 +8,7 @@ import React from "react";
 import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlTextProps {
-  align?: string;
+  align?: "left" | "right" | "center" | "justify";
   backgroundColor?: React.CSSProperties["backgroundColor"];
   color?: React.CSSProperties["color"];
   containerBackgroundColor?: string;

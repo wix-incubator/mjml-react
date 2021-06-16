@@ -16,7 +16,7 @@ export interface IMjmlImageProps {
   sizes?: string;
   title?: string;
   rel?: string;
-  align?: string;
+  align?: "left" | "center" | "right";
   border?: React.CSSProperties["border"];
   borderBottom?: string;
   borderLeft?: string;

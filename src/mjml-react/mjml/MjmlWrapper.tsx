@@ -21,7 +21,7 @@ export interface IMjmlWrapperProps {
   borderRadius?: React.CSSProperties["borderRadius"];
   borderRight?: string;
   borderTop?: string;
-  direction?: string;
+  direction?: "ltr" | "rtl";
   fullWidth?: boolean;
   padding?: string | number;
   paddingTop?: string | number;

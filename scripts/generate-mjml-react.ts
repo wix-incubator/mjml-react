@@ -43,6 +43,7 @@ const MJML_ELEMENTS_TO_CONVERT = [
   "mj-text",
   "mj-title",
   "mj-wrapper",
+  "mj-hero",
 ];
 
 const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
@@ -109,6 +110,17 @@ function getPropTypeFromMjmlAttributeType(
   }
   if (mjmlAttributeType === "integer") {
     return "number";
+  }
+  // e.g. "vertical-align": "enum(top,bottom,middle)"
+  if (mjmlAttributeType.startsWith("enum")) {
+    return (
+      mjmlAttributeType
+        .match(/\(.*\)/)?.[0]
+        .slice(1, -1)
+        .split(",")
+        .map((str) => "'" + str + "'")
+        .join(" | ") ?? "unknown"
+    );
   }
   return "string";
 }

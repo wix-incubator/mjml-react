@@ -27,3 +27,4 @@ export { MjmlTable, IMjmlTableProps } from "./mjml/MjmlTable";
 export { MjmlText, IMjmlTextProps } from "./mjml/MjmlText";
 export { MjmlTitle, IMjmlTitleProps } from "./mjml/MjmlTitle";
 export { MjmlWrapper, IMjmlWrapperProps } from "./mjml/MjmlWrapper";
+export { MjmlHero, IMjmlHeroProps } from "./mjml/MjmlHero";

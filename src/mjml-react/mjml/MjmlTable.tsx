@@ -8,7 +8,7 @@ import React from "react";
 import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlTableProps {
-  align?: string;
+  align?: "left" | "right" | "center";
   border?: React.CSSProperties["border"];
   cellpadding?: string;
   cellspacing?: string;
@@ -23,7 +23,7 @@ export interface IMjmlTableProps {
   paddingRight?: string | number;
   paddingTop?: string | number;
   padding?: string | number;
-  tableLayout?: string;
+  tableLayout?: "auto" | "fixed" | "initial" | "inherit";
   verticalAlign?: React.CSSProperties["verticalAlign"];
   width?: string | number;
   className?: string;
