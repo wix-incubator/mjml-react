@@ -1,11 +1,14 @@
 import React from "react";
+import { HrefProps, PaddingProps } from "./types";
 
 import { handleMjmlProps } from "./utils";
 
 export const MjmlSocialElement = ({
   children,
   ...rest
-}: React.PropsWithChildren<MjmlSocialElementProps>) => {
+}: React.PropsWithChildren<
+  MjmlSocialElementProps & HrefProps & PaddingProps
+>) => {
   return React.createElement(
     "mj-social-element",
     handleMjmlProps(rest),
