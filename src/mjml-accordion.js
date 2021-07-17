@@ -1,10 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { handleMjmlProps } from "./utils";
 
-export class MjmlAccordion extends Component {
-  render() {
-    const { children, ...rest } = this.props;
-    return React.createElement("mj-accordion", handleMjmlProps(rest), children);
-  }
-}
+export const MjmlAccordion = ({ children, ...rest }) => {
+  return React.createElement("mj-accordion", handleMjmlProps(rest), children);
+};

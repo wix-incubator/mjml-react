@@ -1,10 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { handleMjmlProps } from "./utils";
 
-export class MjmlHead extends Component {
-  render() {
-    const { children, ...rest } = this.props;
-    return React.createElement("mj-head", handleMjmlProps(rest), children);
-  }
-}
+export const MjmlHead = ({ children, ...rest }) => {
+  return React.createElement("mj-head", handleMjmlProps(rest), children);
+};

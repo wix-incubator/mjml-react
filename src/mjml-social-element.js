@@ -1,14 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { handleMjmlProps } from "./utils";
 
-export class MjmlSocialElement extends Component {
-  render() {
-    const { children, ...rest } = this.props;
-    return React.createElement(
-      "mj-social-element",
-      handleMjmlProps(rest),
-      children
-    );
-  }
-}
+export const MjmlSocialElement = ({ children, ...rest }) => {
+  return React.createElement(
+    "mj-social-element",
+    handleMjmlProps(rest),
+    children
+  );
+};
