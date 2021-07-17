@@ -9,7 +9,7 @@ esbuild
     bundle: true,
     sourcemap: true,
     // minify: true,
-    format: "esm",
+    // format: "esm",
     target: ["es6"],
     external: Object.keys(dependencies).concat(Object.keys(peerDependencies)),
     logLevel: 'verbose',
