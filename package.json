@@ -1,13 +1,8 @@
 {
   "name": "@luma-team/mjml-react",
-  "version": "4.0.7",
+  "version": "0.0.1",
   "license": "MIT",
-  "author": {
-    "name": "Mantas Miliukas",
-    "email": "mantasm@wix.com"
-  },
-  "homepage": "https://github.com/wix-incubator/mjml-react",
-  "bugs": "https://github.com/wix-incubator/mjml-react/issues",
+  "homepage": "https://github.com/luma-team/mjml-react",
   "main": "dist/index.js",
   "files": [
     "dist"

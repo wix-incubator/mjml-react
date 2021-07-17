@@ -12,6 +12,6 @@ esbuild
     format: "cjs",
     target: ["es6"],
     external: Object.keys(peerDependencies),
-    logLevel: 'verbose',
+    logLevel: 'info',
   })
   .catch(() => process.exit(1));
