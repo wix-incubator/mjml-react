@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOMServer from "react-dom/server";
 
 export { Mjml } from "./mjml";
@@ -34,6 +35,6 @@ export { MjmlText } from "./mjml-text";
 export { MjmlTitle } from "./mjml-title";
 export { MjmlWrapper } from "./mjml-wrapper";
 
-export function renderToMjml(email) {
+export function renderToMjml(email: React.ReactElement) {
   return ReactDOMServer.renderToStaticMarkup(email);
 }

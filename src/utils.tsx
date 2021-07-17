@@ -1,6 +1,6 @@
-const Color = require("color");
+import Color from "color";
 
-const handlers = {
+const handlers: { [key: string]: (name: string, value: any) => any } = {
   inline: boolToString,
   "full-width": boolToString,
   width: numberToPx,
@@ -25,7 +25,7 @@ const handlers = {
   "inner-background-color": handleColor,
 };
 
-export function handleMjmlProps(props) {
+export function handleMjmlProps(props: any) {
   return Object.keys(props).reduce((acc, curr) => {
     const mjmlProp = kebabCase(curr);
     return {
@@ -35,7 +35,7 @@ export function handleMjmlProps(props) {
   }, {});
 }
 
-function handleMjmlProp(name, value) {
+function handleMjmlProp(name: string, value?: string | null) {
   if (typeof value === "undefined" || value === null) {
     return undefined;
   }
@@ -43,26 +43,27 @@ function handleMjmlProp(name, value) {
   return handler(name, value);
 }
 
-function kebabCase(string) {
-  return string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+function kebabCase(str: string) {
+  return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
-function boolToString(name, value) {
+function boolToString(name: string, value: boolean) {
   return value ? name : undefined;
 }
 
-function numberToPx(name, value) {
+function numberToPx(name: string, value: string | number) {
   if (typeof value === "number") {
     return `${value}px`;
   }
   return value;
 }
 
-function handleColor(name, value) {
+function handleColor(name: string, value: string) {
   const color = parseColor(value);
   if (color) {
     if (value[0] === "#" && value.length === 9) {
       const alpha = color.alpha().toFixed(2);
+      // @ts-expect-error
       return color.rgb().alpha(alpha).toString();
     }
     return value;
@@ -70,7 +71,7 @@ function handleColor(name, value) {
   return "";
 }
 
-function parseColor(value) {
+function parseColor(value: string) {
   try {
     return new Color(value);
   } catch (e) {}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "sourceMap": false,
+    "strict": true,
+    "target": "es6"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules/**/*"]
+}
