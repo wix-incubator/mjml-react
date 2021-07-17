@@ -1,12 +1,8 @@
 # mjml-react
 
-(This is forked from Wix's mjml-react.)
+(This is forked from Wix's mjml-react — more info why I forked this can be [found in this comment](https://github.com/wix-incubator/mjml-react/issues/52#issuecomment-881830074).)
 
-There is an awesome library [mjml](https://mjml.io/) with github repo here [https://github.com/mjmlio/mjml](https://github.com/mjmlio/mjml).
-
-`MJML` is a markup language created by [Mailjet](https://www.mailjet.com/).
-
-So in order to create emails on the fly we created a library with `React` components.
+`MJML` is a markup language created by [Mailjet](https://www.mailjet.com/). But since we are using React in the rest of our app, we want to use React to create the MJML markup for emails.
 
 Note: this does not bundle `mjml` so you can use whatever version of `mjml` you'd like to convert the outputted mjml-string to HTML.
 
@@ -18,7 +14,7 @@ Install the required dependencies first:
 npm install react react-dom mjml mjml-react
 ```
 
-And afterwards write a code like a pro:
+Then you can write:
 
 ```js
 import {
