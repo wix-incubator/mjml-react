@@ -1,9 +1,4 @@
 import ReactDOMServer from 'react-dom/server';
-import mjml2html from 'mjml';
-
-import { renderToJSON } from './utils/render-to-json';
-
-export { render, renderToMjml, renderToJSON };
 
 export { Mjml } from './mjml';
 export { MjmlAccordion } from './mjml-accordion';
@@ -39,16 +34,7 @@ export { MjmlText } from './mjml-text';
 export { MjmlTitle } from './mjml-title';
 export { MjmlWrapper } from './mjml-wrapper';
 
-function render(email, options = {}) {
-  const defaults = {
-    keepComments: false,
-    beautify: false,
-    minify: true,
-    validationLevel: 'strict',
-  };
-  return mjml2html(renderToMjml(email), { ...defaults, ...options });
-}
 
-function renderToMjml(email) {
+export function renderToMjml(email) {
   return ReactDOMServer.renderToStaticMarkup(email);
 }

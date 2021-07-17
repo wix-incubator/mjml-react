@@ -1,6 +1,6 @@
 {
-  "name": "mjml-react",
-  "version": "2.0.0",
+  "name": "@luma-team/mjml-react",
+  "version": "4.0.0",
   "license": "MIT",
   "author": {
     "name": "Mantas Miliukas",
@@ -8,10 +8,8 @@
   },
   "homepage": "https://github.com/wix-incubator/mjml-react",
   "bugs": "https://github.com/wix-incubator/mjml-react/issues",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "files": [
-    "extensions.js",
-    "utils.js",
     "dist"
   ],
   "publishConfig": {
@@ -19,59 +17,19 @@
     "versionBumpStrategy": "patch"
   },
   "scripts": {
-    "start": "yoshi start",
-    "pretest": "yoshi build",
-    "test": "yoshi test --mocha",
-    "posttest": "yoshi lint"
+    "build": "node build.js"
   },
   "devDependencies": {
-    "babel-plugin-transform-runtime": "~6.23.0",
-    "chai": "~4.1.0",
-    "mjml": "^4.6.3",
-    "mjml2json": "^1.0.1",
-    "puppeteer": "^1.4.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "@wix/yoshi": "^4.186.0"
-  },
-  "peerDependencies": {
-    "mjml": "^4.1.2",
+    "prettier": "^2.3.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
-  "yoshi": {
-    "hmr": "auto"
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "module": "dist/es/src/index.js",
   "dependencies": {
-    "@babel/runtime": "^7.14.6",
-    "babel-runtime": "~6.25.0",
-    "color": "^3.1.3",
-    "react-reconciler": "^0.26.1"
-  },
-  "babel": {
-    "plugins": [
-      "transform-runtime"
-    ],
-    "presets": [
-      "wix"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "yoshi",
-    "rules": {
-      "quote-props": 0,
-      "indent": [
-        "error",
-        2,
-        {
-          "SwitchCase": 1,
-          "ignoredNodes": [
-            "JSXElement",
-            "JSXElement *"
-          ]
-        }
-      ]
-    }
+    "color": "^3.1.3"
   }
 }

@@ -9,6 +9,4 @@ typings
 .history
 .idea
 *.iml
-test/e2e/screenshots
-.yo-rc.json
 .DS_Store
