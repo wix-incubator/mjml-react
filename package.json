@@ -12,7 +12,8 @@
     "versionBumpStrategy": "patch"
   },
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "pub": "node build.js && npm version patch && npm publish"
   },
   "devDependencies": {
     "@types/color": "^3.0.2",
