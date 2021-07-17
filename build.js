@@ -1,5 +1,5 @@
 const esbuild = require("esbuild");
-const { dependencies, peerDependencies } = require("./package.json");
+const { peerDependencies } = require("./package.json");
 
 esbuild
   .build({
@@ -9,9 +9,9 @@ esbuild
     bundle: true,
     sourcemap: true,
     // minify: true,
-    // format: "esm",
+    format: "cjs",
     target: ["es6"],
-    external: Object.keys(dependencies).concat(Object.keys(peerDependencies)),
+    external: Object.keys(peerDependencies),
     logLevel: 'verbose',
   })
   .catch(() => process.exit(1));
