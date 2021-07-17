@@ -3,15 +3,15 @@ const { peerDependencies } = require("./package.json");
 
 esbuild
   .build({
-    entryPoints: ["src/index.js"],
+    entryPoints: ["src/index.tsx"],
     outdir: "dist",
 
     bundle: true,
     sourcemap: true,
-    // minify: true,
+    loader: { ".tsx": "tsx" },
     format: "cjs",
     target: ["es6"],
     external: Object.keys(peerDependencies),
-    logLevel: 'info',
+    logLevel: "info",
   })
   .catch(() => process.exit(1));

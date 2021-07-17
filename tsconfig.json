@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "emitDecoratorMetadata": true,
+    "emitDecoratorMetadata": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "jsx": "react",
     "module": "commonjs",
     "moduleResolution": "node",
-    "noEmit": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
