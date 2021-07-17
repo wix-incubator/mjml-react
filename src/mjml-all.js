@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { handleMjmlProps } from './utils';
+import { handleMjmlProps } from "./utils";
 
 export class MjmlAll extends Component {
   render() {
-    return React.createElement('mj-all', handleMjmlProps(this.props), null);
+    return React.createElement("mj-all", handleMjmlProps(this.props), null);
   }
 }
