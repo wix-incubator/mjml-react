@@ -5,7 +5,7 @@ import { handleMjmlProps } from "./utils";
 export const MjmlCarouselImage = ({ children, ...rest }) => {
   return React.createElement(
     "mj-carousel-image",
-    handleMjmlProps(this.props),
+    handleMjmlProps(rest),
     null
   );
 };

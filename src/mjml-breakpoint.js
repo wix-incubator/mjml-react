@@ -5,7 +5,7 @@ import { handleMjmlProps } from "./utils";
 export const MjmlBreakpoint = ({ children, ...rest }) => {
   return React.createElement(
     "mj-breakpoint",
-    handleMjmlProps(this.props),
+    handleMjmlProps(rest),
     null
   );
 };
