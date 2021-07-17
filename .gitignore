@@ -10,3 +10,6 @@ typings
 .idea
 *.iml
 .DS_Store
+
+src/*.js
+src/*.d.ts
