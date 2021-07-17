@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "emitDecoratorMetadata": false,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "jsx": "react",
@@ -10,8 +10,9 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
+    "outDir": "./dist",
     "rootDir": "src",
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "target": "es6"
   },
