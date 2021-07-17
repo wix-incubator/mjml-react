@@ -29,7 +29,6 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
-  "module": "dist/es/src/index.js",
   "dependencies": {
     "color": "^3.1.3"
   }
