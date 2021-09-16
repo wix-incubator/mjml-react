@@ -21,7 +21,7 @@ export interface IMjmlButtonProps {
   fontFamily?: string;
   fontSize?: string | number;
   fontStyle?: string;
-  fontWeight?: React.CSSProperties["fontWeight"];
+  fontWeight?: string;
   height?: string | number;
   href?: string;
   name?: string;

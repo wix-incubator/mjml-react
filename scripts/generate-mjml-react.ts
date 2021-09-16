@@ -50,7 +50,6 @@ const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
   "color",
   "textAlign",
   "verticalAlign",
-  "fontWeight",
   "textDecoration",
   "textTransform",
 

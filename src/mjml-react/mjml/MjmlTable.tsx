@@ -16,7 +16,7 @@ export interface IMjmlTableProps {
   color?: React.CSSProperties["color"];
   fontFamily?: string;
   fontSize?: string | number;
-  fontWeight?: React.CSSProperties["fontWeight"];
+  fontWeight?: string;
   lineHeight?: string | number;
   paddingBottom?: string | number;
   paddingLeft?: string | number;

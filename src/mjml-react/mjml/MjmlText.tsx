@@ -15,7 +15,7 @@ export interface IMjmlTextProps {
   fontFamily?: string;
   fontSize?: string | number;
   fontStyle?: string;
-  fontWeight?: React.CSSProperties["fontWeight"];
+  fontWeight?: string;
   height?: string | number;
   letterSpacing?: string | number;
   lineHeight?: string | number;
