@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { node } from 'prop-types';
 
-import { handleMjmlProps } from './utils';
+import { createElement } from './utils/index';
 
 export class MjmlNavbarLink extends Component {
   static propTypes = {
@@ -10,10 +10,6 @@ export class MjmlNavbarLink extends Component {
 
   render() {
     const { children, ...rest } = this.props;
-    return React.createElement(
-      'mj-navbar-link',
-      handleMjmlProps(rest),
-      children,
-    );
+    return createElement('mj-navbar-link', rest, children);
   }
 }

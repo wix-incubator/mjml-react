@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { node } from 'prop-types';
 
-import { handleMjmlProps } from './utils';
+import { createElement } from './utils/index';
 
 export class MjmlAccordionElement extends Component {
   static propTypes = {
@@ -10,10 +10,6 @@ export class MjmlAccordionElement extends Component {
 
   render() {
     const { children, ...rest } = this.props;
-    return React.createElement(
-      'mj-accordion-element',
-      handleMjmlProps(rest),
-      children,
-    );
+    return createElement('mj-accordion-element', rest, children);
   }
 }

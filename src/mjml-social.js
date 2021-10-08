@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { node } from 'prop-types';
 
-import { handleMjmlProps } from './utils';
+import { createElement } from './utils/index';
 
 export class MjmlSocial extends Component {
   static propTypes = {
@@ -10,6 +10,6 @@ export class MjmlSocial extends Component {
 
   render() {
     const { children, ...rest } = this.props;
-    return React.createElement('mj-social', handleMjmlProps(rest), children);
+    return createElement('mj-social', rest, children);
   }
 }

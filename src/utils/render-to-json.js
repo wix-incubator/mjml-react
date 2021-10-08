@@ -95,7 +95,7 @@ function toReactElement(element) {
   return React.createElement(
     element.type,
     element.props,
-    element.children.map((child) =>
+    ...element.children.map((child) =>
       typeof child === 'string' ? child : toReactElement(child),
     ),
   );
