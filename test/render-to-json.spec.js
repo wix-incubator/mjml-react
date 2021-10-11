@@ -4,6 +4,7 @@ import mjml2json from 'mjml2json';
 
 import {
   renderToJSON,
+  renderToJSON2,
   Mjml,
   MjmlStyle,
   MjmlBody,
@@ -107,12 +108,20 @@ const useCases = [
   >
     {'  '}Hello World ! <span> Hello World ! </span>{' '}
   </MjmlButton>,
+
+  <MjmlRaw>
+    <div>
+      <div>Nested Element</div>
+    </div>
+  </MjmlRaw>,
 ];
 
 useCases.forEach((tree, i) => {
   it(`should render usecase ${i}`, () => {
     const mjml = renderToMjml(tree);
-    expect(mjml2json(mjml)).to.eql(renderToJSON(tree));
+    const base = mjml2json(mjml);
+    expect(base).to.eql(renderToJSON(tree));
+    expect(base).to.eql(renderToJSON2(tree));
   });
 });
 
