@@ -6,6 +6,7 @@ import { noop, escapeTextForBrowser, trimContent } from './render-utils';
 
 const reconciler = ReactReconciler({
   supportsMutation: true,
+  isPrimaryRenderer: true,
   createTextInstance(
     text /* rootContainerInstance, hostContext, internalInstanceHandle,*/,
   ) {
