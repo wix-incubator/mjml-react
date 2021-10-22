@@ -147,6 +147,7 @@ function buildTypesForComponent(mjmlElementName: string): string {
 
   if (mjmlElementName === "mjml") {
     typesFromMjmlAttributes["owa"] = "string";
+    typesFromMjmlAttributes["lang"] = "string";
   } else if (mjmlElementName === "mj-style") {
     typesFromMjmlAttributes["inline"] = "boolean";
   } else if (mjmlElementName === "mj-class") {

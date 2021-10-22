@@ -9,6 +9,7 @@ import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlProps {
   owa?: string;
+  lang?: string;
   children?: React.ReactNode;
 }
 
