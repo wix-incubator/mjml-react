@@ -5,7 +5,7 @@ import { handleMjmlProps } from './utils';
 
 export class MjmlPreview extends Component {
   static propTypes = {
-    children: string.isRequired,
+    children: string,
   };
 
   render() {

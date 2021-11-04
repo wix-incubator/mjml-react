@@ -5,7 +5,7 @@ import { handleMjmlProps } from './utils';
 
 export class MjmlWrapper extends Component {
   static propTypes = {
-    children: node.isRequired,
+    children: node,
   };
 
   render() {
