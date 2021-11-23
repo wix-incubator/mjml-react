@@ -265,7 +265,8 @@ ${GENERATED_HEADER_TSX}
 ${MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
   const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
   const reactName = upperFirst(camelCase(mjmlPackageName));
-  return `export { ${reactName}, I${reactName}Props } from './mjml/${reactName}';`;
+  return `export { ${reactName} } from './mjml/${reactName}';
+export type { I${reactName}Props } from './mjml/${reactName}';`;
 }).join("\n")}
 `
 );
