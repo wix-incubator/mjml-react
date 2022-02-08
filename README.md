@@ -11,14 +11,14 @@ Note: this does not bundle `mjml` so you can use whatever version of `mjml` you'
 Install the required dependencies first:
 
 ```bash
-npm install react react-dom mjml mjml-react
+npm install react react-dom mjml @luma-team/mjml-react
 ```
 
 Then you can write:
 
 ```js
 import {
-  render,
+  renderToMjml,
   Mjml,
   MjmlHead,
   MjmlTitle,
@@ -28,7 +28,7 @@ import {
   MjmlColumn,
   MjmlButton,
   MjmlImage,
-} from "mjml-react";
+} from "@luma-team/mjml-react";
 import mjml2html from "mjml";
 
 const mjmlString = renderToMjml(
