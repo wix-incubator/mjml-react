@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-plugin-transform-runtime": "~6.23.0",
     "chai": "~4.1.0",
-    "mjml": "^4.6.3",
+    "mjml": "^4.7.0",
     "mjml2json": "^1.0.1",
     "puppeteer": "^1.4.0",
     "react": "^17.0.0",
@@ -35,7 +35,7 @@
     "@wix/yoshi": "^4.186.0"
   },
   "peerDependencies": {
-    "mjml": "^4.1.2",
+    "mjml": "^4.7.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
