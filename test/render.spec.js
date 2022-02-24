@@ -1,7 +1,20 @@
 import React from 'react';
 import { expect } from 'chai';
 
-import { render, Mjml, MjmlHead, MjmlTitle, MjmlBody, MjmlRaw } from '../src';
+import {
+  render,
+  Mjml,
+  MjmlHead,
+  MjmlTitle,
+  MjmlBody,
+  MjmlRaw,
+  MjmlSection,
+  MjmlHtmlAttribute,
+  MjmlHtmlAttributes,
+  MjmlSelector,
+  MjmlColumn,
+  MjmlText,
+} from '../src';
 
 describe('render()', () => {
   it('should render the HTML', () => {
@@ -52,6 +65,34 @@ describe('render()', () => {
     expect(errors.length).to.equal(1);
     expect(errors[0].message).to.contain(
       "Element div doesn't exist or is not registered",
+    );
+  });
+
+  it('should render html attributes with custom selector', () => {
+    const email = (
+      <Mjml>
+        <MjmlHead>
+          <MjmlHtmlAttributes>
+            <MjmlSelector path=".custom div">
+              <MjmlHtmlAttribute name="data-id">42</MjmlHtmlAttribute>
+            </MjmlSelector>
+          </MjmlHtmlAttributes>
+        </MjmlHead>
+        <MjmlBody>
+          <MjmlSection>
+            <MjmlColumn>
+              <MjmlText css-class="custom">Hello World!</MjmlText>
+            </MjmlColumn>
+          </MjmlSection>
+        </MjmlBody>
+      </Mjml>
+    );
+    const { html } = render(email, {
+      validationLevel: 'soft',
+      minify: false,
+    });
+    expect(html).contains(
+      '<div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;" data-id="42">Hello World!</div>',
     );
   });
 });
