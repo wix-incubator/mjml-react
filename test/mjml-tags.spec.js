@@ -262,7 +262,7 @@ describe('mjml tags', () => {
       );
     });
 
-    it('should render empty color attribute with passed values', () => {
+    it('should render original value for invalid color values', () => {
       expect(
         renderToMjml(
           <tags.MjmlColumn
@@ -277,7 +277,7 @@ describe('mjml tags', () => {
           </tags.MjmlColumn>,
         ),
       ).to.equal(
-        '<mj-column inner-background-color="" background-color=""><mj-divider border-color="" container-background-color=""></mj-divider><mj-text color="">Content</mj-text></mj-column>',
+        '<mj-column inner-background-color="#fafafaf" background-color="brown sugar"><mj-divider border-color="#g6labc" container-background-color="rgb(255,2)"></mj-divider><mj-text color="rgba(255,0)">Content</mj-text></mj-column>',
       );
     });
   });
