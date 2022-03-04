@@ -67,7 +67,7 @@ function handleColor(name, value) {
     }
     return value;
   }
-  return '';
+  return value;
 }
 
 function parseColor(value) {
