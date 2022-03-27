@@ -1,3 +1,4 @@
+import { minify } from 'html-minifier-terser'
 import ReactDOMServer from 'react-dom/server';
 import mjml2html from 'mjml';
 
@@ -47,10 +48,22 @@ function render(email, options = {}) {
   const defaults = {
     keepComments: false,
     beautify: false,
-    minify: true,
     validationLevel: 'strict',
   };
-  return mjml2html(renderToMjml(email), { ...defaults, ...options });
+
+  const html = mjml2html(renderToMjml(email), { ...defaults, ...options, minify: false });
+
+  if (options.minify) {
+      return minify(html, {
+          caseSensitive: true,
+          collapseWhitespace: true,
+          minifyCSS: true,
+          removeComments: true,
+          removeEmptyAttributes: true
+      });
+  }
+
+  return html;
 }
 
 function renderToMjml(email) {
