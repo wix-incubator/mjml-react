@@ -47,7 +47,7 @@ function render(email, options = {}) {
   const defaults = {
     keepComments: false,
     beautify: false,
-    minify: true,
+    minify: false,
     validationLevel: 'strict',
   };
   return mjml2html(renderToMjml(email), { ...defaults, ...options });
