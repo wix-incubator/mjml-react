@@ -30,7 +30,7 @@ describe('render()', () => {
         </MjmlBody>
       </Mjml>
     );
-    const { html } = render(email);
+    const { html } = render(email, { minify: true });
     expect(html).to.not.be.undefined;
     expect(html).to.contain('<!doctype html>');
     expect(html).to.contain('<title>Title</title>');
