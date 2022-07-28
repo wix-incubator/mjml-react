@@ -17,6 +17,7 @@ export interface IMjmlDividerProps {
   paddingRight?: string | number;
   paddingTop?: string | number;
   width?: string | number;
+  align?: "left" | "center" | "right";
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

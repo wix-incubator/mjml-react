@@ -7,6 +7,7 @@ import React from "react";
 import { convertPropsToMjmlAttributes } from "../utils";
 
 export interface IMjmlRawProps {
+  position?: "file-start";
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

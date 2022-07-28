@@ -22,6 +22,7 @@ export interface IMjmlTableProps {
   paddingRight?: string | number;
   paddingTop?: string | number;
   padding?: string | number;
+  role?: "none" | "presentation";
   tableLayout?: "auto" | "fixed" | "initial" | "inherit";
   verticalAlign?: React.CSSProperties["verticalAlign"];
   width?: string | number;
