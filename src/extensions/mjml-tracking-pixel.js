@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { string } from 'prop-types';
 
 import { MjmlRaw } from '../mjml-raw';
 
 export class MjmlTrackingPixel extends Component {
-  static propTypes = {
-    src: string.isRequired,
-  };
-
   render() {
     const { src } = this.props;
     const trackingPixelStyle = {

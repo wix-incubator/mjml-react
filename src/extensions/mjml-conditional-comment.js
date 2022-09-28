@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import { string } from 'prop-types';
 
 import { MjmlComment } from './mjml-comment';
 
 export class MjmlConditionalComment extends Component {
-  static propTypes = {
-    children: string.isRequired,
-    condition: string.isRequired,
-  };
-
   static defaultProps = {
     condition: 'if gte mso 9',
   };
