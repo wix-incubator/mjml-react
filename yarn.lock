@@ -1634,6 +1634,14 @@ babel-preset-jest@^29.0.2:
     babel-plugin-jest-hoist "^29.0.2"
     babel-preset-current-node-syntax "^1.0.0"
 
+babel-runtime@~6.25.0:
+  version "6.25.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.25.0.tgz#33b98eaa5d482bb01a8d1aa6b437ad2b01aec41c"
+  integrity sha512-zeCYxDePWYAT/DfmQWIHsMSFW2vv45UIwIAMjGvQVsTd47RwsiRH0uK1yzyWZ7LDBKdhnGDPM6NYEO5CZyhPrg==
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -2120,6 +2128,11 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha512-ZiPp9pZlgxpWRu0M+YWbm6+aQ84XEfH1JRXvfOc/fILWI0VKhLC2LX13X1NYq4fULzLMq7Hfh43CSo2/aIaUPA==
+
+core-js@^2.4.0:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -5279,6 +5292,11 @@ regenerate@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.2.tgz#b9346d8827e8f5a32f7ba29637d398b69014848a"
   integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
+
+regenerator-runtime@^0.10.0:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+  integrity sha512-02YopEIhAgiBHWeoTiA8aitHDt8z6w+rQqNuIftlM+ZtvSl/brTouaU7DW6GO/cHtvxJvS4Hwv2ibKdxIRi24w==
 
 regenerator-runtime@^0.13.4:
   version "0.13.9"
