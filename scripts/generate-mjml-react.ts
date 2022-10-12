@@ -5,13 +5,13 @@
  *
  * usage `node --require ts-node/register scripts/generate-mjml-react.ts`
  */
-
 import * as del from "del";
 import * as fs from "fs";
-import { camelCase, upperFirst } from "lodash";
+import camelCase from "lodash.camelcase";
+import upperFirst from "lodash.upperfirst";
 import * as path from "path";
 
-import { MJML_REACT_DIR } from "../config/paths";
+const MJML_REACT_DIR = "src";
 
 const GENERATED_HEADER_TSX = `
 /*
@@ -115,7 +115,7 @@ function getPropTypeFromMjmlAttributeType(
     return (
       mjmlAttributeType
         .match(/\(.*\)/)?.[0]
-        .slice(1, -1)
+        ?.slice(1, -1)
         .split(",")
         .map((str) => "'" + str + "'")
         .join(" | ") ?? "unknown"
@@ -191,9 +191,8 @@ function buildFileContents({
   types: string;
   reactName: string;
 }) {
-  const { props, createElementProps } = buildReactCreateElementProps(
-    mjmlElementName
-  );
+  const { props, createElementProps } =
+    buildReactCreateElementProps(mjmlElementName);
   return `
 ${GENERATED_HEADER_TSX}
 
@@ -211,9 +210,10 @@ export function ${reactName}(${props}: I${reactName}Props): JSX.Element {
 `;
 }
 
-function buildReactCreateElementProps(
-  mjmlElementName: string
-): { props: string; createElementProps: string } {
+function buildReactCreateElementProps(mjmlElementName: string): {
+  props: string;
+  createElementProps: string;
+} {
   const withChildren = "{children, ...props}";
   const withoutChildren = "props";
 
@@ -256,11 +256,11 @@ for (const mjmlElementName of MJML_ELEMENTS_TO_CONVERT) {
 }
 
 // create index export file for mjml-react components
+const INDEX_FILE = path.join(MJML_REACT_DIR, `index.tsx`);
 fs.writeFileSync(
-  path.join(MJML_REACT_DIR, `index.tsx`),
+  INDEX_FILE,
   `
 ${GENERATED_HEADER_TSX}
-/* eslint-disable @faire/no-re-exports */
 
 ${MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
   const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
@@ -287,4 +287,6 @@ ${gitAttributes}
 `
 );
 
-require("child_process").execSync(`yarn prettier --write ${MJML_REACT_DIR}`);
+require("child_process").execSync(
+  `yarn prettier --write ${GENERATED_MJML_FILES} ${INDEX_FILE}`
+);

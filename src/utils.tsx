@@ -1,5 +1,9 @@
-import { kebabCase } from "lodash";
+import { minify as htmlMinify } from "html-minifier";
+import kebabCase from "lodash.kebabcase";
+import mjml2html from "mjml";
+import { MJMLParsingOptions } from "mjml-core";
 import React from "react";
+import ReactDOMServer from "react-dom/server";
 
 export function mjmlReactComponentFactory<P>(
   mjmlElementName: string
@@ -13,9 +17,9 @@ export function mjmlReactComponentFactory<P>(
   };
 }
 
-export function convertPropsToMjmlAttributes<P>(
-  props: { [K in keyof P]: unknown }
-) {
+export function convertPropsToMjmlAttributes<P>(props: {
+  [K in keyof P]: unknown;
+}) {
   const mjmlProps = Object.entries(props).reduce((mjmlProps, [prop, value]) => {
     const mjmlProp = kebabCase(prop);
     const mjmlValue = convertPropValueToMjml(mjmlProp, value);
@@ -35,7 +39,9 @@ export function convertPropsToMjmlAttributes<P>(
   // mjml uses a different name (css-class) for the same thing.
   const className = (props as any).className;
   if (typeof className === "string") {
-    mjmlProps["css-class"] = joinClassNames(mjmlProps["css-class"], className);
+    mjmlProps["css-class"] = mjmlProps["css-class"]
+      ? joinClassNames(mjmlProps["css-class"], className)
+      : className;
   }
 
   return mjmlProps;
@@ -79,4 +85,39 @@ function convertPropValueToMjml(
 
 function joinClassNames(...classNames: string[]) {
   return classNames.join(" ").trim();
+}
+
+export function render(
+  email: React.ReactElement,
+  options: MJMLParsingOptions = {}
+) {
+  const defaults: MJMLParsingOptions = {
+    keepComments: false,
+    beautify: false,
+    validationLevel: "strict",
+  };
+
+  const html = mjml2html(renderToMjml(email), {
+    ...defaults,
+    ...options,
+    minify: undefined,
+  });
+
+  if (options.minify) {
+    return {
+      html: htmlMinify(html.html, {
+        caseSensitive: true,
+        collapseWhitespace: true,
+        minifyCSS: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+      }),
+    };
+  }
+
+  return html;
+}
+
+export function renderToMjml(email: React.ReactElement) {
+  return ReactDOMServer.renderToStaticMarkup(email);
 }
