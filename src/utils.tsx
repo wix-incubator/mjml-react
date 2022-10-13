@@ -1,9 +1,5 @@
-import { minify as htmlMinify } from "html-minifier";
 import kebabCase from "lodash.kebabcase";
-import mjml2html from "mjml";
-import { MJMLParsingOptions } from "mjml-core";
 import React from "react";
-import ReactDOMServer from "react-dom/server";
 
 export function mjmlReactComponentFactory<P>(
   mjmlElementName: string
@@ -85,39 +81,4 @@ function convertPropValueToMjml(
 
 function joinClassNames(...classNames: string[]) {
   return classNames.join(" ").trim();
-}
-
-export function render(
-  email: React.ReactElement,
-  options: MJMLParsingOptions = {}
-) {
-  const defaults: MJMLParsingOptions = {
-    keepComments: false,
-    beautify: false,
-    validationLevel: "strict",
-  };
-
-  const html = mjml2html(renderToMjml(email), {
-    ...defaults,
-    ...options,
-    minify: undefined,
-  });
-
-  if (options.minify) {
-    return {
-      html: htmlMinify(html.html, {
-        caseSensitive: true,
-        collapseWhitespace: true,
-        minifyCSS: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-      }),
-    };
-  }
-
-  return html;
-}
-
-export function renderToMjml(email: React.ReactElement) {
-  return ReactDOMServer.renderToStaticMarkup(email);
 }
