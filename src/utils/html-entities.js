@@ -1,4 +1,4 @@
-const entities = require('./html-entities.json');
+const entities = require("./html-entities.json");
 
 export function namedEntityToHexCode(html) {
   return html.replace(/&([a-z0-9]{2,8});/gi, (match, p1) => {

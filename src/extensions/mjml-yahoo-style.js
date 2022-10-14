@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { MjmlRaw } from '../mjml-raw';
+import { MjmlRaw } from "../mjml-raw";
 
 export class MjmlYahooStyle extends Component {
   render() {

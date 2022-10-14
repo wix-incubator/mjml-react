@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { MjmlRaw } from '../mjml-raw';
+import { MjmlRaw } from "../mjml-raw";
 
 export class MjmlTrackingPixel extends Component {
   render() {
     const { src } = this.props;
     const trackingPixelStyle = {
-      display: 'table',
-      height: '1px!important',
-      width: '1px!important',
-      border: '0!important',
-      margin: '0!important',
-      padding: '0!important',
+      display: "table",
+      height: "1px!important",
+      width: "1px!important",
+      border: "0!important",
+      margin: "0!important",
+      padding: "0!important",
     };
     return (
       <MjmlRaw>

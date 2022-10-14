@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactReconciler from 'react-reconciler';
-import ReactDOMServer from 'react-dom/server';
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import ReactReconciler from "react-reconciler";
 
-import { noop, escapeTextForBrowser, trimContent } from './render-utils';
+import { noop, escapeTextForBrowser, trimContent } from "./render-utils";
 
 const reconciler = ReactReconciler({
   supportsMutation: true,
@@ -11,7 +11,7 @@ const reconciler = ReactReconciler({
     return escapeTextForBrowser(text);
   },
   createInstance(type, props) {
-    if (!type.startsWith('mj')) {
+    if (!type.startsWith("mj")) {
       return { isReact: true, type, props };
     }
 
@@ -27,7 +27,7 @@ const reconciler = ReactReconciler({
       if (attrKey === undefined) {
         delete res.attributes[key];
       }
-      if (typeof attrKey === 'string') {
+      if (typeof attrKey === "string") {
         res.attributes[key] = escapeTextForBrowser(attrKey);
       }
     });
@@ -35,7 +35,7 @@ const reconciler = ReactReconciler({
     if (props.dangerouslySetInnerHTML && props.dangerouslySetInnerHTML.__html) {
       // using replace to prevent issue with $ sign in MJML
       // https://github.com/mjmlio/mjml2json#L145
-      res.content = props.dangerouslySetInnerHTML.__html.replace('$', '&#36;');
+      res.content = props.dangerouslySetInnerHTML.__html.replace("$", "&#36;");
     }
 
     return res;
@@ -45,16 +45,16 @@ const reconciler = ReactReconciler({
     container.result = child;
   },
   appendInitialChild(parent, child) {
-    if (typeof parent === 'string' || parent.isReact) {
+    if (typeof parent === "string" || parent.isReact) {
       return;
     }
-    if (typeof child === 'string') {
-      parent.content = (parent.content || '') + child;
+    if (typeof child === "string") {
+      parent.content = (parent.content || "") + child;
     } else if (child.isReact) {
       const content = ReactDOMServer.renderToStaticMarkup(
-        React.createElement(child.type, child.props),
+        React.createElement(child.type, child.props)
       );
-      parent.content = (parent.content || '') + content;
+      parent.content = (parent.content || "") + content;
     } else {
       parent.children = (parent.children || []).concat(child);
     }

@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactReconciler from 'react-reconciler';
-import ReactDOMServer from 'react-dom/server';
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import ReactReconciler from "react-reconciler";
 
-import { noop, escapeTextForBrowser, trimContent } from './render-utils';
+import { noop, escapeTextForBrowser, trimContent } from "./render-utils";
 
 const reconciler = ReactReconciler({
   supportsMutation: true,
   isPrimaryRenderer: true,
   createTextInstance(
-    text /* rootContainerInstance, hostContext, internalInstanceHandle,*/,
+    text /* rootContainerInstance, hostContext, internalInstanceHandle,*/
   ) {
     return text;
   },
@@ -23,11 +23,11 @@ const reconciler = ReactReconciler({
       if (attrKey === undefined) {
         delete res.attributes[key];
       }
-      if (typeof attrKey === 'string') {
+      if (typeof attrKey === "string") {
         res.attributes[key] = escapeTextForBrowser(attrKey);
       }
     });
-    if (!type.startsWith('mj')) {
+    if (!type.startsWith("mj")) {
       return {
         type,
         props,
@@ -39,7 +39,7 @@ const reconciler = ReactReconciler({
     if (props.dangerouslySetInnerHTML && props.dangerouslySetInnerHTML.__html) {
       // using replace to prevent issue with $ sign in MJML
       // https://github.com/mjmlio/mjml2json#L145
-      res.content = props.dangerouslySetInnerHTML.__html.replace('$', '&#36;');
+      res.content = props.dangerouslySetInnerHTML.__html.replace("$", "&#36;");
     }
     return res;
   },
@@ -54,17 +54,17 @@ const reconciler = ReactReconciler({
       } else {
         const reactElement = toReactElement(child);
         if (!parent.content) {
-          parent.content = '';
+          parent.content = "";
         }
         parent.content += ReactDOMServer.renderToStaticMarkup(reactElement);
       }
-    } else if (typeof child === 'string') {
+    } else if (typeof child === "string") {
       if (!child) return;
       if (parent.isReact) {
         parent.children.push(child);
       } else {
         if (!parent.content) {
-          parent.content = '';
+          parent.content = "";
         }
         parent.content += escapeTextForBrowser(child);
       }
@@ -97,7 +97,7 @@ function toReactElement(element) {
     element.type,
     element.props,
     element.children.map((child) =>
-      typeof child === 'string' ? child : toReactElement(child),
-    ),
+      typeof child === "string" ? child : toReactElement(child)
+    )
   );
 }

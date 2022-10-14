@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { MjmlComment } from './mjml-comment';
+import { MjmlComment } from "./mjml-comment";
 
 export class MjmlConditionalComment extends Component {
   static defaultProps = {
-    condition: 'if gte mso 9',
+    condition: "if gte mso 9",
   };
 
   render() {
