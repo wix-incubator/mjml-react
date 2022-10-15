@@ -1,6 +1,6 @@
 {
   "name": "@faire/mjml-react",
-  "version": "2.1.4",
+  "version": "3.0.0-a1",
   "license": "MIT",
   "description": "React component library to generate the HTML emails on the fly",
   "keywords": [
