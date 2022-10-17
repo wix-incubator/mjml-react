@@ -71,7 +71,6 @@
   },
   "module": "dist/esm/index.js",
   "dependencies": {
-    "lodash.kebabcase": "^4.1.1",
-    "react-reconciler": "^0.26.1"
+    "lodash.kebabcase": "^4.1.1"
   }
 }
