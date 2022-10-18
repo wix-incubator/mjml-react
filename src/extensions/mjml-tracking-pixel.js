@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { MjmlRaw } from "../mjml-raw";
+import { MjmlRaw } from "..";
 
 export class MjmlTrackingPixel extends Component {
   render() {

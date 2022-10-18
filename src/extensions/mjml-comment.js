@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import { handleMjmlProps } from "../utils";
+import { convertPropsToMjmlAttributes } from "../utils";
 
 export class MjmlComment extends Component {
   render() {
     const { children, ...rest } = this.props;
     if (children && children.trim().length) {
       return React.createElement("mj-raw", {
-        ...handleMjmlProps(rest),
+        ...convertPropsToMjmlAttributes(rest),
         dangerouslySetInnerHTML: {
           __html: `<!--${children}-->`,
         },
