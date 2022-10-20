@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import { MjmlRaw } from "..";
 
-export class MjmlTrackingPixel extends Component {
+interface IMjmlTrackingPixel {
+  src: string;
+}
+
+export class MjmlTrackingPixel extends Component<IMjmlTrackingPixel> {
   render() {
     const { src } = this.props;
     const trackingPixelStyle = {
@@ -16,13 +20,7 @@ export class MjmlTrackingPixel extends Component {
     return (
       <MjmlRaw>
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <img
-          src={src}
-          style={trackingPixelStyle}
-          width={1}
-          height={1}
-          border={0}
-        />
+        <img src={src} style={trackingPixelStyle} width={1} height={1} />
       </MjmlRaw>
     );
   }
