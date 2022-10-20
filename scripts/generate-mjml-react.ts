@@ -20,31 +20,27 @@ const GENERATED_HEADER_TSX = `
  */
 `;
 
-const MJML_ELEMENTS_TO_CONVERT = [
-  "mjml",
-  "mj-all",
-  "mj-include",
-  "mj-attributes",
-  "mj-body",
-  "mj-breakpoint",
-  "mj-button",
-  "mj-class",
-  "mj-column",
-  "mj-divider",
-  "mj-group",
-  "mj-head",
-  "mj-image",
-  "mj-preview",
-  "mj-raw",
-  "mj-section",
-  "mj-spacer",
-  "mj-style",
-  "mj-table",
-  "mj-text",
-  "mj-title",
-  "mj-wrapper",
-  "mj-hero",
+interface IMjmlComponent {
+  componentName: string;
+  allowedAttributes?: Record<string, string>;
+  defaultAttributes?: Record<string, string>;
+  endingTag?: true;
+}
+
+const PRESET_CORE_COMPONENTS: Array<IMjmlComponent> =
+  require("mjml-preset-core").components;
+const OTHER_SUPPORTED_COMPONENTS = ["mjml", "mj-all", "mj-class", "mj-include"];
+
+const MJML_COMPONENTS_TO_GENERATE = [
+  ...OTHER_SUPPORTED_COMPONENTS.map(
+    (componentName) => ({ componentName } as IMjmlComponent)
+  ),
+  ...PRESET_CORE_COMPONENTS,
 ];
+
+const MJML_COMPONENT_NAMES = MJML_COMPONENTS_TO_GENERATE.map(
+  (component) => component.componentName
+);
 
 const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
   "color",
@@ -65,7 +61,7 @@ const ATTRIBUTES_TO_USE_CSSProperties_WITH = new Set([
 ]);
 
 const HAS_CSS_CLASS = new Set(
-  MJML_ELEMENTS_TO_CONVERT.filter(
+  MJML_COMPONENT_NAMES.filter(
     (element) =>
       !["mjml", "mj-style", "mj-class", "mj-breakpoint", "mj-include"].includes(
         element
@@ -74,7 +70,7 @@ const HAS_CSS_CLASS = new Set(
 );
 
 const HAS_CHILDREN = new Set(
-  MJML_ELEMENTS_TO_CONVERT.filter(
+  MJML_COMPONENT_NAMES.filter(
     (element) =>
       ![
         "mj-all",
@@ -85,6 +81,12 @@ const HAS_CHILDREN = new Set(
         "mj-image",
         "mj-spacer",
       ].includes(element)
+  )
+);
+
+const ALLOW_ANY_PROPERTY = new Set(
+  MJML_COMPONENT_NAMES.filter((element) =>
+    ["mj-class", "mj-all"].includes(element)
   )
 );
 
@@ -124,49 +126,43 @@ function getPropTypeFromMjmlAttributeType(
   return "string";
 }
 
-function buildTypesForComponent(mjmlElementName: string): string {
+function buildTypesForComponent(mjmlComponent: IMjmlComponent): string {
+  const { componentName, allowedAttributes } = mjmlComponent;
   const typesFromMjmlAttributes: Record<string, string> = {};
-  try {
-    const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
-    const mjmlElementAttributeTypes = require(mjmlPackageName)
-      .allowedAttributes as Record<string, string>;
-    if (mjmlElementAttributeTypes) {
-      Object.entries(mjmlElementAttributeTypes).forEach(
-        ([mjmlAttribute, mjmlAttributeType]) => {
-          const attribute = camelCase(mjmlAttribute);
-          typesFromMjmlAttributes[attribute] = getPropTypeFromMjmlAttributeType(
-            attribute,
-            mjmlAttributeType
-          );
-        }
-      );
-    }
-  } catch (_) {
-    /* not all elements have packages */
+  if (allowedAttributes) {
+    Object.entries(allowedAttributes).forEach(
+      ([mjmlAttribute, mjmlAttributeType]) => {
+        const attribute = camelCase(mjmlAttribute);
+        typesFromMjmlAttributes[attribute] = getPropTypeFromMjmlAttributeType(
+          attribute,
+          mjmlAttributeType
+        );
+      }
+    );
   }
 
-  if (mjmlElementName === "mjml") {
+  if (componentName === "mjml") {
     typesFromMjmlAttributes["owa"] = "string";
     typesFromMjmlAttributes["lang"] = "string";
-  } else if (mjmlElementName === "mj-style") {
+  } else if (componentName === "mj-style") {
     typesFromMjmlAttributes["inline"] = "boolean";
-  } else if (mjmlElementName === "mj-class") {
+  } else if (componentName === "mj-class") {
     typesFromMjmlAttributes["name"] = "string";
-  } else if (mjmlElementName === "mj-table") {
+  } else if (componentName === "mj-table") {
     typesFromMjmlAttributes["cellspacing"] = "string";
     typesFromMjmlAttributes["cellpadding"] = "string";
-  } else if (mjmlElementName === "mj-include") {
+  } else if (componentName === "mj-include") {
     typesFromMjmlAttributes["path"] = "string";
-  } else if (mjmlElementName === "mj-breakpoint") {
+  } else if (componentName === "mj-breakpoint") {
     typesFromMjmlAttributes["width"] = "string";
   }
 
-  if (HAS_CSS_CLASS.has(mjmlElementName)) {
+  if (HAS_CSS_CLASS.has(componentName)) {
     typesFromMjmlAttributes["className"] = "string";
     typesFromMjmlAttributes["cssClass"] = "string";
     typesFromMjmlAttributes["mjmlClass"] = "string";
   }
-  if (HAS_CHILDREN.has(mjmlElementName)) {
+  if (HAS_CHILDREN.has(componentName)) {
     typesFromMjmlAttributes["children"] = "React.ReactNode";
   }
 
@@ -175,7 +171,7 @@ function buildTypesForComponent(mjmlElementName: string): string {
   );
 
   // allow any property
-  if (["mj-class", "mj-all"].includes(mjmlElementName)) {
+  if (ALLOW_ANY_PROPERTY.has(componentName)) {
     typeStrings.push("[prop: string]: string | undefined;");
   }
 
@@ -183,16 +179,16 @@ function buildTypesForComponent(mjmlElementName: string): string {
 }
 
 function buildFileContents({
-  mjmlElementName,
+  componentName,
   types,
   reactName,
 }: {
-  mjmlElementName: string;
+  componentName: string;
   types: string;
   reactName: string;
 }) {
   const { props, createElementProps } =
-    buildReactCreateElementProps(mjmlElementName);
+    buildReactCreateElementProps(componentName);
   return `
 ${GENERATED_HEADER_TSX}
 
@@ -205,26 +201,26 @@ export interface I${reactName}Props {
 }
 
 export function ${reactName}(${props}: I${reactName}Props): JSX.Element {
-  return React.createElement("${mjmlElementName}", ${createElementProps});
+  return React.createElement("${componentName}", ${createElementProps});
 };
 `;
 }
 
-function buildReactCreateElementProps(mjmlElementName: string): {
+function buildReactCreateElementProps(componentName: string): {
   props: string;
   createElementProps: string;
 } {
   const withChildren = "{children, ...props}";
   const withoutChildren = "props";
 
-  if (mjmlElementName === "mj-style") {
+  if (componentName === "mj-style") {
     return {
       props: withChildren,
       createElementProps:
         "{ ...convertPropsToMjmlAttributes(props), dangerouslySetInnerHTML: { __html: children } }",
     };
   }
-  if (HAS_CHILDREN.has(mjmlElementName)) {
+  if (HAS_CHILDREN.has(componentName)) {
     return {
       props: withChildren,
       createElementProps: "convertPropsToMjmlAttributes(props), children",
@@ -242,12 +238,13 @@ del.sync(GENERATED_MJML_FILES);
 fs.mkdirSync(GENERATED_MJML_FILES);
 
 // create mjml-react components
-for (const mjmlElementName of MJML_ELEMENTS_TO_CONVERT) {
-  const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
+for (const mjmlComponent of MJML_COMPONENTS_TO_GENERATE) {
+  const { componentName } = mjmlComponent;
+  const mjmlPackageName = componentName.replace("mj-", "mjml-");
   const reactName = upperFirst(camelCase(mjmlPackageName));
 
-  const types = buildTypesForComponent(mjmlElementName);
-  const fileContents = buildFileContents({ mjmlElementName, reactName, types });
+  const types = buildTypesForComponent(mjmlComponent);
+  const fileContents = buildFileContents({ componentName, reactName, types });
 
   fs.writeFileSync(
     path.join(GENERATED_MJML_FILES, `${reactName}.tsx`),
@@ -262,8 +259,8 @@ fs.writeFileSync(
   `
 ${GENERATED_HEADER_TSX}
 
-${MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
-  const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
+${MJML_COMPONENTS_TO_GENERATE.map(({ componentName }) => {
+  const mjmlPackageName = componentName.replace("mj-", "mjml-");
   const reactName = upperFirst(camelCase(mjmlPackageName));
   return `export { ${reactName} } from './mjml/${reactName}';
 export type { I${reactName}Props } from './mjml/${reactName}';`;
@@ -272,8 +269,8 @@ export type { I${reactName}Props } from './mjml/${reactName}';`;
 );
 
 // generate gitattributes file
-const gitAttributes = MJML_ELEMENTS_TO_CONVERT.map((mjmlElementName) => {
-  const mjmlPackageName = mjmlElementName.replace("mj-", "mjml-");
+const gitAttributes = MJML_COMPONENTS_TO_GENERATE.map(({ componentName }) => {
+  const mjmlPackageName = componentName.replace("mj-", "mjml-");
   const reactName = upperFirst(camelCase(mjmlPackageName));
   return `${reactName}.tsx  linguist-generated`;
 }).join("\n");
