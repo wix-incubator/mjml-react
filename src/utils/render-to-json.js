@@ -1,3 +1,4 @@
+/* eslint-disable curly */
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactReconciler from "react-reconciler";

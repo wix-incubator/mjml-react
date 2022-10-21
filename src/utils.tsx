@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import kebabCase from "lodash.kebabcase";
 import React from "react";
 

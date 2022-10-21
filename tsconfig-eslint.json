@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig-base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "es2015",
+    "outDir": "dist/src",
+    "declaration": true
+  },
+  "include": ["**/*", ".eslintrc.js"]
+}

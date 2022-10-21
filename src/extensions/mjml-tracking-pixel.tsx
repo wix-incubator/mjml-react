@@ -19,7 +19,6 @@ export class MjmlTrackingPixel extends Component<IMjmlTrackingPixel> {
     };
     return (
       <MjmlRaw>
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <img src={src} style={trackingPixelStyle} width={1} height={1} />
       </MjmlRaw>
     );
