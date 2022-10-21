@@ -1,4 +1,5 @@
 ## Annoucement from Engineering @ Faire
+
 Hello mjml community, we at Faire are excited to announce we will be taking over maintaining the open-source mjml-react project!
 
 Over the past year, Faire has used mjml-react extensively. This package allowed us to incorporate all the benefits of mjml without having to ask our developers to learn a new dev environment when moving from web to email. As a result, we significantly reduced the development effort for creating emails, while keeping email rendering issues to a minimum.
@@ -117,7 +118,10 @@ Because not all mail clients do support named HTML entities, like `&apos;`.
 So we need to replace them to hex.
 
 ```js
-import { namedEntityToHexCode, fixConditionalComment } from "@faire/mjml-react/utils";
+import {
+  namedEntityToHexCode,
+  fixConditionalComment,
+} from "@faire/mjml-react/utils";
 
 const html = "<div>&apos;</div>";
 namedEntityToHexCode(html);

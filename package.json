@@ -35,6 +35,7 @@
     "build": "/bin/rm -rf dist && yarn build-cjs && yarn build-esm",
     "build-cjs": "tsc -p tsconfig.json",
     "build-esm": "tsc -p tsconfig-esm.json",
+    "format": "prettier --write .",
     "test": "jest test",
     "generate-mjml-react": "ts-node scripts/generate-mjml-react.ts",
     "prepare": "husky install"
