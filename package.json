@@ -54,7 +54,6 @@
     "@types/react-dom": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
-    "chai": "^4.3.6",
     "del": "^6.0.0",
     "eslint": "^8.25.0",
     "eslint-plugin-import": "^2.26.0",

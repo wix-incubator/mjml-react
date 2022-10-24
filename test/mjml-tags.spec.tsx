@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-curly-brace-presence */
-import { expect } from "chai";
 import React from "react";
 
 import * as tags from "../src";
@@ -8,14 +7,14 @@ import { renderToMjml } from "../src/utils/renderToMjml";
 
 describe("mjml tags", () => {
   it("should render <Mjml/> with content", () => {
-    expect(renderToMjml(<tags.Mjml>Content</tags.Mjml>)).to.equal(
+    expect(renderToMjml(<tags.Mjml>Content</tags.Mjml>)).toBe(
       "<mjml>Content</mjml>"
     );
   });
 
   describe("<MjmlTitle/>", () => {
     it("should render string", () => {
-      expect(renderToMjml(<tags.MjmlTitle>Content</tags.MjmlTitle>)).to.equal(
+      expect(renderToMjml(<tags.MjmlTitle>Content</tags.MjmlTitle>)).toBe(
         "<mj-title>Content</mj-title>"
       );
     });
@@ -24,18 +23,18 @@ describe("mjml tags", () => {
       const variable = "Nice";
       expect(
         renderToMjml(<tags.MjmlTitle>{variable} Content</tags.MjmlTitle>)
-      ).to.equal("<mj-title>Nice Content</mj-title>");
+      ).toBe("<mj-title>Nice Content</mj-title>");
     });
 
     it("should render functional component", () => {
-      const HelloWorld = () => "Hello World!";
+      const HelloWorld = () => <>Hello World!</>;
       expect(
         renderToMjml(
           <tags.MjmlTitle>
             <HelloWorld />
           </tags.MjmlTitle>
         )
-      ).to.equal("<mj-title>Hello World!</mj-title>");
+      ).toBe("<mj-title>Hello World!</mj-title>");
     });
 
     it("should render component", () => {
@@ -50,20 +49,20 @@ describe("mjml tags", () => {
             <HelloWorld />
           </tags.MjmlTitle>
         )
-      ).to.equal("<mj-title>Hello World!</mj-title>");
+      ).toBe("<mj-title>Hello World!</mj-title>");
     });
   });
 
   it("should render <MjmlStyle/> with content", () => {
-    expect(
-      renderToMjml(<tags.MjmlStyle>{".button{}"}</tags.MjmlStyle>)
-    ).to.equal("<mj-style>.button{}</mj-style>");
+    expect(renderToMjml(<tags.MjmlStyle>{".button{}"}</tags.MjmlStyle>)).toBe(
+      "<mj-style>.button{}</mj-style>"
+    );
     expect(
       renderToMjml(<tags.MjmlStyle inline>{".button{}"}</tags.MjmlStyle>)
-    ).to.equal('<mj-style inline="inline">.button{}</mj-style>');
+    ).toBe('<mj-style inline="inline">.button{}</mj-style>');
     expect(
       renderToMjml(<tags.MjmlStyle>{"body > div {}"}</tags.MjmlStyle>)
-    ).to.equal("<mj-style>body > div {}</mj-style>");
+    ).toBe("<mj-style>body > div {}</mj-style>");
   });
 
   it("should render <MjmlRaw/> with content", () => {
@@ -73,17 +72,17 @@ describe("mjml tags", () => {
           <h1>Hello World!</h1>
         </tags.MjmlRaw>
       )
-    ).to.equal("<mj-raw><h1>Hello World!</h1></mj-raw>");
+    ).toBe("<mj-raw><h1>Hello World!</h1></mj-raw>");
   });
 
   it("should render <MjmlPreview/> with content", () => {
     expect(
       renderToMjml(<tags.MjmlPreview>Hello World!</tags.MjmlPreview>)
-    ).to.equal("<mj-preview>Hello World!</mj-preview>");
+    ).toBe("<mj-preview>Hello World!</mj-preview>");
   });
 
   it("should render <MjmlHead/> with content", () => {
-    expect(renderToMjml(<tags.MjmlHead>I am the head</tags.MjmlHead>)).to.equal(
+    expect(renderToMjml(<tags.MjmlHead>I am the head</tags.MjmlHead>)).toBe(
       "<mj-head>I am the head</mj-head>"
     );
   });
@@ -96,13 +95,13 @@ describe("mjml tags", () => {
           href="https://fonts.googleapis.com/css?family=Roboto"
         />
       )
-    ).to.equal(
+    ).toBe(
       '<mj-font name="Roboto" href="https://fonts.googleapis.com/css?family=Roboto"></mj-font>'
     );
   });
 
   it("should render <MjmlBreakpoint/>", () => {
-    expect(renderToMjml(<tags.MjmlBreakpoint width={400} />)).to.equal(
+    expect(renderToMjml(<tags.MjmlBreakpoint width="400px" />)).toBe(
       '<mj-breakpoint width="400px"></mj-breakpoint>'
     );
   });
@@ -114,7 +113,7 @@ describe("mjml tags", () => {
           Hello World!
         </tags.MjmlBody>
       )
-    ).to.equal(
+    ).toBe(
       '<mj-body width="100px" background-color="blue" css-class="body">Hello World!</mj-body>'
     );
   });
@@ -126,7 +125,7 @@ describe("mjml tags", () => {
           Content
         </tags.MjmlSection>
       )
-    ).to.equal(
+    ).toBe(
       '<mj-section full-width="full-width" padding-top="10px" css-class="first-section">Content</mj-section>'
     );
   });
@@ -138,9 +137,7 @@ describe("mjml tags", () => {
           Content
         </tags.MjmlColumn>
       )
-    ).to.equal(
-      '<mj-column border-radius="10px" width="20px">Content</mj-column>'
-    );
+    ).toBe('<mj-column border-radius="10px" width="20px">Content</mj-column>');
   });
 
   it("should render <MjmlButton/> with content", () => {
@@ -150,7 +147,7 @@ describe("mjml tags", () => {
           Click Me
         </tags.MjmlButton>
       )
-    ).to.equal(
+    ).toBe(
       '<mj-button height="20px" font-size="22px" line-height="33px">Click Me</mj-button>'
     );
   });
@@ -163,25 +160,23 @@ describe("mjml tags", () => {
           {"Second Line"}
         </tags.MjmlButton>
       )
-    ).to.equal("<mj-button>First LineSecond Line</mj-button>");
+    ).toBe("<mj-button>First LineSecond Line</mj-button>");
   });
 
   it("should render <MjmlDivider/>", () => {
     expect(
       renderToMjml(<tags.MjmlDivider borderWidth={2} borderColor="red" />)
-    ).to.equal(
-      '<mj-divider border-width="2px" border-color="red"></mj-divider>'
-    );
+    ).toBe('<mj-divider border-width="2px" border-color="red"></mj-divider>');
   });
 
   it("should render <MjmlImage/>", () => {
     expect(
       renderToMjml(<tags.MjmlImage src="https://www.wix.com/logo.png" />)
-    ).to.equal('<mj-image src="https://www.wix.com/logo.png"></mj-image>');
+    ).toBe('<mj-image src="https://www.wix.com/logo.png"></mj-image>');
   });
 
   it("should render <MjmlSpacer/>", () => {
-    expect(renderToMjml(<tags.MjmlSpacer height={10} />)).to.equal(
+    expect(renderToMjml(<tags.MjmlSpacer height={10} />)).toBe(
       '<mj-spacer height="10px"></mj-spacer>'
     );
   });
@@ -193,7 +188,7 @@ describe("mjml tags", () => {
           <span>Hello World!</span>
         </tags.MjmlText>
       )
-    ).to.equal(
+    ).toBe(
       '<mj-text font-weight="20" letter-spacing="2px"><span>Hello World!</span></mj-text>'
     );
   });
@@ -205,7 +200,7 @@ describe("mjml tags", () => {
           <span>Hello World!</span>
         </tags.MjmlWrapper>
       )
-    ).to.equal(
+    ).toBe(
       '<mj-wrapper padding="20px" full-width="full-width"><span>Hello World!</span></mj-wrapper>'
     );
   });
@@ -216,11 +211,11 @@ describe("mjml tags", () => {
         <tags.MjmlAttributes>
           <tags.MjmlText padding={0}>Line Of Text</tags.MjmlText>
           <tags.MjmlClass name="white" color="white" />
-          <tags.MjmlAll padding={0} />
+          <tags.MjmlAll padding="0" />
         </tags.MjmlAttributes>
       )
-    ).to.equal(
-      '<mj-attributes><mj-text padding="0px">Line Of Text</mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0px"></mj-all></mj-attributes>'
+    ).toBe(
+      '<mj-attributes><mj-text padding="0px">Line Of Text</mj-text><mj-class name="white" color="white"></mj-class><mj-all padding="0"></mj-all></mj-attributes>'
     );
   });
 
@@ -231,13 +226,13 @@ describe("mjml tags", () => {
           <tags.MjmlImage src="https://www.wix.com/logo.png" />
         </tags.MjmlHero>
       )
-    ).to.equal(
+    ).toBe(
       '<mj-hero background-url="https://www.wix.com/logo.png"><mj-image src="https://www.wix.com/logo.png"></mj-image></mj-hero>'
     );
   });
 
   it("should render <MjmlComment/>", () => {
-    expect(renderToMjml(<MjmlComment>Hello World!</MjmlComment>)).to.equal(
+    expect(renderToMjml(<MjmlComment>Hello World!</MjmlComment>)).toBe(
       "<mj-raw><!--Hello World!--></mj-raw>"
     );
   });
@@ -257,7 +252,7 @@ describe("mjml tags", () => {
             <tags.MjmlText color="rgba(255,0,0,0.1)">Content</tags.MjmlText>
           </tags.MjmlColumn>
         )
-      ).to.equal(
+      ).toBe(
         '<mj-column inner-background-color="#ffffffee" background-color="red"><mj-divider border-color="#fdfdfd" container-background-color="rgb(255,0,0)"></mj-divider><mj-text color="rgba(255,0,0,0.1)">Content</mj-text></mj-column>'
       );
     });
@@ -276,7 +271,7 @@ describe("mjml tags", () => {
             <tags.MjmlText color="rgba(255,0)">Content</tags.MjmlText>
           </tags.MjmlColumn>
         )
-      ).to.equal(
+      ).toBe(
         '<mj-column inner-background-color="" background-color=""><mj-divider border-color="" container-background-color=""></mj-divider><mj-text color="">Content</mj-text></mj-column>'
       );
     });
