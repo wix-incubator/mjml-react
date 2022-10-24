@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import kebabCase from "lodash.kebabcase";
 import React from "react";
 
@@ -16,7 +15,7 @@ export const typeToUnit = { Pixel: "px", Percentage: "%", Ephemeral: "em" };
 export function mjmlReactComponentFactory<P>(
   mjmlElementName: string
 ): React.FC<P> {
-  return ({ children, ...props }) => {
+  return function ({ children, ...props }) {
     return React.createElement(
       mjmlElementName,
       convertPropsToMjmlAttributes(props),

@@ -1,4 +1,3 @@
-/* eslint-disable curly */
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import ReactReconciler from "react-reconciler";
@@ -60,7 +59,9 @@ const reconciler = ReactReconciler({
         parent.content += ReactDOMServer.renderToStaticMarkup(reactElement);
       }
     } else if (typeof child === "string") {
-      if (!child) return;
+      if (!child) {
+        return;
+      }
       if (parent.isReact) {
         parent.children.push(child);
       } else {
@@ -70,7 +71,9 @@ const reconciler = ReactReconciler({
         parent.content += escapeTextForBrowser(child);
       }
     } else {
-      if (!parent.children) parent.children = [];
+      if (!parent.children) {
+        parent.children = [];
+      }
       parent.children.push(child);
     }
   },
