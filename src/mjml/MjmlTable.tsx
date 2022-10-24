@@ -4,7 +4,12 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+} from "../utils";
 
 export interface IMjmlTableProps {
   align?: "left" | "right" | "center";
@@ -14,18 +19,18 @@ export interface IMjmlTableProps {
   containerBackgroundColor?: string;
   color?: React.CSSProperties["color"];
   fontFamily?: string;
-  fontSize?: string | number;
+  fontSize?: Pixel;
   fontWeight?: string;
-  lineHeight?: string | number;
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
+  lineHeight?: Pixel | Percentage;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
   role?: "none" | "presentation";
   tableLayout?: "auto" | "fixed" | "initial" | "inherit";
   verticalAlign?: React.CSSProperties["verticalAlign"];
-  width?: string | number;
+  width?: Pixel | Percentage;
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

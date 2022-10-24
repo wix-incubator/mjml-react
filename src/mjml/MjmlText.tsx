@@ -4,7 +4,13 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+  Ephemeral,
+} from "../utils";
 
 export interface IMjmlTextProps {
   align?: "left" | "right" | "center" | "justify";
@@ -12,17 +18,17 @@ export interface IMjmlTextProps {
   color?: React.CSSProperties["color"];
   containerBackgroundColor?: string;
   fontFamily?: string;
-  fontSize?: string | number;
+  fontSize?: Pixel;
   fontStyle?: string;
   fontWeight?: string;
-  height?: string | number;
-  letterSpacing?: string | number;
-  lineHeight?: string | number;
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
+  height?: Pixel | Percentage;
+  letterSpacing?: Pixel | Ephemeral;
+  lineHeight?: Pixel | Percentage;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
   textDecoration?: React.CSSProperties["textDecoration"];
   textTransform?: React.CSSProperties["textTransform"];
   verticalAlign?: React.CSSProperties["verticalAlign"];

@@ -4,7 +4,12 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+} from "../utils";
 
 export interface IMjmlSpacerProps {
   border?: React.CSSProperties["border"];
@@ -13,12 +18,12 @@ export interface IMjmlSpacerProps {
   borderRight?: string;
   borderTop?: string;
   containerBackgroundColor?: string;
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
-  height?: string | number;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
+  height?: Pixel | Percentage;
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

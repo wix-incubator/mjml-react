@@ -4,21 +4,27 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+  Ephemeral,
+} from "../utils";
 
 export interface IMjmlAccordionTextProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
-  fontSize?: string | number;
+  fontSize?: Pixel;
   fontFamily?: string;
   fontWeight?: string;
-  letterSpacing?: string | number;
-  lineHeight?: string | number;
+  letterSpacing?: Pixel | Ephemeral;
+  lineHeight?: Pixel | Percentage;
   color?: React.CSSProperties["color"];
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

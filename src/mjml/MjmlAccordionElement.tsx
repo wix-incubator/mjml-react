@@ -4,15 +4,15 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import { convertPropsToMjmlAttributes, Pixel, Percentage } from "../utils";
 
 export interface IMjmlAccordionElementProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   border?: React.CSSProperties["border"];
   fontFamily?: string;
   iconAlign?: "top" | "middle" | "bottom";
-  iconWidth?: string | number;
-  iconHeight?: string | number;
+  iconWidth?: Pixel | Percentage;
+  iconHeight?: Pixel | Percentage;
   iconWrappedUrl?: string;
   iconWrappedAlt?: string;
   iconUnwrappedUrl?: string;

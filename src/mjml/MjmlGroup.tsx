@@ -4,13 +4,13 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import { convertPropsToMjmlAttributes, Pixel, Percentage } from "../utils";
 
 export interface IMjmlGroupProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   direction?: "ltr" | "rtl";
   verticalAlign?: React.CSSProperties["verticalAlign"];
-  width?: string | number;
+  width?: Pixel | Percentage;
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

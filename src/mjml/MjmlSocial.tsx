@@ -4,7 +4,12 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+} from "../utils";
 
 export interface IMjmlSocialProps {
   align?: "left" | "right" | "center";
@@ -12,22 +17,22 @@ export interface IMjmlSocialProps {
   containerBackgroundColor?: string;
   color?: React.CSSProperties["color"];
   fontFamily?: string;
-  fontSize?: string | number;
+  fontSize?: Pixel;
   fontStyle?: string;
   fontWeight?: string;
-  iconSize?: string | number;
-  iconHeight?: string | number;
-  iconPadding?: string | number;
-  innerPadding?: string | number;
-  lineHeight?: string | number;
+  iconSize?: Pixel | Percentage;
+  iconHeight?: Pixel | Percentage;
+  iconPadding?: Matrix<Pixel | Percentage>;
+  innerPadding?: Matrix<Pixel | Percentage>;
+  lineHeight?: Pixel | Percentage;
   mode?: "horizontal" | "vertical";
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
   tableLayout?: "auto" | "fixed";
-  textPadding?: string | number;
+  textPadding?: Matrix<Pixel | Percentage>;
   textDecoration?: React.CSSProperties["textDecoration"];
   verticalAlign?: React.CSSProperties["verticalAlign"];
   className?: string;

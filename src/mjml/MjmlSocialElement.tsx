@@ -4,7 +4,12 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+} from "../utils";
 
 export interface IMjmlSocialElementProps {
   align?: "left" | "center" | "right";
@@ -12,21 +17,21 @@ export interface IMjmlSocialElementProps {
   color?: React.CSSProperties["color"];
   borderRadius?: React.CSSProperties["borderRadius"];
   fontFamily?: string;
-  fontSize?: string | number;
+  fontSize?: Pixel;
   fontStyle?: string;
   fontWeight?: string;
   href?: string;
-  iconSize?: string | number;
-  iconHeight?: string | number;
-  iconPadding?: string | number;
-  lineHeight?: string | number;
+  iconSize?: Pixel | Percentage;
+  iconHeight?: Pixel | Percentage;
+  iconPadding?: Matrix<Pixel | Percentage>;
+  lineHeight?: Pixel | Percentage;
   name?: string;
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
-  textPadding?: string | number;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
+  textPadding?: Matrix<Pixel | Percentage>;
   rel?: string;
   src?: string;
   srcset?: string;

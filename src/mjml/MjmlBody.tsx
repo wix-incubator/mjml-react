@@ -4,10 +4,10 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import { convertPropsToMjmlAttributes, Pixel } from "../utils";
 
 export interface IMjmlBodyProps {
-  width?: string | number;
+  width?: Pixel;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   className?: string;
   cssClass?: string;

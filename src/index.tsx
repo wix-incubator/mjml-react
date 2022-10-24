@@ -2,7 +2,6 @@
  * This file is generated. Don't edit it directly.
  * Modify `scripts/generate-mjml-react.ts` to make changes to these files
  */
-
 export { Mjml } from "./mjml/Mjml";
 export type { IMjmlProps } from "./mjml/Mjml";
 export { MjmlAll } from "./mjml/MjmlAll";

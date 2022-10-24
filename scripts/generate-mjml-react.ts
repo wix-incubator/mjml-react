@@ -11,6 +11,8 @@ import camelCase from "lodash.camelcase";
 import upperFirst from "lodash.upperfirst";
 import * as path from "path";
 
+import { typeToUnit } from "../src/utils";
+
 const MJML_REACT_DIR = "src";
 
 const GENERATED_HEADER_TSX = `
@@ -93,18 +95,21 @@ const ALLOW_ANY_PROPERTY = new Set(
 function getPropTypeFromMjmlAttributeType(
   attribute: string,
   mjmlAttributeType: string
-) {
+): string {
   if (attribute === "fullWidth") {
     return "boolean";
   }
   if (ATTRIBUTES_TO_USE_CSSProperties_WITH.has(attribute)) {
     return `React.CSSProperties["${attribute}"]`;
   }
-  if (
-    mjmlAttributeType.startsWith("unit") &&
-    mjmlAttributeType.includes("px")
-  ) {
-    return "string | number";
+  if (mjmlAttributeType.startsWith("unit")) {
+    const validUnitTypes: string[] = Object.keys(typeToUnit).filter((type) =>
+      mjmlAttributeType.includes(typeToUnit[type as keyof typeof typeToUnit])
+    );
+    if (mjmlAttributeType.endsWith("{1,4}")) {
+      return `Matrix<${validUnitTypes.join(" | ")}>`;
+    }
+    return validUnitTypes.join(" | ");
   }
   if (mjmlAttributeType === "boolean") {
     return "boolean";
@@ -189,12 +194,17 @@ function buildFileContents({
 }) {
   const { props, createElementProps } =
     buildReactCreateElementProps(componentName);
+  const unitsUsed = ["Matrix", ...Object.keys(typeToUnit)]
+    .filter((unit) => types.includes(unit))
+    .join(", ");
+  const unitsImports = unitsUsed ? ", " + unitsUsed : "";
+
   return `
 ${GENERATED_HEADER_TSX}
 
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import { convertPropsToMjmlAttributes${unitsImports} } from "../utils";
 
 export interface I${reactName}Props {
   ${types}

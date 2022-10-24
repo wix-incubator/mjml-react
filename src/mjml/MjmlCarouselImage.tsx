@@ -4,7 +4,12 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+} from "../utils";
 
 export interface IMjmlCarouselImageProps {
   alt?: string;
@@ -16,7 +21,7 @@ export interface IMjmlCarouselImageProps {
   thumbnailsSrc?: string;
   borderRadius?: React.CSSProperties["borderRadius"];
   tbBorder?: string;
-  tbBorderRadius?: string | number;
+  tbBorderRadius?: Matrix<Pixel | Percentage>;
   className?: string;
   cssClass?: string;
   mjmlClass?: string;

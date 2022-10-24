@@ -2,6 +2,17 @@
 import kebabCase from "lodash.kebabcase";
 import React from "react";
 
+export type Matrix<E extends string | number> =
+  | E
+  | `${E} ${E}`
+  | `${E} ${E} ${E}`
+  | `${E} ${E} ${E} ${E}`;
+
+export type Pixel = number | `${number}` | `${number}px`;
+export type Percentage = number | `${number}` | `${number}%`;
+export type Ephemeral = number | `${number}` | `${number}em`;
+export const typeToUnit = { Pixel: "px", Percentage: "%", Ephemeral: "em" };
+
 export function mjmlReactComponentFactory<P>(
   mjmlElementName: string
 ): React.FC<P> {

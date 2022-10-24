@@ -4,7 +4,13 @@
  */
 import React from "react";
 
-import { convertPropsToMjmlAttributes } from "../utils";
+import {
+  convertPropsToMjmlAttributes,
+  Matrix,
+  Pixel,
+  Percentage,
+  Ephemeral,
+} from "../utils";
 
 export interface IMjmlButtonProps {
   align?: "left" | "center" | "right";
@@ -18,28 +24,28 @@ export interface IMjmlButtonProps {
   color?: React.CSSProperties["color"];
   containerBackgroundColor?: string;
   fontFamily?: string;
-  fontSize?: string | number;
+  fontSize?: Pixel;
   fontStyle?: string;
   fontWeight?: string;
-  height?: string | number;
+  height?: Pixel | Percentage;
   href?: string;
   name?: string;
   title?: string;
-  innerPadding?: string | number;
-  letterSpacing?: string | number;
-  lineHeight?: string | number;
-  paddingBottom?: string | number;
-  paddingLeft?: string | number;
-  paddingRight?: string | number;
-  paddingTop?: string | number;
-  padding?: string | number;
+  innerPadding?: Matrix<Pixel | Percentage>;
+  letterSpacing?: Pixel | Ephemeral;
+  lineHeight?: Pixel | Percentage;
+  paddingBottom?: Pixel | Percentage;
+  paddingLeft?: Pixel | Percentage;
+  paddingRight?: Pixel | Percentage;
+  paddingTop?: Pixel | Percentage;
+  padding?: Matrix<Pixel | Percentage>;
   rel?: string;
   target?: string;
   textDecoration?: React.CSSProperties["textDecoration"];
   textTransform?: React.CSSProperties["textTransform"];
   verticalAlign?: React.CSSProperties["verticalAlign"];
   textAlign?: React.CSSProperties["textAlign"];
-  width?: string | number;
+  width?: Pixel | Percentage;
   className?: string;
   cssClass?: string;
   mjmlClass?: string;
