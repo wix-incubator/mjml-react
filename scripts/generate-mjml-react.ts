@@ -132,7 +132,11 @@ function getPropTypeFromMjmlAttributeType(
 }
 
 function buildTypesForComponent(mjmlComponent: IMjmlComponent): string {
-  const { componentName, allowedAttributes } = mjmlComponent;
+  const {
+    componentName,
+    allowedAttributes,
+    endingTag: isEndingTag,
+  } = mjmlComponent;
   const typesFromMjmlAttributes: Record<string, string> = {};
   if (allowedAttributes) {
     Object.entries(allowedAttributes).forEach(
@@ -169,6 +173,9 @@ function buildTypesForComponent(mjmlComponent: IMjmlComponent): string {
   }
   if (HAS_CHILDREN.has(componentName)) {
     typesFromMjmlAttributes["children"] = "React.ReactNode";
+  }
+  if (isEndingTag) {
+    typesFromMjmlAttributes["dangerouslySetInnerHTML"] = "{ __html: string }";
   }
 
   const typeStrings = Object.entries(typesFromMjmlAttributes).map(

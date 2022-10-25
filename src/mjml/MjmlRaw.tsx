@@ -12,6 +12,7 @@ export interface IMjmlRawProps {
   cssClass?: string;
   mjmlClass?: string;
   children?: React.ReactNode;
+  dangerouslySetInnerHTML?: { __html: string };
 }
 
 export function MjmlRaw({ children, ...props }: IMjmlRawProps): JSX.Element {

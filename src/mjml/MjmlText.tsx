@@ -36,6 +36,7 @@ export interface IMjmlTextProps {
   cssClass?: string;
   mjmlClass?: string;
   children?: React.ReactNode;
+  dangerouslySetInnerHTML?: { __html: string };
 }
 
 export function MjmlText({ children, ...props }: IMjmlTextProps): JSX.Element {

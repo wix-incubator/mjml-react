@@ -1,5 +1,6 @@
 import kebabCase from "lodash.kebabcase";
-import React from "react";
+
+const DANGEROUSLY_SET_INNER_HTML = "dangerouslySetInnerHTML";
 
 export type Matrix<E extends string | number> =
   | E
@@ -12,23 +13,16 @@ export type Percentage = number | `${number}` | `${number}%`;
 export type Ephemeral = number | `${number}` | `${number}em`;
 export const typeToUnit = { Pixel: "px", Percentage: "%", Ephemeral: "em" };
 
-export function mjmlReactComponentFactory<P>(
-  mjmlElementName: string
-): React.FC<P> {
-  return function ({ children, ...props }) {
-    return React.createElement(
-      mjmlElementName,
-      convertPropsToMjmlAttributes(props),
-      children
-    );
-  };
-}
+type MJMLDangerouslySetInnerHTML = {
+  __html: string;
+};
 
 export function convertPropsToMjmlAttributes<P>(props: {
   [K in keyof P]: unknown;
 }) {
   const mjmlProps = Object.entries(props).reduce((mjmlProps, [prop, value]) => {
-    const mjmlProp = kebabCase(prop);
+    const mjmlProp =
+      prop === DANGEROUSLY_SET_INNER_HTML ? prop : kebabCase(prop);
     const mjmlValue = convertPropValueToMjml(mjmlProp, value);
 
     if (mjmlValue === undefined || prop === "className") {
@@ -40,15 +34,16 @@ export function convertPropsToMjmlAttributes<P>(props: {
       mjmlProps[mjmlProp] = mjmlValue;
     }
     return mjmlProps;
-  }, {} as Record<string, string>);
+  }, {} as Record<string, string | MJMLDangerouslySetInnerHTML>);
 
   // className is a special prop used extensively in react in place of the html class attribute.
   // mjml uses a different name (css-class) for the same thing.
   const className = (props as any).className;
   if (typeof className === "string") {
-    mjmlProps["css-class"] = mjmlProps["css-class"]
-      ? joinClassNames(mjmlProps["css-class"], className)
-      : className;
+    mjmlProps["css-class"] =
+      typeof mjmlProps["css-class"] === "string"
+        ? joinClassNames(mjmlProps["css-class"], className)
+        : className;
   }
 
   return mjmlProps;
@@ -73,16 +68,21 @@ const numberToPixel = [
   "text-padding",
 ];
 
+const allowObject = [DANGEROUSLY_SET_INNER_HTML];
+
 function convertPropValueToMjml(
   name: string,
   value: unknown
-): string | undefined {
+): string | MJMLDangerouslySetInnerHTML | undefined {
   // This assumes that all numbers will be pixels which might not always be the case
   if (typeof value === "number" && numberToPixel.includes(name)) {
     return `${value}px`;
   }
   if (typeof value === "boolean" && booleanToString.includes(name)) {
     return name;
+  }
+  if (typeof value === "object" && allowObject.includes(name)) {
+    return value as MJMLDangerouslySetInnerHTML;
   }
   if (typeof value === "string") {
     return value;

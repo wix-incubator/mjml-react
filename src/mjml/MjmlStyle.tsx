@@ -9,6 +9,7 @@ import { convertPropsToMjmlAttributes } from "../utils";
 export interface IMjmlStyleProps {
   inline?: boolean;
   children?: React.ReactNode;
+  dangerouslySetInnerHTML?: { __html: string };
 }
 
 export function MjmlStyle({

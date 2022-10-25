@@ -11,6 +11,17 @@ describe("mjml tags", () => {
     );
   });
 
+  it("should render <MjmlRaw> with dangerouslySetInnerHTML content", () => {
+    expect(
+      renderToMjml(
+        <tags.MjmlRaw
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: "<div>hello World</div>" }}
+        />
+      )
+    ).toBe(`<mj-raw><div>hello World</div></mj-raw>`);
+  });
+
   describe("<MjmlTitle/>", () => {
     it("should render string", () => {
       expect(renderToMjml(<tags.MjmlTitle>Content</tags.MjmlTitle>)).toBe(

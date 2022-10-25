@@ -26,6 +26,7 @@ export interface IMjmlCarouselImageProps {
   cssClass?: string;
   mjmlClass?: string;
   children?: React.ReactNode;
+  dangerouslySetInnerHTML?: { __html: string };
 }
 
 export function MjmlCarouselImage({
