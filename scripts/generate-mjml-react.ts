@@ -135,6 +135,7 @@ function buildTypesForComponent(mjmlComponent: IMjmlComponent): string {
   const {
     componentName,
     allowedAttributes,
+    defaultAttributes,
     endingTag: isEndingTag,
   } = mjmlComponent;
   const typesFromMjmlAttributes: Record<string, string> = {};
@@ -179,7 +180,16 @@ function buildTypesForComponent(mjmlComponent: IMjmlComponent): string {
   }
 
   const typeStrings = Object.entries(typesFromMjmlAttributes).map(
-    ([attributes, type]) => `${attributes}?: ${type}`
+    ([attributes, type]) => {
+      const definition = `${attributes}?: ${type}`;
+      const defaultValue =
+        defaultAttributes && attributes in defaultAttributes
+          ? defaultAttributes[attributes]
+          : undefined;
+      return defaultValue
+        ? `/** MJML default value: ${defaultValue} */\n${definition}`
+        : definition;
+    }
   );
 
   // allow any property

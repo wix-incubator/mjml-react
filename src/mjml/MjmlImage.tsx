@@ -20,7 +20,9 @@ export interface IMjmlImageProps {
   sizes?: string;
   title?: string;
   rel?: string;
+  /** MJML default value: center */
   align?: "left" | "center" | "right";
+  /** MJML default value: 0 */
   border?: React.CSSProperties["border"];
   borderBottom?: string;
   borderLeft?: string;
@@ -29,13 +31,16 @@ export interface IMjmlImageProps {
   borderRadius?: React.CSSProperties["borderRadius"];
   containerBackgroundColor?: string;
   fluidOnMobile?: boolean;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   paddingBottom?: Pixel | Percentage;
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: _blank */
   target?: string;
   width?: Pixel;
+  /** MJML default value: auto */
   height?: Pixel;
   maxHeight?: Pixel | Percentage;
   fontSize?: Pixel;

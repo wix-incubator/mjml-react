@@ -12,6 +12,7 @@ import {
 } from "../utils";
 
 export interface IMjmlNavbarProps {
+  /** MJML default value: center */
   align?: "left" | "center" | "right";
   baseUrl?: string;
   hamburger?: string;

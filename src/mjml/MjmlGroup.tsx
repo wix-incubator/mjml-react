@@ -8,6 +8,7 @@ import { convertPropsToMjmlAttributes, Pixel, Percentage } from "../utils";
 
 export interface IMjmlGroupProps {
   backgroundColor?: React.CSSProperties["backgroundColor"];
+  /** MJML default value: ltr */
   direction?: "ltr" | "rtl";
   verticalAlign?: React.CSSProperties["verticalAlign"];
   width?: Pixel | Percentage;

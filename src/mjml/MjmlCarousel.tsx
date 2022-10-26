@@ -12,6 +12,7 @@ import {
 } from "../utils";
 
 export interface IMjmlCarouselProps {
+  /** MJML default value: center */
   align?: "left" | "center" | "right";
   borderRadius?: React.CSSProperties["borderRadius"];
   containerBackgroundColor?: string;
@@ -23,6 +24,7 @@ export interface IMjmlCarouselProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   rightIcon?: string;
+  /** MJML default value: visible */
   thumbnails?: "visible" | "hidden";
   tbBorder?: string;
   tbBorderRadius?: Pixel | Percentage;

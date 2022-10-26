@@ -13,8 +13,10 @@ import {
 } from "../utils";
 
 export interface IMjmlTextProps {
+  /** MJML default value: left */
   align?: "left" | "right" | "center" | "justify";
   backgroundColor?: React.CSSProperties["backgroundColor"];
+  /** MJML default value: #000000 */
   color?: React.CSSProperties["color"];
   containerBackgroundColor?: string;
   fontFamily?: string;
@@ -28,6 +30,7 @@ export interface IMjmlTextProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   textDecoration?: React.CSSProperties["textDecoration"];
   textTransform?: React.CSSProperties["textTransform"];

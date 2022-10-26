@@ -16,12 +16,15 @@ export interface IMjmlDividerProps {
   borderStyle?: React.CSSProperties["borderStyle"];
   borderWidth?: Pixel;
   containerBackgroundColor?: string;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   paddingBottom?: Pixel | Percentage;
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 100% */
   width?: Pixel | Percentage;
+  /** MJML default value: center */
   align?: "left" | "center" | "right";
   className?: string;
   cssClass?: string;

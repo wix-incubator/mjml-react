@@ -23,6 +23,7 @@ export interface IMjmlSpacerProps {
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
   padding?: Matrix<Pixel | Percentage>;
+  /** MJML default value: 20px */
   height?: Pixel | Percentage;
   className?: string;
   cssClass?: string;

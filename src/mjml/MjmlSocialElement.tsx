@@ -12,8 +12,10 @@ import {
 } from "../utils";
 
 export interface IMjmlSocialElementProps {
+  /** MJML default value: left */
   align?: "left" | "center" | "right";
   backgroundColor?: React.CSSProperties["backgroundColor"];
+  /** MJML default value: #000 */
   color?: React.CSSProperties["color"];
   borderRadius?: React.CSSProperties["borderRadius"];
   fontFamily?: string;
@@ -30,6 +32,7 @@ export interface IMjmlSocialElementProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 4px */
   padding?: Matrix<Pixel | Percentage>;
   textPadding?: Matrix<Pixel | Percentage>;
   rel?: string;
@@ -38,6 +41,7 @@ export interface IMjmlSocialElementProps {
   sizes?: string;
   alt?: string;
   title?: string;
+  /** MJML default value: _blank */
   target?: string;
   textDecoration?: React.CSSProperties["textDecoration"];
   verticalAlign?: React.CSSProperties["verticalAlign"];

@@ -13,6 +13,7 @@ import {
 } from "../utils";
 
 export interface IMjmlButtonProps {
+  /** MJML default value: center */
   align?: "left" | "center" | "right";
   backgroundColor?: React.CSSProperties["backgroundColor"];
   borderBottom?: string;
@@ -20,7 +21,9 @@ export interface IMjmlButtonProps {
   borderRadius?: React.CSSProperties["borderRadius"];
   borderRight?: string;
   borderTop?: string;
+  /** MJML default value: none */
   border?: React.CSSProperties["border"];
+  /** MJML default value: #ffffff */
   color?: React.CSSProperties["color"];
   containerBackgroundColor?: string;
   fontFamily?: string;
@@ -38,8 +41,10 @@ export interface IMjmlButtonProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   rel?: string;
+  /** MJML default value: _blank */
   target?: string;
   textDecoration?: React.CSSProperties["textDecoration"];
   textTransform?: React.CSSProperties["textTransform"];

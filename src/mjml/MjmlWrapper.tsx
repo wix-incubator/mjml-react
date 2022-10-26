@@ -25,8 +25,10 @@ export interface IMjmlWrapperProps {
   borderRadius?: React.CSSProperties["borderRadius"];
   borderRight?: string;
   borderTop?: string;
+  /** MJML default value: ltr */
   direction?: "ltr" | "rtl";
   fullWidth?: boolean;
+  /** MJML default value: 20px 0 */
   padding?: Matrix<Pixel | Percentage>;
   paddingTop?: Pixel | Percentage;
   paddingBottom?: Pixel | Percentage;

@@ -19,6 +19,7 @@ export interface IMjmlColumnProps {
   borderRadius?: React.CSSProperties["borderRadius"];
   borderRight?: string;
   borderTop?: string;
+  /** MJML default value: ltr */
   direction?: "ltr" | "rtl";
   innerBackgroundColor?: string;
   paddingBottom?: Pixel | Percentage;

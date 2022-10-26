@@ -24,6 +24,7 @@ export interface IMjmlAccordionTextProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 16px */
   padding?: Matrix<Pixel | Percentage>;
   className?: string;
   cssClass?: string;

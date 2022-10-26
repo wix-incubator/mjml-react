@@ -12,9 +12,11 @@ import {
 } from "../utils";
 
 export interface IMjmlSocialProps {
+  /** MJML default value: center */
   align?: "left" | "right" | "center";
   borderRadius?: React.CSSProperties["borderRadius"];
   containerBackgroundColor?: string;
+  /** MJML default value: #333333 */
   color?: React.CSSProperties["color"];
   fontFamily?: string;
   fontSize?: Pixel;
@@ -25,11 +27,13 @@ export interface IMjmlSocialProps {
   iconPadding?: Matrix<Pixel | Percentage>;
   innerPadding?: Matrix<Pixel | Percentage>;
   lineHeight?: Pixel | Percentage;
+  /** MJML default value: horizontal */
   mode?: "horizontal" | "vertical";
   paddingBottom?: Pixel | Percentage;
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   tableLayout?: "auto" | "fixed";
   textPadding?: Matrix<Pixel | Percentage>;

@@ -13,6 +13,7 @@ import {
 
 export interface IMjmlAccordionProps {
   containerBackgroundColor?: string;
+  /** MJML default value: 2px solid black */
   border?: React.CSSProperties["border"];
   fontFamily?: string;
   iconAlign?: "top" | "middle" | "bottom";
@@ -27,6 +28,7 @@ export interface IMjmlAccordionProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   className?: string;
   cssClass?: string;

@@ -13,6 +13,7 @@ import {
 } from "../utils";
 
 export interface IMjmlNavbarLinkProps {
+  /** MJML default value: #000000 */
   color?: React.CSSProperties["color"];
   fontFamily?: string;
   fontSize?: Pixel;
@@ -20,6 +21,7 @@ export interface IMjmlNavbarLinkProps {
   fontWeight?: string;
   href?: string;
   name?: string;
+  /** MJML default value: _blank */
   target?: string;
   rel?: string;
   letterSpacing?: Pixel | Ephemeral;
@@ -28,6 +30,7 @@ export interface IMjmlNavbarLinkProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 15px 10px */
   padding?: Matrix<Pixel | Percentage>;
   textDecoration?: React.CSSProperties["textDecoration"];
   textTransform?: React.CSSProperties["textTransform"];

@@ -12,7 +12,9 @@ import {
 } from "../utils";
 
 export interface IMjmlHeroProps {
+  /** MJML default value: fixed-height */
   mode?: string;
+  /** MJML default value: 0px */
   height?: Pixel | Percentage;
   backgroundUrl?: string;
   backgroundWidth?: Pixel | Percentage;
@@ -26,6 +28,7 @@ export interface IMjmlHeroProps {
   innerPaddingLeft?: Pixel | Percentage;
   innerPaddingRight?: Pixel | Percentage;
   innerPaddingBottom?: Pixel | Percentage;
+  /** MJML default value: 0px */
   padding?: Matrix<Pixel | Percentage>;
   paddingBottom?: Pixel | Percentage;
   paddingLeft?: Pixel | Percentage;

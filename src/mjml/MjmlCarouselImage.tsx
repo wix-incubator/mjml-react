@@ -15,6 +15,7 @@ export interface IMjmlCarouselImageProps {
   alt?: string;
   href?: string;
   rel?: string;
+  /** MJML default value: _blank */
   target?: string;
   title?: string;
   src?: string;

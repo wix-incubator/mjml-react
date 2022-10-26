@@ -12,11 +12,16 @@ import {
 } from "../utils";
 
 export interface IMjmlTableProps {
+  /** MJML default value: left */
   align?: "left" | "right" | "center";
+  /** MJML default value: none */
   border?: React.CSSProperties["border"];
+  /** MJML default value: 0 */
   cellpadding?: string;
+  /** MJML default value: 0 */
   cellspacing?: string;
   containerBackgroundColor?: string;
+  /** MJML default value: #000000 */
   color?: React.CSSProperties["color"];
   fontFamily?: string;
   fontSize?: Pixel;
@@ -26,10 +31,12 @@ export interface IMjmlTableProps {
   paddingLeft?: Pixel | Percentage;
   paddingRight?: Pixel | Percentage;
   paddingTop?: Pixel | Percentage;
+  /** MJML default value: 10px 25px */
   padding?: Matrix<Pixel | Percentage>;
   role?: "none" | "presentation";
   tableLayout?: "auto" | "fixed" | "initial" | "inherit";
   verticalAlign?: React.CSSProperties["verticalAlign"];
+  /** MJML default value: 100% */
   width?: Pixel | Percentage;
   className?: string;
   cssClass?: string;

@@ -7,6 +7,7 @@ import React from "react";
 import { convertPropsToMjmlAttributes, Pixel } from "../utils";
 
 export interface IMjmlBodyProps {
+  /** MJML default value: 600px */
   width?: Pixel;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   className?: string;
