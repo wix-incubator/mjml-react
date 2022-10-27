@@ -25,3 +25,5 @@ jobs:
         run: yarn lint
       - name: Test
         run: yarn test
+      - name: Validate generate-mjml-react.ts has been run
+        run: ./scripts/validateMjmlReactHasBeenRun.sh
