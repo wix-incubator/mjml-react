@@ -82,6 +82,7 @@
   },
   "module": "dist/esm/index.js",
   "dependencies": {
-    "lodash.kebabcase": "^4.1.1"
+    "lodash.kebabcase": "^4.1.1",
+    "semantic-release": "^19.0.5"
   }
 }
