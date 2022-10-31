@@ -84,5 +84,10 @@
   "dependencies": {
     "lodash.kebabcase": "^4.1.1",
     "semantic-release": "^19.0.5"
+  },
+  "release": {
+    "branches": [
+      "release-v3"
+    ]
   }
 }
