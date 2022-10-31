@@ -13,7 +13,7 @@ on:
       - release-v3
 
 jobs:
-  bump_release_if_merged:
+  release_and_bump_version:
     # if: github.event.pull_request.merged == true
     name: Publish the package
     runs-on: ubuntu-latest
@@ -34,10 +34,10 @@ jobs:
         #   # "github.event.release.target_commitish" is a global variable and specifies the branch the release targeted
         #   ref: ${{ github.event.release.target_commitish }}
       # install Node.js
-      - name: Use Node.js 14
+      - name: Use Node.js 16
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
           # Specifies the registry, this field is required!
           registry-url: https://registry.npmjs.org/
 
@@ -45,31 +45,33 @@ jobs:
         run: |
           yarn install
           yarn build
-      - name: Format
-        run: yarn prettier --check .
-      - name: Lint
-        run: yarn lint
-      - name: Test
-        run: yarn test
-      - name: Validate generate-mjml-react.ts has been run
-        run: ./scripts/validateMjmlReactHasBeenRun.sh
+      # - name: Format
+      #   run: yarn prettier --check .
+      # - name: Lint
+      #   run: yarn lint
+      # - name: Test
+      #   run: yarn test
+      # - name: Validate generate-mjml-react.ts has been run
+      #   run: ./scripts/validateMjmlReactHasBeenRun.sh
 
       # # clean install of your projects' deps. We use "npm ci" to avoid package lock changes
       # - run: npm ci
       # # set up git since we will later push to the repo
-      - run: git config --global user.name "Github"
-      - run: git config --global user.email "github@faire.com"
+      - name: Configure Github credentials
+        run: |
+          git config --global user.name "Github"
+          git config --global user.email "github@faire.com"
 
       - name: Upgrade the version in package.json (fix later)
-        run: npm version 3.0.2-test #${{ github.event.release.tag_name }}
+        run: npm version 3.0.2-test -m "Bump to v3.0.2-test in package.json" #${{ github.event.release.tag_name }}
       - name: Publish to NPM
         run: npm publish --dry-run
         env:
           # Use a token to publish to NPM. See below for how to set it up
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # # push the version changes to GitHub
-      # - run: git push
-      #   env:
-      #     # The secret is passed automatically. Nothing to configure.
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      # push the version changes to GitHub
+      - run: git push
+        # env:
+        #   # The secret is passed automatically. Nothing to configure.
+        #   github-token: ${{ secrets.GITHUB_TOKEN }}
