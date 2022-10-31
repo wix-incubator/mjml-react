@@ -1,51 +1,27 @@
 name: NPM CD workflow
 
 on:
-  # release:
-  #   # This specifies that the build will be triggered when we publish a release
-  #   types: [published]
-  # pull_request:
-  # types:
-  #   - closed
-
   push:
     branches:
-      - release-v3
+      - release
 
 jobs:
   runPostTranslations:
     uses: ./.github/workflows/CI_PR_merge_checks.yml
   releaseAndBumpVersion:
-    # uses: ./.github/workflows/CI_PR_merge_checks.yml
     needs: runPostTranslations
-    # if: github.event.pull_request.merged == true
     name: Publish the package
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Wait for CI checks to succeed
-      #   uses: lewagon/wait-on-check-action@v1.2.0
-      #   with:
-      #     # ref: ${{ github.ref }}
-      #     check-name: "CI"
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-      #     wait-interval: 10
-      #     allowed-conclusions: success
-
       - uses: actions/checkout@v2
-        # with:
-        #   # "ref" specifies the branch to check out.
-        #   # "github.event.release.target_commitish" is a global variable and specifies the branch the release targeted
-        #   ref: ${{ github.event.release.target_commitish }}
-      # install Node.js
+
       - name: Use Node.js 16
         uses: actions/setup-node@v1
         with:
           node-version: 16
-          # Specifies the registry, this field is required!
           registry-url: https://registry.npmjs.org/
 
-      # # set up git since we will later push to the repo
       - name: Configure Github credentials
         run: |
           git config --global user.name "Github"
@@ -56,21 +32,7 @@ jobs:
           yarn build
 
       - name: Run semantic release (release + bump version)
-        run: yarn semantic-release --dry-run
+        run: npx semantic-release --dry-run
         env:
-          # Use a token to publish to NPM. See below for how to set it up
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Upgrade the version in package.json (fix later)
-      #   run: npm version 3.0.2-test -m "Bump to v3.0.2-test in package.json" #${{ github.event.release.tag_name }}
-      # - name: Publish to NPM
-      #   run: npm publish --dry-run
-      #   env:
-      #     # Use a token to publish to NPM. See below for how to set it up
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # push the version changes to GitHub
-      - run: git push
-        # env:
-        #   # The secret is passed automatically. Nothing to configure.
-        #   github-token: ${{ secrets.GITHUB_TOKEN }}
