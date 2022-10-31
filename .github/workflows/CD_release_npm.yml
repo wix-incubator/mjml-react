@@ -13,7 +13,11 @@ on:
       - release-v3
 
 jobs:
-  release_and_bump_version:
+  # runPostTranslations:
+  #   uses: ./.github/workflows/CI_PR_merge_checks.yml
+  releaseAndBumpVersion:
+    uses: ./.github/workflows/CI_PR_merge_checks.yml
+    # needs: runPostTranslations
     # if: github.event.pull_request.merged == true
     name: Publish the package
     runs-on: ubuntu-latest
@@ -40,19 +44,6 @@ jobs:
           node-version: 16
           # Specifies the registry, this field is required!
           registry-url: https://registry.npmjs.org/
-
-      - name: Build
-        run: |
-          yarn install
-          yarn build
-      # - name: Format
-      #   run: yarn prettier --check .
-      # - name: Lint
-      #   run: yarn lint
-      # - name: Test
-      #   run: yarn test
-      # - name: Validate generate-mjml-react.ts has been run
-      #   run: ./scripts/validateMjmlReactHasBeenRun.sh
 
       # # clean install of your projects' deps. We use "npm ci" to avoid package lock changes
       # - run: npm ci
