@@ -16,8 +16,9 @@ export function MjmlStyle({
   children,
   ...props
 }: IMjmlStyleProps): JSX.Element {
-  return React.createElement("mj-style", {
-    ...convertPropsToMjmlAttributes(props),
-    dangerouslySetInnerHTML: { __html: children },
-  });
+  return React.createElement(
+    "mj-style",
+    convertPropsToMjmlAttributes(props),
+    children
+  );
 }

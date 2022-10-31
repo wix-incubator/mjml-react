@@ -37,7 +37,7 @@
     "build-esm": "tsc -p tsconfig-esm.json",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "jest test",
+    "test": "jest",
     "generate-mjml-react": "ts-node scripts/generate-mjml-react.ts",
     "prepare": "husky install"
   },

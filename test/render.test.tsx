@@ -18,7 +18,7 @@ describe("render()", () => {
       </Mjml>
     );
     const { html } = render(email, { minify: true });
-    expect(html).not.toBe(undefined);
+    expect(html).toBeDefined();
     expect(html).toContain("<!doctype html>");
     expect(html).toContain("<title>Title</title>");
     expect(html).toContain("<p>Paragraph</p>");
@@ -49,7 +49,7 @@ describe("render()", () => {
       validationLevel: "soft",
       minify: false,
     });
-    expect(errors!.length).toBe(1);
+    expect(errors).toHaveLength(1);
     expect(errors![0]!.message).toContain(
       "Element div doesn't exist or is not registered"
     );

@@ -240,13 +240,6 @@ function buildReactCreateElementProps(componentName: string): {
   const withChildren = "{children, ...props}";
   const withoutChildren = "props";
 
-  if (componentName === "mj-style") {
-    return {
-      props: withChildren,
-      createElementProps:
-        "{ ...convertPropsToMjmlAttributes(props), dangerouslySetInnerHTML: { __html: children } }",
-    };
-  }
   if (HAS_CHILDREN.has(componentName)) {
     return {
       props: withChildren,
