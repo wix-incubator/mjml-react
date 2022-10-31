@@ -19,6 +19,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # - name: Wait for CI checks to succeed
+      #   uses: lewagon/wait-on-check-action@v1.2.0
+      #   with:
+      #     # ref: ${{ github.ref }}
+      #     check-name: "CI"
+      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+      #     wait-interval: 10
+      #     allowed-conclusions: success
+
       - uses: actions/checkout@v2
         # with:
         #   # "ref" specifies the branch to check out.
@@ -48,8 +57,8 @@ jobs:
       # # clean install of your projects' deps. We use "npm ci" to avoid package lock changes
       # - run: npm ci
       # # set up git since we will later push to the repo
-      # - run: git config --global user.name "GitHub CD bot"
-      # - run: git config --global user.email "github-cd-bot@example.com"
+      - run: git config --global user.name "Github"
+      - run: git config --global user.email "github@faire.com"
 
       - name: Upgrade the version in package.json (fix later)
         run: npm version 3.0.2-test #${{ github.event.release.tag_name }}
