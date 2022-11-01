@@ -87,7 +87,7 @@
   },
   "release": {
     "branches": [
-      "release"
+      "main"
     ]
   }
 }

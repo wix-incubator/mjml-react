@@ -3,7 +3,7 @@ name: NPM CD workflow
 on:
   push:
     branches:
-      - release
+      - main
 
 jobs:
   runPostTranslations:
